@@ -3,7 +3,6 @@ A try to create LED-powered light effects under a longboard deck.
 
 
 __Hardware__
-
 LEDs:
 a strip of WS2812 or WS2811, 30LEDs/meter
 
