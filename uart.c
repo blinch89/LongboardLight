@@ -62,8 +62,7 @@ void init_USART1(uint32_t baudrate)
 void USART_puts(USART_TypeDef* USARTx, volatile char *s)
 {
     while(*s)
-    {
-        // wait until data register is empty
+    {   // wait until data register is empty
         while( !(USARTx->SR & 0x00000040) ); 
         USART_SendData(USARTx, *s++);
     }
@@ -73,8 +72,7 @@ void USART_puts(USART_TypeDef* USARTx, volatile char *s)
 
 
 void USART_putc(USART_TypeDef* USARTx, char c)
-{
-    // wait until data register is empty
+{   // wait until data register is empty
     while( !(USARTx->SR & 0x00000040) ); 
     USART_SendData(USARTx, c);
 }
@@ -83,8 +81,7 @@ void USART_putc(USART_TypeDef* USARTx, char c)
 
 // This method is called, if an USART1 interrupt occures.
 void USART1_IRQHandler()
-{
-    // check if the USART1 receive interrupt flag was set
+{   // check if the USART1 receive interrupt flag was set
     if( USART_GetITStatus(USART1, USART_IT_RXNE) )
     {
         // USART1->DR   this line reads the received data

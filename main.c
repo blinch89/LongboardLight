@@ -5,6 +5,7 @@
 #include "stm32_ub_ws2812.h"
 #include "stdio.h"
 
+
 void Delay(volatile uint32_t nCount);
 void init(void);
 void INTTIM_Config(void);
@@ -14,9 +15,12 @@ void initFrame(WS2812_HSV_t *buf);
 void frame_white(WS2812_HSV_t *buf);
 void frame_one_color(WS2812_HSV_t *buf, WS2812_HSV_t);
 
+
+
+
 int main(void)
 {
-  uint8_t control = '6';
+  uint8_t control = '7';
   uint8_t changeFlag = 1;
   uint8_t updateLEDs = 1;
   int i = 0;
@@ -86,6 +90,7 @@ int main(void)
         else if ( !(control >= '0' && control <= '3') )
             updateLEDs = 0;
   }
+
   //Userbutten start *******
   if((GPIOA->IDR & 0b1)==1)
   {
@@ -125,6 +130,9 @@ int main(void)
 }
 
 
+
+
+
 void Delay(volatile uint32_t nCount)
 {
   while(nCount--)
@@ -133,52 +141,45 @@ void Delay(volatile uint32_t nCount)
 }
 
 
+
+
+
 void init(void)
 {
     SystemInit();
-    //GPIO_InitTypeDef  GPIO_InitStructure;
-    /*
-    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_Init(GPIOD, &GPIO_InitStructure);
-
-    //Stereo Control:
-    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;         // we want the pin to be an output
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;     // this sets the GPIO modules clock speed
-    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;     // this sets the pin type to push / pull (as opposed to open drain)
-    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-    GPIO_Init(GPIOB, &GPIO_InitStructure);
-    */
     UB_WS2812_Init();
     INTTIM_Config();
-    //init_USART1(9600);
-    //USART_puts(USART1, "STM_Start\n");
+    
+    /*
+    init_USART1(9600);
+    USART_puts(USART1, "STM_Start\n");
+    */
 }
+
+
+
 
 
 void INTTIM_Config(void)
 {
     TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
-    /* TIM2 clock enable */
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-    /* Time base configuration */
-    TIM_TimeBaseStructure.TIM_Period = 600; // 1MHz / diesen wert = halbe frequenz
+    TIM_TimeBaseStructure.TIM_Period = 600;       // 1MHz / this value = half frequency
     TIM_TimeBaseStructure.TIM_Prescaler = 84 - 1; // Down to 1 MHz (adjust per your clock)
     TIM_TimeBaseStructure.TIM_ClockDivision = 0;
     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
     TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
-    /* TIM2 enable counter */
     TIM_Cmd(TIM2, ENABLE);
 }
 
 
-//Regenbogen h, volle sättigung s, alles dunkel v
+
+
+
+// This method initializes the memory area for the WS2812 LEDs.
+// All LEDs are set to a rainbow pattern (one full circle in HSV
+// color data format). Full saturation is used, but BRIGHTNESS IS
+// SET TO ZERO. So no light is emitted after calling this method.
 void initFrame(WS2812_HSV_t *buf)
 {
     unsigned char i;
@@ -189,12 +190,17 @@ void initFrame(WS2812_HSV_t *buf)
       buf[i].v = 0;
     }
 
+    
     for(i = 0;i<WS2812_LED_MAX_ANZ-1;i++)
     {
       UB_WS2812_One_Led_HSV(i,buf[i],0);
     }
-    UB_WS2812_One_Led_HSV(WS2812_LED_MAX_ANZ-1,buf[WS2812_LED_MAX_ANZ-1],1); //letzte LED mit refresh
+    //last LED with refresh (50usecs):
+    UB_WS2812_One_Led_HSV(WS2812_LED_MAX_ANZ-1,buf[WS2812_LED_MAX_ANZ-1],1);
 }
+
+
+
 
 
 void dots_circular(char n_dotlines, WS2812_HSV_t *buf)
