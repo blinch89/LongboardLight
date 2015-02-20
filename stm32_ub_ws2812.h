@@ -20,22 +20,22 @@
 
 
 //--------------------------------------------------------------
-// Anzahl der WS2812-LEDs (1...n) in den einzelnen Ketten 
+// number of WS2812-LEDs (1...n) in the chains (channels) - channel length
 // CPU -> LED_1 -> LED_2 -> LED_3 -> LED_n
 //
-// falls ein Channel nicht benutzt wird => laenge auf 0 setzen
+// if a channel is not used, set its length to 0
 //--------------------------------------------------------------
-#define  WS2812_LED_CH1_ANZ    22  // [CH1 an PC6] LED-Kette mit 5 LEDs
-#define  WS2812_LED_CH2_ANZ    0  // [CH2 an PB5] CH2 wird nicht benutzt
-#define  WS2812_LED_CH3_ANZ    0  // [CH3 an PB0] CH3 wird nicht benutzt
-#define  WS2812_LED_CH4_ANZ    0  // [CH4 an PB1] CH4 wird nicht benutzt
+#define  WS2812_LED_CH1_ANZ    22 // [CH1 @ PC6]
+#define  WS2812_LED_CH2_ANZ    0  // [CH2 @ PB5] CH2 not used
+#define  WS2812_LED_CH3_ANZ    0  // [CH3 @ PB0] CH3 not used
+#define  WS2812_LED_CH4_ANZ    0  // [CH4 @ PB1] CH4 not used
 
-#define  WS2812_LED_MAX_ANZ    22  // anzahl der LEDs in der laengsten Kette
+#define  WS2812_LED_MAX_ANZ    22 // number of LEDs of longest channel
 
 
 
 //--------------------------------------------------------------
-// check der laengenangaben
+// precondition check of channell lengths
 //--------------------------------------------------------------
 #if WS2812_LED_CH1_ANZ>WS2812_LED_MAX_ANZ
   #error wrong len
@@ -60,7 +60,7 @@
 
 
 //--------------------------------------------------------------
-// benutzer Timer fuer das Daten-Signal => TIM3
+// timer for data signal is TIM3
 //--------------------------------------------------------------
 #define  WS2812_TIM_CLOCK     RCC_APB1Periph_TIM3
 #define  WS2812_TIM           TIM3
@@ -81,9 +81,9 @@
 
 
 //--------------------------------------------------------------
-// GPIO-Pins (CH1...CH4) fuer Data-OUT 
+// GPIO-Pins (CH1...CH4) for Data-OUT 
 //
-// moegliche Pinbelegungen (bei TIM3)
+// possible pin assignments (when TIM3 is used):
 //   CH1 : [PA6, PB4, PC6]
 //   CH2 : [PA7, PB5, PC7]
 //   CH3 : [PB0, PC8]
@@ -112,12 +112,12 @@
 
 
 //--------------------------------------------------------------
-// benutzer DMA
+// used DMA:
 //   => TIM3-CC1 => DMA1, Channel5, Stream4
 //   => TIM3-CC2 => DMA1, Channel5, Stream5
 //   => TIM3-CC3 => DMA1, Channel5, Stream7
 //   => TIM3-CC4 => DMA1, Channel5, Stream2
-// (siehe Seite 216+217 vom Referenz Manual)
+// (see page 216+217 of Reference Manual)
 //--------------------------------------------------------------
 #define  WS2812_DMA_CLOCK         RCC_AHB1Periph_DMA1
 
@@ -161,28 +161,28 @@
 
 
 //--------------------------------------------------------------
-// RGB LED Farbdefinition (3 x 8bit)
+// RGB LED color definition (3 x 8bit)
 //--------------------------------------------------------------
 typedef struct {
-  uint8_t red;    // 0...255 (als PWM-Wert)
-  uint8_t green;  // 0...255 (als PWM-Wert)
-  uint8_t blue;   // 0...255 (als PWM-Wert)
+  uint8_t red;    // 0...255 (als PWM-value)
+  uint8_t green;  // 0...255 (als PWM-value)
+  uint8_t blue;   // 0...255 (als PWM-value)
 }WS2812_RGB_t;
 
 
 //--------------------------------------------------------------
-// HSV LED Farbdefinition
+// HSV LED color definition
 //--------------------------------------------------------------
 typedef struct {
-  uint16_t h;     // 0...359 (in Grad, 0=R, 120=G, 240=B)
-  uint8_t s;      // 0...100 (in Prozent)
-  uint8_t v;      // 0...100 (in Prozent)
+  uint16_t h;     // 0...359 (degrees, 0=R, 120=G, 240=B)
+  uint8_t s;      // 0...100 (%)
+  uint8_t v;      // 0...100 (%)
 }WS2812_HSV_t;
 
 
 
 //--------------------------------------------------------------
-// Globale Buffer fuer die Farben (als RGB-Wert)
+// Global Buffers for colors (RGB)
 //--------------------------------------------------------------
 #if WS2812_LED_CH1_ANZ>0
   WS2812_RGB_t WS2812_LED_BUF_CH1[WS2812_LED_CH1_ANZ];
@@ -203,7 +203,7 @@ typedef struct {
 
 
 //--------------------------------------------------------------
-// standard Farben (R,G,B)
+// standard colors (R,G,B)
 //--------------------------------------------------------------
 #define  WS2812_RGB_COL_OFF      (WS2812_RGB_t) {0x00,0x00,0x00}
 
@@ -218,7 +218,7 @@ typedef struct {
 
 
 //--------------------------------------------------------------
-// standard Farben (H,S,V)
+// standard colors (H,S,V)
 //--------------------------------------------------------------
 #define  WS2812_HSV_COL_OFF      (WS2812_HSV_t) {0,  0,  0}
 
@@ -233,21 +233,21 @@ typedef struct {
 
 //--------------------------------------------------------------
 // WS2812 Timing : (1.25us = 800 kHz)
-//   logische-0 => HI:0.35us , LO:0.90us
-//   logische-1 =  HI:0.90us , LO:0.35us
+//   logic-0 => HI:0.35us , LO:0.90us
+//   logic-1 =  HI:0.90us , LO:0.35us
 //
 // WS23812 Bit-Format : (8G8R8B)
-//   24bit pro LED  (30us pro LED)
-//    8bit pro Farbe (MSB first)
-//    Farbreihenfolge : GRB
+//   24bit per LED  (30us pro LED)
+//    8bit per color (MSB first)
+//    color order : GRB
 //      
-//   nach jedem Frame von n-LEDs kommt eine Pause von >= 50us
+//   after each frame of n LEDs follows a waiting time >= 50us
 //
-// Grundfrequenz (TIM3) = 2*APB1 (APB1=42MHz) => TIM_CLK=84MHz
-// periode   : 0 bis 0xFFFF
-// prescale  : 0 bis 0xFFFF
+// frequency (TIM3) = 2*APB1 (APB1=42MHz) => TIM_CLK=84MHz
+// period    : 0 bis 0xFFFF
+// prescaler : 0 bis 0xFFFF
 //
-// PWM-Frq = TIM_CLK/(periode+1)/(vorteiler+1)
+// PWM-Frq = TIM_CLK/(period+1)/(prescaler+1)
 //-------------------------------------------------------------- 
 #define  WS2812_TIM_PRESCALE    0  // F_T3  = 84 MHz (11.9ns)
 #define  WS2812_TIM_PERIODE   104  // F_PWM = 80 kHz (1.25us)
@@ -260,10 +260,10 @@ typedef struct {
 
 
 //--------------------------------------------------------------
-// defines vom WS2812 (nicht abaendern)
+// defines of WS2812 (do not modify them)
 //--------------------------------------------------------------
-#define  WS2812_BIT_PER_LED    24  // 3*8bit pro LED
-#define  WS2812_PAUSE_ANZ       2  // fuer Pause (2*30us)
+#define  WS2812_BIT_PER_LED    24  // 3*8bit per LED
+#define  WS2812_PAUSE_ANZ       2  // for waiting time (2*30us)
 
 #define  WS2812_TIMER_BUF_LEN1   (WS2812_LED_CH1_ANZ+WS2812_PAUSE_ANZ)*WS2812_BIT_PER_LED
 #define  WS2812_TIMER_BUF_LEN2   (WS2812_LED_CH2_ANZ+WS2812_PAUSE_ANZ)*WS2812_BIT_PER_LED
@@ -276,7 +276,7 @@ typedef struct {
 
 
 //--------------------------------------------------------------
-// Globale Funktionen
+// prototypes
 //--------------------------------------------------------------
 void UB_WS2812_Init(void);
 void UB_WS2812_SetChannel(uint8_t ch);

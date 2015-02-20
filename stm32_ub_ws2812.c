@@ -1,27 +1,20 @@
 //--------------------------------------------------------------
 // File     : stm32_ub_ws2812.c
-// Datum    : 25.04.2014
+// Date     : 25.04.2014
 // Version  : 1.2
-// Autor    : UB
+// Authr    : UB
 // EMail    : mc-4u(@)t-online.de
 // Web      : www.mikrocontroller-4u.de
 // CPU      : STM32F4
 // IDE      : CooCox CoIDE 1.7.4
 // GCC      : 4.7 2012q4
 // Module   : GPIO, TIM, DMA, MISC
-// Funktion : RGB-LED mit WS2812-Chip (LED Vcc = 3,3V !!)
-//            (einzelne LED oder bis zu 4 Ketten von n-LEDs)
-//
-// Hinweis  : es koennen bis zu 4 LED-Ketten betrieben werden
-//            die Anzahl der LEDs pro Kette und der benutzte
-//            GPIO-Pin muss im H-File eingestellt werden
-//
-// CH1 = PC6 (LED-Kette mit 5 LEDs)
-// CH2 = PB5 (nicht aktiv)
-// CH3 = PB0 (nicht aktiv)
-// CH4 = PB1 (nicht aktiv)
-//--------------------------------------------------------------
+// Descript.: driver-library for WS2812-LEDs, up to 4 chains
 
+//            Update:
+//            http://mikrocontroller.bplaced.net/wordpress/?page_id=3665
+
+// comment translation and minor changes by Ulrich ter Horst, 20th Feb 2015
 
 //--------------------------------------------------------------
 // Includes
@@ -30,7 +23,7 @@
 
 
 //--------------------------------------------------------------
-// Globale interne Variabeln
+// Global internal variables
 //--------------------------------------------------------------
 uint32_t ws2812_dma_status;
 uint16_t WS2812_TIMER_BUF[WS2812_TIMER_BUF_LEN];
@@ -40,7 +33,7 @@ uint32_t ws2812_maxanz;
 
 
 //--------------------------------------------------------------
-// interne Funktionen
+// internal methods
 //--------------------------------------------------------------
 void p_WS2812_clearAll(void);
 void p_WS2812_calcTimerBuf(void);
@@ -53,25 +46,22 @@ void p_WS2812_DMA_Start(void);
 
 
 //--------------------------------------------------------------
-// init aller WS2812-Ketten
-// alle LEDs ausschalten
-// (aktiv ist die Kette mit der niedrigsten Channel-Nr)
+// init all WS2812-chains
+// all LEDs off
 //--------------------------------------------------------------
 void UB_WS2812_Init(void)
 {
   uint32_t n;
-
-  // init aller Variabeln
   ws2812_dma_status=0;
   ws2812_channel=0;
   ws2812_maxanz=0;
 
-  // init vom Timer Array
+  // init of Timer Array
   for(n=0;n<WS2812_TIMER_BUF_LEN;n++) {
-    WS2812_TIMER_BUF[n]=0; // 0 => fuer Pausenzeit
+    WS2812_TIMER_BUF[n]=0; // 0 => for waiting time
   }
 
-  // init der LED Arrays aller Ketten
+  // init of all LED arrays of all chains
   #if WS2812_LED_CH4_ANZ>0
     for(n=0;n<WS2812_LED_CH4_ANZ;n++) {
       WS2812_LED_BUF_CH4[n]=WS2812_RGB_COL_OFF;
