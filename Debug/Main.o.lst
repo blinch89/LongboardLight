@@ -1,0 +1,774 @@
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"Main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.P0_5_set_mode,"ax",%progbits
+  18              		.align	2
+  19              		.code	16
+  20              		.thumb_func
+  22              	P0_5_set_mode:
+  23              	.LFB83:
+  24              		.file 1 "../GPIO.h"
+   1:../GPIO.h     **** #ifndef __GPIO_H__
+   2:../GPIO.h     **** #define __GPIO_H__
+   3:../GPIO.h     **** 
+   4:../GPIO.h     **** /* Generated for XMC1100_TSSOP38 on: Wed Feb 13 23:11:00 2013*/
+   5:../GPIO.h     **** 
+   6:../GPIO.h     **** #include <XMC1100.h>
+   7:../GPIO.h     **** 
+   8:../GPIO.h     **** #define INPUT           0x00U
+   9:../GPIO.h     **** #define INPUT_PD        0x08U
+  10:../GPIO.h     **** #define INPUT_PU        0x10U
+  11:../GPIO.h     **** #define INPUT_PPS       0x18U
+  12:../GPIO.h     **** #define INPUT_INV       0x20U
+  13:../GPIO.h     **** #define INPUT_INV_PD    0x28U
+  14:../GPIO.h     **** #define INPUT_INV_PU    0x30U
+  15:../GPIO.h     **** #define INPUT_INV_PPS   0x38U
+  16:../GPIO.h     **** #define OUTPUT_PP_GP    0x80U
+  17:../GPIO.h     **** #define OUTPUT_PP_AF1   0x88U
+  18:../GPIO.h     **** #define OUTPUT_PP_AF2   0x90U
+  19:../GPIO.h     **** #define OUTPUT_PP_AF3   0x98U
+  20:../GPIO.h     **** #define OUTPUT_PP_AF4   0xA0U
+  21:../GPIO.h     **** #define OUTPUT_PP_AF5   0xA8U
+  22:../GPIO.h     **** #define OUTPUT_PP_AF6   0xB0U
+  23:../GPIO.h     **** #define OUTPUT_PP_AF7   0xB8U
+  24:../GPIO.h     **** #define OUTPUT_OD_GP    0xC0U
+  25:../GPIO.h     **** #define OUTPUT_OD_AF1   0xC8U
+  26:../GPIO.h     **** #define OUTPUT_OD_AF2   0xD0U
+  27:../GPIO.h     **** #define OUTPUT_OD_AF3   0xD8U
+  28:../GPIO.h     **** #define OUTPUT_OD_AF4   0XE0U
+  29:../GPIO.h     **** #define OUTPUT_OD_AF5   0xE8U
+  30:../GPIO.h     **** #define OUTPUT_OD_AF6   0xF0U
+  31:../GPIO.h     **** #define OUTPUT_OD_AF7   0XF8U
+  32:../GPIO.h     **** 
+  33:../GPIO.h     **** #define SOFTWARE        0x0UL
+  34:../GPIO.h     **** #define HW0             0x1UL
+  35:../GPIO.h     **** #define HW1             0x2UL
+  36:../GPIO.h     **** 
+  37:../GPIO.h     **** __STATIC_INLINE void P0_0_set_mode(uint8_t mode){
+  38:../GPIO.h     ****     PORT0->IOCR0 &= ~0x000000f8UL;
+  39:../GPIO.h     ****     PORT0->IOCR0 |= mode << 0;
+  40:../GPIO.h     **** }
+  41:../GPIO.h     **** 
+  42:../GPIO.h     **** __STATIC_INLINE void P0_0_set_hwsel(uint32_t config){
+  43:../GPIO.h     ****     PORT0->HWSEL &= ~0x00000003UL;
+  44:../GPIO.h     ****     PORT0->HWSEL |= config << 0;
+  45:../GPIO.h     **** }
+  46:../GPIO.h     **** 
+  47:../GPIO.h     **** __STATIC_INLINE void P0_0_set_standard_hysteresis(){
+  48:../GPIO.h     ****     PORT0->PHCR0 &= ~0x00000004UL;
+  49:../GPIO.h     **** }
+  50:../GPIO.h     **** 
+  51:../GPIO.h     **** __STATIC_INLINE void P0_0_set_large_hysteresis(){
+  52:../GPIO.h     ****     PORT0->PHCR0 |= 0x00000004UL;
+  53:../GPIO.h     **** }
+  54:../GPIO.h     **** 
+  55:../GPIO.h     **** __STATIC_INLINE void P0_0_set(void){
+  56:../GPIO.h     ****     PORT0->OMR = 0x00000001UL;
+  57:../GPIO.h     **** }
+  58:../GPIO.h     **** 
+  59:../GPIO.h     **** __STATIC_INLINE void P0_0_reset(void){
+  60:../GPIO.h     ****     PORT0->OMR = 0x00010000UL;
+  61:../GPIO.h     **** }
+  62:../GPIO.h     **** 
+  63:../GPIO.h     **** __STATIC_INLINE void P0_0_toggle(void){
+  64:../GPIO.h     ****     PORT0->OMR = 0x00010001UL;
+  65:../GPIO.h     **** }
+  66:../GPIO.h     **** 
+  67:../GPIO.h     **** __STATIC_INLINE uint32_t P0_0_read(void){
+  68:../GPIO.h     ****     return(PORT0->IN & 0x00000001UL);
+  69:../GPIO.h     **** }
+  70:../GPIO.h     **** 
+  71:../GPIO.h     **** __STATIC_INLINE void P0_0_enable_pps(void){
+  72:../GPIO.h     ****     PORT0->PPS |= 0x00000001UL;
+  73:../GPIO.h     **** }
+  74:../GPIO.h     **** 
+  75:../GPIO.h     **** __STATIC_INLINE void P0_0_disable_pps(void){
+  76:../GPIO.h     ****     PORT0->PPS &= ~0x00000001UL;
+  77:../GPIO.h     **** }
+  78:../GPIO.h     **** 
+  79:../GPIO.h     **** __STATIC_INLINE void P0_1_set_mode(uint8_t mode){
+  80:../GPIO.h     ****     PORT0->IOCR0 &= ~0x0000f800UL;
+  81:../GPIO.h     ****     PORT0->IOCR0 |= mode << 8;
+  82:../GPIO.h     **** }
+  83:../GPIO.h     **** 
+  84:../GPIO.h     **** __STATIC_INLINE void P0_1_set_hwsel(uint32_t config){
+  85:../GPIO.h     ****     PORT0->HWSEL &= ~0x0000000cUL;
+  86:../GPIO.h     ****     PORT0->HWSEL |= config << 2;
+  87:../GPIO.h     **** }
+  88:../GPIO.h     **** 
+  89:../GPIO.h     **** __STATIC_INLINE void P0_1_set_standard_hysteresis(){
+  90:../GPIO.h     ****     PORT0->PHCR0 &= ~0x00000040UL;
+  91:../GPIO.h     **** }
+  92:../GPIO.h     **** 
+  93:../GPIO.h     **** __STATIC_INLINE void P0_1_set_large_hysteresis(){
+  94:../GPIO.h     ****     PORT0->PHCR0 |= 0x00000040UL;
+  95:../GPIO.h     **** }
+  96:../GPIO.h     **** 
+  97:../GPIO.h     **** __STATIC_INLINE void P0_1_set(void){
+  98:../GPIO.h     ****     PORT0->OMR = 0x00000002UL;
+  99:../GPIO.h     **** }
+ 100:../GPIO.h     **** 
+ 101:../GPIO.h     **** __STATIC_INLINE void P0_1_reset(void){
+ 102:../GPIO.h     ****     PORT0->OMR = 0x00020000UL;
+ 103:../GPIO.h     **** }
+ 104:../GPIO.h     **** 
+ 105:../GPIO.h     **** __STATIC_INLINE void P0_1_toggle(void){
+ 106:../GPIO.h     ****     PORT0->OMR = 0x00020002UL;
+ 107:../GPIO.h     **** }
+ 108:../GPIO.h     **** 
+ 109:../GPIO.h     **** __STATIC_INLINE uint32_t P0_1_read(void){
+ 110:../GPIO.h     ****     return(PORT0->IN & 0x00000002UL);
+ 111:../GPIO.h     **** }
+ 112:../GPIO.h     **** 
+ 113:../GPIO.h     **** __STATIC_INLINE void P0_1_enable_pps(void){
+ 114:../GPIO.h     ****     PORT0->PPS |= 0x00000002UL;
+ 115:../GPIO.h     **** }
+ 116:../GPIO.h     **** 
+ 117:../GPIO.h     **** __STATIC_INLINE void P0_1_disable_pps(void){
+ 118:../GPIO.h     ****     PORT0->PPS &= ~0x00000002UL;
+ 119:../GPIO.h     **** }
+ 120:../GPIO.h     **** 
+ 121:../GPIO.h     **** __STATIC_INLINE void P0_2_set_mode(uint8_t mode){
+ 122:../GPIO.h     ****     PORT0->IOCR0 &= ~0x00f80000UL;
+ 123:../GPIO.h     ****     PORT0->IOCR0 |= mode << 16;
+ 124:../GPIO.h     **** }
+ 125:../GPIO.h     **** 
+ 126:../GPIO.h     **** __STATIC_INLINE void P0_2_set_hwsel(uint32_t config){
+ 127:../GPIO.h     ****     PORT0->HWSEL &= ~0x00000030UL;
+ 128:../GPIO.h     ****     PORT0->HWSEL |= config << 4;
+ 129:../GPIO.h     **** }
+ 130:../GPIO.h     **** 
+ 131:../GPIO.h     **** __STATIC_INLINE void P0_2_set_standard_hysteresis(){
+ 132:../GPIO.h     ****     PORT0->PHCR0 &= ~0x00000400UL;
+ 133:../GPIO.h     **** }
+ 134:../GPIO.h     **** 
+ 135:../GPIO.h     **** __STATIC_INLINE void P0_2_set_large_hysteresis(){
+ 136:../GPIO.h     ****     PORT0->PHCR0 |= 0x00000400UL;
+ 137:../GPIO.h     **** }
+ 138:../GPIO.h     **** 
+ 139:../GPIO.h     **** __STATIC_INLINE void P0_2_set(void){
+ 140:../GPIO.h     ****     PORT0->OMR = 0x00000004UL;
+ 141:../GPIO.h     **** }
+ 142:../GPIO.h     **** 
+ 143:../GPIO.h     **** __STATIC_INLINE void P0_2_reset(void){
+ 144:../GPIO.h     ****     PORT0->OMR = 0x00040000UL;
+ 145:../GPIO.h     **** }
+ 146:../GPIO.h     **** 
+ 147:../GPIO.h     **** __STATIC_INLINE void P0_2_toggle(void){
+ 148:../GPIO.h     ****     PORT0->OMR = 0x00040004UL;
+ 149:../GPIO.h     **** }
+ 150:../GPIO.h     **** 
+ 151:../GPIO.h     **** __STATIC_INLINE uint32_t P0_2_read(void){
+ 152:../GPIO.h     ****     return(PORT0->IN & 0x00000004UL);
+ 153:../GPIO.h     **** }
+ 154:../GPIO.h     **** 
+ 155:../GPIO.h     **** __STATIC_INLINE void P0_2_enable_pps(void){
+ 156:../GPIO.h     ****     PORT0->PPS |= 0x00000004UL;
+ 157:../GPIO.h     **** }
+ 158:../GPIO.h     **** 
+ 159:../GPIO.h     **** __STATIC_INLINE void P0_2_disable_pps(void){
+ 160:../GPIO.h     ****     PORT0->PPS &= ~0x00000004UL;
+ 161:../GPIO.h     **** }
+ 162:../GPIO.h     **** 
+ 163:../GPIO.h     **** __STATIC_INLINE void P0_3_set_mode(uint8_t mode){
+ 164:../GPIO.h     ****     PORT0->IOCR0 &= ~0xf8000000UL;
+ 165:../GPIO.h     ****     PORT0->IOCR0 |= mode << 24;
+ 166:../GPIO.h     **** }
+ 167:../GPIO.h     **** 
+ 168:../GPIO.h     **** __STATIC_INLINE void P0_3_set_hwsel(uint32_t config){
+ 169:../GPIO.h     ****     PORT0->HWSEL &= ~0x000000c0UL;
+ 170:../GPIO.h     ****     PORT0->HWSEL |= config << 6;
+ 171:../GPIO.h     **** }
+ 172:../GPIO.h     **** 
+ 173:../GPIO.h     **** __STATIC_INLINE void P0_3_set_standard_hysteresis(){
+ 174:../GPIO.h     ****     PORT0->PHCR0 &= ~0x00004000UL;
+ 175:../GPIO.h     **** }
+ 176:../GPIO.h     **** 
+ 177:../GPIO.h     **** __STATIC_INLINE void P0_3_set_large_hysteresis(){
+ 178:../GPIO.h     ****     PORT0->PHCR0 |= 0x00004000UL;
+ 179:../GPIO.h     **** }
+ 180:../GPIO.h     **** 
+ 181:../GPIO.h     **** __STATIC_INLINE void P0_3_set(void){
+ 182:../GPIO.h     ****     PORT0->OMR = 0x00000008UL;
+ 183:../GPIO.h     **** }
+ 184:../GPIO.h     **** 
+ 185:../GPIO.h     **** __STATIC_INLINE void P0_3_reset(void){
+ 186:../GPIO.h     ****     PORT0->OMR = 0x00080000UL;
+ 187:../GPIO.h     **** }
+ 188:../GPIO.h     **** 
+ 189:../GPIO.h     **** __STATIC_INLINE void P0_3_toggle(void){
+ 190:../GPIO.h     ****     PORT0->OMR = 0x00080008UL;
+ 191:../GPIO.h     **** }
+ 192:../GPIO.h     **** 
+ 193:../GPIO.h     **** __STATIC_INLINE uint32_t P0_3_read(void){
+ 194:../GPIO.h     ****     return(PORT0->IN & 0x00000008UL);
+ 195:../GPIO.h     **** }
+ 196:../GPIO.h     **** 
+ 197:../GPIO.h     **** __STATIC_INLINE void P0_3_enable_pps(void){
+ 198:../GPIO.h     ****     PORT0->PPS |= 0x00000008UL;
+ 199:../GPIO.h     **** }
+ 200:../GPIO.h     **** 
+ 201:../GPIO.h     **** __STATIC_INLINE void P0_3_disable_pps(void){
+ 202:../GPIO.h     ****     PORT0->PPS &= ~0x00000008UL;
+ 203:../GPIO.h     **** }
+ 204:../GPIO.h     **** 
+ 205:../GPIO.h     **** __STATIC_INLINE void P0_4_set_mode(uint8_t mode){
+ 206:../GPIO.h     ****     PORT0->IOCR4 &= ~0x000000f8UL;
+ 207:../GPIO.h     ****     PORT0->IOCR4 |= mode << 0;
+ 208:../GPIO.h     **** }
+ 209:../GPIO.h     **** 
+ 210:../GPIO.h     **** __STATIC_INLINE void P0_4_set_hwsel(uint32_t config){
+ 211:../GPIO.h     ****     PORT0->HWSEL &= ~0x00000300UL;
+ 212:../GPIO.h     ****     PORT0->HWSEL |= config << 8;
+ 213:../GPIO.h     **** }
+ 214:../GPIO.h     **** 
+ 215:../GPIO.h     **** __STATIC_INLINE void P0_4_set_standard_hysteresis(){
+ 216:../GPIO.h     ****     PORT0->PHCR0 &= ~0x00040000UL;
+ 217:../GPIO.h     **** }
+ 218:../GPIO.h     **** 
+ 219:../GPIO.h     **** __STATIC_INLINE void P0_4_set_large_hysteresis(){
+ 220:../GPIO.h     ****     PORT0->PHCR0 |= 0x00040000UL;
+ 221:../GPIO.h     **** }
+ 222:../GPIO.h     **** 
+ 223:../GPIO.h     **** __STATIC_INLINE void P0_4_set(void){
+ 224:../GPIO.h     ****     PORT0->OMR = 0x00000010UL;
+ 225:../GPIO.h     **** }
+ 226:../GPIO.h     **** 
+ 227:../GPIO.h     **** __STATIC_INLINE void P0_4_reset(void){
+ 228:../GPIO.h     ****     PORT0->OMR = 0x00100000UL;
+ 229:../GPIO.h     **** }
+ 230:../GPIO.h     **** 
+ 231:../GPIO.h     **** __STATIC_INLINE void P0_4_toggle(void){
+ 232:../GPIO.h     ****     PORT0->OMR = 0x00100010UL;
+ 233:../GPIO.h     **** }
+ 234:../GPIO.h     **** 
+ 235:../GPIO.h     **** __STATIC_INLINE uint32_t P0_4_read(void){
+ 236:../GPIO.h     ****     return(PORT0->IN & 0x00000010UL);
+ 237:../GPIO.h     **** }
+ 238:../GPIO.h     **** 
+ 239:../GPIO.h     **** __STATIC_INLINE void P0_4_enable_pps(void){
+ 240:../GPIO.h     ****     PORT0->PPS |= 0x00000010UL;
+ 241:../GPIO.h     **** }
+ 242:../GPIO.h     **** 
+ 243:../GPIO.h     **** __STATIC_INLINE void P0_4_disable_pps(void){
+ 244:../GPIO.h     ****     PORT0->PPS &= ~0x00000010UL;
+ 245:../GPIO.h     **** }
+ 246:../GPIO.h     **** 
+ 247:../GPIO.h     **** __STATIC_INLINE void P0_5_set_mode(uint8_t mode){
+  25              		.loc 1 247 0
+  26              		.cfi_startproc
+  27 0000 80B5     		push	{r7, lr}
+  28              	.LCFI0:
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 7, -8
+  31              		.cfi_offset 14, -4
+  32 0002 82B0     		sub	sp, sp, #8
+  33              	.LCFI1:
+  34              		.cfi_def_cfa_offset 16
+  35 0004 00AF     		add	r7, sp, #0
+  36              	.LCFI2:
+  37              		.cfi_def_cfa_register 7
+  38 0006 021C     		mov	r2, r0
+  39 0008 FB1D     		add	r3, r7, #7
+  40 000a 1A70     		strb	r2, [r3]
+ 248:../GPIO.h     ****     PORT0->IOCR4 &= ~0x0000f800UL;
+  41              		.loc 1 248 0
+  42 000c 084B     		ldr	r3, .L2
+  43 000e 084A     		ldr	r2, .L2
+  44 0010 5169     		ldr	r1, [r2, #20]
+  45 0012 084A     		ldr	r2, .L2+4
+  46 0014 0A40     		and	r2, r1
+  47 0016 5A61     		str	r2, [r3, #20]
+ 249:../GPIO.h     ****     PORT0->IOCR4 |= mode << 8;
+  48              		.loc 1 249 0
+  49 0018 054B     		ldr	r3, .L2
+  50 001a 054A     		ldr	r2, .L2
+  51 001c 5169     		ldr	r1, [r2, #20]
+  52 001e FA1D     		add	r2, r7, #7
+  53 0020 1278     		ldrb	r2, [r2]
+  54 0022 1202     		lsl	r2, r2, #8
+  55 0024 0A43     		orr	r2, r1
+  56 0026 5A61     		str	r2, [r3, #20]
+ 250:../GPIO.h     **** }
+  57              		.loc 1 250 0
+  58 0028 BD46     		mov	sp, r7
+  59 002a 02B0     		add	sp, sp, #8
+  60              		@ sp needed for prologue
+  61 002c 80BD     		pop	{r7, pc}
+  62              	.L3:
+  63 002e C046     		.align	2
+  64              	.L2:
+  65 0030 00000440 		.word	1074003968
+  66 0034 FF07FFFF 		.word	-63489
+  67              		.cfi_endproc
+  68              	.LFE83:
+  70              		.section	.text.P0_6_set_mode,"ax",%progbits
+  71              		.align	2
+  72              		.code	16
+  73              		.thumb_func
+  75              	P0_6_set_mode:
+  76              	.LFB93:
+ 251:../GPIO.h     **** 
+ 252:../GPIO.h     **** __STATIC_INLINE void P0_5_set_hwsel(uint32_t config){
+ 253:../GPIO.h     ****     PORT0->HWSEL &= ~0x00000c00UL;
+ 254:../GPIO.h     ****     PORT0->HWSEL |= config << 10;
+ 255:../GPIO.h     **** }
+ 256:../GPIO.h     **** 
+ 257:../GPIO.h     **** __STATIC_INLINE void P0_5_set_standard_hysteresis(){
+ 258:../GPIO.h     ****     PORT0->PHCR0 &= ~0x00400000UL;
+ 259:../GPIO.h     **** }
+ 260:../GPIO.h     **** 
+ 261:../GPIO.h     **** __STATIC_INLINE void P0_5_set_large_hysteresis(){
+ 262:../GPIO.h     ****     PORT0->PHCR0 |= 0x00400000UL;
+ 263:../GPIO.h     **** }
+ 264:../GPIO.h     **** 
+ 265:../GPIO.h     **** __STATIC_INLINE void P0_5_set(void){
+ 266:../GPIO.h     ****     PORT0->OMR = 0x00000020UL;
+ 267:../GPIO.h     **** }
+ 268:../GPIO.h     **** 
+ 269:../GPIO.h     **** __STATIC_INLINE void P0_5_reset(void){
+ 270:../GPIO.h     ****     PORT0->OMR = 0x00200000UL;
+ 271:../GPIO.h     **** }
+ 272:../GPIO.h     **** 
+ 273:../GPIO.h     **** __STATIC_INLINE void P0_5_toggle(void){
+ 274:../GPIO.h     ****     PORT0->OMR = 0x00200020UL;
+ 275:../GPIO.h     **** }
+ 276:../GPIO.h     **** 
+ 277:../GPIO.h     **** __STATIC_INLINE uint32_t P0_5_read(void){
+ 278:../GPIO.h     ****     return(PORT0->IN & 0x00000020UL);
+ 279:../GPIO.h     **** }
+ 280:../GPIO.h     **** 
+ 281:../GPIO.h     **** __STATIC_INLINE void P0_5_enable_pps(void){
+ 282:../GPIO.h     ****     PORT0->PPS |= 0x00000020UL;
+ 283:../GPIO.h     **** }
+ 284:../GPIO.h     **** 
+ 285:../GPIO.h     **** __STATIC_INLINE void P0_5_disable_pps(void){
+ 286:../GPIO.h     ****     PORT0->PPS &= ~0x00000020UL;
+ 287:../GPIO.h     **** }
+ 288:../GPIO.h     **** 
+ 289:../GPIO.h     **** __STATIC_INLINE void P0_6_set_mode(uint8_t mode){
+  77              		.loc 1 289 0
+  78              		.cfi_startproc
+  79 0000 80B5     		push	{r7, lr}
+  80              	.LCFI3:
+  81              		.cfi_def_cfa_offset 8
+  82              		.cfi_offset 7, -8
+  83              		.cfi_offset 14, -4
+  84 0002 82B0     		sub	sp, sp, #8
+  85              	.LCFI4:
+  86              		.cfi_def_cfa_offset 16
+  87 0004 00AF     		add	r7, sp, #0
+  88              	.LCFI5:
+  89              		.cfi_def_cfa_register 7
+  90 0006 021C     		mov	r2, r0
+  91 0008 FB1D     		add	r3, r7, #7
+  92 000a 1A70     		strb	r2, [r3]
+ 290:../GPIO.h     ****     PORT0->IOCR4 &= ~0x00f80000UL;
+  93              		.loc 1 290 0
+  94 000c 084B     		ldr	r3, .L5
+  95 000e 084A     		ldr	r2, .L5
+  96 0010 5169     		ldr	r1, [r2, #20]
+  97 0012 084A     		ldr	r2, .L5+4
+  98 0014 0A40     		and	r2, r1
+  99 0016 5A61     		str	r2, [r3, #20]
+ 291:../GPIO.h     ****     PORT0->IOCR4 |= mode << 16;
+ 100              		.loc 1 291 0
+ 101 0018 054B     		ldr	r3, .L5
+ 102 001a 054A     		ldr	r2, .L5
+ 103 001c 5169     		ldr	r1, [r2, #20]
+ 104 001e FA1D     		add	r2, r7, #7
+ 105 0020 1278     		ldrb	r2, [r2]
+ 106 0022 1204     		lsl	r2, r2, #16
+ 107 0024 0A43     		orr	r2, r1
+ 108 0026 5A61     		str	r2, [r3, #20]
+ 292:../GPIO.h     **** }
+ 109              		.loc 1 292 0
+ 110 0028 BD46     		mov	sp, r7
+ 111 002a 02B0     		add	sp, sp, #8
+ 112              		@ sp needed for prologue
+ 113 002c 80BD     		pop	{r7, pc}
+ 114              	.L6:
+ 115 002e C046     		.align	2
+ 116              	.L5:
+ 117 0030 00000440 		.word	1074003968
+ 118 0034 FFFF07FF 		.word	-16252929
+ 119              		.cfi_endproc
+ 120              	.LFE93:
+ 122              		.section	.text.P0_6_read,"ax",%progbits
+ 123              		.align	2
+ 124              		.code	16
+ 125              		.thumb_func
+ 127              	P0_6_read:
+ 128              	.LFB100:
+ 293:../GPIO.h     **** 
+ 294:../GPIO.h     **** __STATIC_INLINE void P0_6_set_hwsel(uint32_t config){
+ 295:../GPIO.h     ****     PORT0->HWSEL &= ~0x00003000UL;
+ 296:../GPIO.h     ****     PORT0->HWSEL |= config << 12;
+ 297:../GPIO.h     **** }
+ 298:../GPIO.h     **** 
+ 299:../GPIO.h     **** __STATIC_INLINE void P0_6_set_standard_hysteresis(){
+ 300:../GPIO.h     ****     PORT0->PHCR0 &= ~0x04000000UL;
+ 301:../GPIO.h     **** }
+ 302:../GPIO.h     **** 
+ 303:../GPIO.h     **** __STATIC_INLINE void P0_6_set_large_hysteresis(){
+ 304:../GPIO.h     ****     PORT0->PHCR0 |= 0x04000000UL;
+ 305:../GPIO.h     **** }
+ 306:../GPIO.h     **** 
+ 307:../GPIO.h     **** __STATIC_INLINE void P0_6_set(void){
+ 308:../GPIO.h     ****     PORT0->OMR = 0x00000040UL;
+ 309:../GPIO.h     **** }
+ 310:../GPIO.h     **** 
+ 311:../GPIO.h     **** __STATIC_INLINE void P0_6_reset(void){
+ 312:../GPIO.h     ****     PORT0->OMR = 0x00400000UL;
+ 313:../GPIO.h     **** }
+ 314:../GPIO.h     **** 
+ 315:../GPIO.h     **** __STATIC_INLINE void P0_6_toggle(void){
+ 316:../GPIO.h     ****     PORT0->OMR = 0x00400040UL;
+ 317:../GPIO.h     **** }
+ 318:../GPIO.h     **** 
+ 319:../GPIO.h     **** __STATIC_INLINE uint32_t P0_6_read(void){
+ 129              		.loc 1 319 0
+ 130              		.cfi_startproc
+ 131 0000 80B5     		push	{r7, lr}
+ 132              	.LCFI6:
+ 133              		.cfi_def_cfa_offset 8
+ 134              		.cfi_offset 7, -8
+ 135              		.cfi_offset 14, -4
+ 136 0002 00AF     		add	r7, sp, #0
+ 137              	.LCFI7:
+ 138              		.cfi_def_cfa_register 7
+ 320:../GPIO.h     ****     return(PORT0->IN & 0x00000040UL);
+ 139              		.loc 1 320 0
+ 140 0004 034B     		ldr	r3, .L9
+ 141 0006 5A6A     		ldr	r2, [r3, #36]
+ 142 0008 4023     		mov	r3, #64
+ 143 000a 1340     		and	r3, r2
+ 321:../GPIO.h     **** }
+ 144              		.loc 1 321 0
+ 145 000c 181C     		mov	r0, r3
+ 146 000e BD46     		mov	sp, r7
+ 147              		@ sp needed for prologue
+ 148 0010 80BD     		pop	{r7, pc}
+ 149              	.L10:
+ 150 0012 C046     		.align	2
+ 151              	.L9:
+ 152 0014 00000440 		.word	1074003968
+ 153              		.cfi_endproc
+ 154              	.LFE100:
+ 156              		.section	.text.main,"ax",%progbits
+ 157              		.align	2
+ 158              		.global	main
+ 159              		.code	16
+ 160              		.thumb_func
+ 162              	main:
+ 163              	.LFB397:
+ 164              		.file 2 "../Main.c"
+   1:../Main.c     **** /*
+   2:../Main.c     ****  * Main.c
+   3:../Main.c     ****  *
+   4:../Main.c     ****  *  Created on: 06.03.2015
+   5:../Main.c     ****  *      Author: blinch89
+   6:../Main.c     ****  */
+   7:../Main.c     **** 
+   8:../Main.c     **** #include <DAVE3.h>			//Declarations from DAVE3 Code Generation (includes SFR declaration)
+   9:../Main.c     **** #include "colorManagement.h"
+  10:../Main.c     **** #include "XMC1100.h"
+  11:../Main.c     **** #include "GPIO.h"
+  12:../Main.c     **** 
+  13:../Main.c     **** void updateOnboardLEDs();
+  14:../Main.c     **** void buttonRead(void *ptr);
+  15:../Main.c     **** 
+  16:../Main.c     **** int main(void)
+  17:../Main.c     **** {
+ 165              		.loc 2 17 0
+ 166              		.cfi_startproc
+ 167 0000 80B5     		push	{r7, lr}
+ 168              	.LCFI8:
+ 169              		.cfi_def_cfa_offset 8
+ 170              		.cfi_offset 7, -8
+ 171              		.cfi_offset 14, -4
+ 172 0002 82B0     		sub	sp, sp, #8
+ 173              	.LCFI9:
+ 174              		.cfi_def_cfa_offset 16
+ 175 0004 00AF     		add	r7, sp, #0
+ 176              	.LCFI10:
+ 177              		.cfi_def_cfa_register 7
+  18:../Main.c     **** //	status_t status;		// Declaration of return variable for DAVE3 APIs (toggle comment if required)
+  19:../Main.c     **** 	DAVE_Init();			// Initialization of DAVE Apps
+ 178              		.loc 2 19 0
+ 179 0006 FFF7FEFF 		bl	DAVE_Init
+  20:../Main.c     **** 	IO004_SetPin(IO004_Handle0);
+ 180              		.loc 2 20 0
+ 181 000a 184B     		ldr	r3, .L13
+ 182 000c 5B68     		ldr	r3, [r3, #4]
+ 183 000e 174A     		ldr	r2, .L13
+ 184 0010 5278     		ldrb	r2, [r2, #1]
+ 185 0012 0121     		mov	r1, #1
+ 186 0014 081C     		mov	r0, r1
+ 187 0016 9040     		lsl	r0, r0, r2
+ 188 0018 021C     		mov	r2, r0
+ 189 001a 5A60     		str	r2, [r3, #4]
+  21:../Main.c     **** 	P0_5_set_mode(OUTPUT_PP_GP); 	//WS2812 data pin
+ 190              		.loc 2 21 0
+ 191 001c 8020     		mov	r0, #128
+ 192 001e FFF7FEFF 		bl	P0_5_set_mode
+  22:../Main.c     **** 	P0_6_set_mode(INPUT_PU);     	//button
+ 193              		.loc 2 22 0
+ 194 0022 1020     		mov	r0, #16
+ 195 0024 FFF7FEFF 		bl	P0_6_set_mode
+  23:../Main.c     **** 	enum colorState state = OFF;
+ 196              		.loc 2 23 0
+ 197 0028 FB1C     		add	r3, r7, #3
+ 198 002a 0022     		mov	r2, #0
+ 199 002c 1A70     		strb	r2, [r3]
+  24:../Main.c     **** 	handle_t timer;
+  25:../Main.c     **** 	timer=SYSTM001_CreateTimer(500,SYSTM001_PERIODIC,updateOnboardLEDs,NULL);
+ 200              		.loc 2 25 0
+ 201 002e FA23     		mov	r3, #250
+ 202 0030 5A00     		lsl	r2, r3, #1
+ 203 0032 0F4B     		ldr	r3, .L13+4
+ 204 0034 101C     		mov	r0, r2
+ 205 0036 0121     		mov	r1, #1
+ 206 0038 1A1C     		mov	r2, r3
+ 207 003a 0023     		mov	r3, #0
+ 208 003c FFF7FEFF 		bl	SYSTM001_CreateTimer
+ 209 0040 031C     		mov	r3, r0
+ 210 0042 7B60     		str	r3, [r7, #4]
+  26:../Main.c     **** 	SYSTM001_StartTimer(timer);
+ 211              		.loc 2 26 0
+ 212 0044 7B68     		ldr	r3, [r7, #4]
+ 213 0046 181C     		mov	r0, r3
+ 214 0048 FFF7FEFF 		bl	SYSTM001_StartTimer
+  27:../Main.c     **** 	timer=SYSTM001_CreateTimer(400,SYSTM001_PERIODIC,buttonRead,&state);
+ 215              		.loc 2 27 0
+ 216 004c C823     		mov	r3, #200
+ 217 004e 5900     		lsl	r1, r3, #1
+ 218 0050 084A     		ldr	r2, .L13+8
+ 219 0052 FB1C     		add	r3, r7, #3
+ 220 0054 081C     		mov	r0, r1
+ 221 0056 0121     		mov	r1, #1
+ 222 0058 FFF7FEFF 		bl	SYSTM001_CreateTimer
+ 223 005c 031C     		mov	r3, r0
+ 224 005e 7B60     		str	r3, [r7, #4]
+  28:../Main.c     **** 	SYSTM001_StartTimer(timer);
+ 225              		.loc 2 28 0
+ 226 0060 7B68     		ldr	r3, [r7, #4]
+ 227 0062 181C     		mov	r0, r3
+ 228 0064 FFF7FEFF 		bl	SYSTM001_StartTimer
+ 229              	.L12:
+  29:../Main.c     **** 	while(1);
+ 230              		.loc 2 29 0 discriminator 1
+ 231 0068 FEE7     		b	.L12
+ 232              	.L14:
+ 233 006a C046     		.align	2
+ 234              	.L13:
+ 235 006c 00000000 		.word	IO004_Handle0
+ 236 0070 00000000 		.word	updateOnboardLEDs
+ 237 0074 00000000 		.word	buttonRead
+ 238              		.cfi_endproc
+ 239              	.LFE397:
+ 241              		.section	.text.updateOnboardLEDs,"ax",%progbits
+ 242              		.align	2
+ 243              		.global	updateOnboardLEDs
+ 244              		.code	16
+ 245              		.thumb_func
+ 247              	updateOnboardLEDs:
+ 248              	.LFB398:
+  30:../Main.c     **** 	return 0;
+  31:../Main.c     **** }
+  32:../Main.c     **** 
+  33:../Main.c     **** 
+  34:../Main.c     **** void updateOnboardLEDs()
+  35:../Main.c     **** {
+ 249              		.loc 2 35 0
+ 250              		.cfi_startproc
+ 251 0000 80B5     		push	{r7, lr}
+ 252              	.LCFI11:
+ 253              		.cfi_def_cfa_offset 8
+ 254              		.cfi_offset 7, -8
+ 255              		.cfi_offset 14, -4
+ 256 0002 00AF     		add	r7, sp, #0
+ 257              	.LCFI12:
+ 258              		.cfi_def_cfa_register 7
+  36:../Main.c     **** 	IO004_TogglePin(IO004_Handle0);
+ 259              		.loc 2 36 0
+ 260 0004 094B     		ldr	r3, .L16
+ 261 0006 5B68     		ldr	r3, [r3, #4]
+ 262 0008 084A     		ldr	r2, .L16
+ 263 000a 5278     		ldrb	r2, [r2, #1]
+ 264 000c 0849     		ldr	r1, .L16+4
+ 265 000e 081C     		mov	r0, r1
+ 266 0010 9040     		lsl	r0, r0, r2
+ 267 0012 021C     		mov	r2, r0
+ 268 0014 5A60     		str	r2, [r3, #4]
+  37:../Main.c     **** 	IO004_TogglePin(IO004_Handle1);
+ 269              		.loc 2 37 0
+ 270 0016 074B     		ldr	r3, .L16+8
+ 271 0018 5B68     		ldr	r3, [r3, #4]
+ 272 001a 064A     		ldr	r2, .L16+8
+ 273 001c 5278     		ldrb	r2, [r2, #1]
+ 274 001e 0449     		ldr	r1, .L16+4
+ 275 0020 081C     		mov	r0, r1
+ 276 0022 9040     		lsl	r0, r0, r2
+ 277 0024 021C     		mov	r2, r0
+ 278 0026 5A60     		str	r2, [r3, #4]
+  38:../Main.c     **** }
+ 279              		.loc 2 38 0
+ 280 0028 BD46     		mov	sp, r7
+ 281              		@ sp needed for prologue
+ 282 002a 80BD     		pop	{r7, pc}
+ 283              	.L17:
+ 284              		.align	2
+ 285              	.L16:
+ 286 002c 00000000 		.word	IO004_Handle0
+ 287 0030 01000100 		.word	65537
+ 288 0034 00000000 		.word	IO004_Handle1
+ 289              		.cfi_endproc
+ 290              	.LFE398:
+ 292              		.section	.text.buttonRead,"ax",%progbits
+ 293              		.align	2
+ 294              		.global	buttonRead
+ 295              		.code	16
+ 296              		.thumb_func
+ 298              	buttonRead:
+ 299              	.LFB399:
+  39:../Main.c     **** 
+  40:../Main.c     **** 
+  41:../Main.c     **** void buttonRead(void *ptr)
+  42:../Main.c     **** {
+ 300              		.loc 2 42 0
+ 301              		.cfi_startproc
+ 302 0000 80B5     		push	{r7, lr}
+ 303              	.LCFI13:
+ 304              		.cfi_def_cfa_offset 8
+ 305              		.cfi_offset 7, -8
+ 306              		.cfi_offset 14, -4
+ 307 0002 84B0     		sub	sp, sp, #16
+ 308              	.LCFI14:
+ 309              		.cfi_def_cfa_offset 24
+ 310 0004 00AF     		add	r7, sp, #0
+ 311              	.LCFI15:
+ 312              		.cfi_def_cfa_register 7
+ 313 0006 7860     		str	r0, [r7, #4]
+  43:../Main.c     **** 	if(!P0_6_read()) //button pressed?
+ 314              		.loc 2 43 0
+ 315 0008 FFF7FEFF 		bl	P0_6_read
+ 316 000c 031C     		mov	r3, r0
+ 317 000e 002B     		cmp	r3, #0
+ 318 0010 14D1     		bne	.L18
+ 319              	.LBB2:
+  44:../Main.c     **** 	{
+  45:../Main.c     **** 		enum colorState *lightState = ptr;
+ 320              		.loc 2 45 0
+ 321 0012 7B68     		ldr	r3, [r7, #4]
+ 322 0014 FB60     		str	r3, [r7, #12]
+  46:../Main.c     **** 		if(*lightState == CYAN) *lightState = OFF; //CYAN is last Value of enum
+ 323              		.loc 2 46 0
+ 324 0016 FB68     		ldr	r3, [r7, #12]
+ 325 0018 1B78     		ldrb	r3, [r3]
+ 326 001a 082B     		cmp	r3, #8
+ 327 001c 03D1     		bne	.L20
+ 328              		.loc 2 46 0 is_stmt 0 discriminator 1
+ 329 001e FB68     		ldr	r3, [r7, #12]
+ 330 0020 0022     		mov	r2, #0
+ 331 0022 1A70     		strb	r2, [r3]
+ 332 0024 05E0     		b	.L21
+ 333              	.L20:
+  47:../Main.c     **** 		else (*lightState)++;
+ 334              		.loc 2 47 0 is_stmt 1
+ 335 0026 FB68     		ldr	r3, [r7, #12]
+ 336 0028 1B78     		ldrb	r3, [r3]
+ 337 002a 0133     		add	r3, r3, #1
+ 338 002c DAB2     		uxtb	r2, r3
+ 339 002e FB68     		ldr	r3, [r7, #12]
+ 340 0030 1A70     		strb	r2, [r3]
+ 341              	.L21:
+  48:../Main.c     **** 		updateWS2812LEDs(*lightState);
+ 342              		.loc 2 48 0
+ 343 0032 FB68     		ldr	r3, [r7, #12]
+ 344 0034 1B78     		ldrb	r3, [r3]
+ 345 0036 181C     		mov	r0, r3
+ 346 0038 FFF7FEFF 		bl	updateWS2812LEDs
+ 347              	.L18:
+ 348              	.LBE2:
+  49:../Main.c     **** 	}
+  50:../Main.c     **** }
+ 349              		.loc 2 50 0
+ 350 003c BD46     		mov	sp, r7
+ 351 003e 04B0     		add	sp, sp, #16
+ 352              		@ sp needed for prologue
+ 353 0040 80BD     		pop	{r7, pc}
+ 354              		.cfi_endproc
+ 355              	.LFE399:
+ 357 0042 C046     		.text
+ 358              	.Letext0:
+ 359              		.file 3 "c:\\dave-3.1.10\\arm-gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/i
+ 360              		.file 4 "C:\\DAVE-3.1.10\\eclipse\\/../CMSIS/Infineon/XMC1100_series/Include/XMC1100.h"
+ 361              		.file 5 "C:\\DAVE3_workspace\\ws3.1.10\\LongboardLight\\Dave\\Generated\\inc\\DAVESupport/../../in
+ 362              		.file 6 "C:\\DAVE3_workspace\\ws3.1.10\\LongboardLight\\Dave\\Generated\\inc\\DAVESupport/../../in
+ 363              		.file 7 "C:\\DAVE3_workspace\\ws3.1.10\\LongboardLight\\Dave\\Generated\\inc\\DAVESupport/../../in
+ 364              		.file 8 "../colorManagement.h"
+ 365              		.file 9 "C:\\DAVE3_workspace\\ws3.1.10\\LongboardLight\\Dave\\Generated\\inc\\DAVESupport/../../in
+DEFINED SYMBOLS
+                            *ABS*:00000000 Main.c
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:18     .text.P0_5_set_mode:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:22     .text.P0_5_set_mode:00000000 P0_5_set_mode
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:65     .text.P0_5_set_mode:00000030 $d
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:71     .text.P0_6_set_mode:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:75     .text.P0_6_set_mode:00000000 P0_6_set_mode
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:117    .text.P0_6_set_mode:00000030 $d
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:123    .text.P0_6_read:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:127    .text.P0_6_read:00000000 P0_6_read
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:152    .text.P0_6_read:00000014 $d
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:157    .text.main:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:162    .text.main:00000000 main
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:235    .text.main:0000006c $d
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:247    .text.updateOnboardLEDs:00000000 updateOnboardLEDs
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:298    .text.buttonRead:00000000 buttonRead
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:242    .text.updateOnboardLEDs:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:286    .text.updateOnboardLEDs:0000002c $d
+C:\Users\blinch\AppData\Local\Temp\ccb8UkdJ.s:293    .text.buttonRead:00000000 $t
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.4f34ab06ae2725aaf04d3230f4ec23a7
+                           .group:00000000 wm4.XMC1100.h.45.7a7cd799d7738130fcda8b83b0aa37d4
+                           .group:00000000 wm4.core_cm0.h.47.022e66414e77714da7c4b30b3ad99fe8
+                           .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5
+                           .group:00000000 wm4.features.h.22.b72b3baab2bb2eab3661375590100b6b
+                           .group:00000000 wm4.config.h.193.5fb8ef056cdff92dec3dee9552839d8c
+                           .group:00000000 wm4._ansi.h.23.7aefdac4826acebbfc9f3822a0aeb14c
+                           .group:00000000 wm4.stdint.h.20.54ad762faa59e3c05491630641c8d8bf
+                           .group:00000000 wm4.core_cmInstr.h.39.b7b6650bdd2316848d940915272d75b8
+                           .group:00000000 wm4.core_cm0.h.135.ca70469f87e143609670bb393bfa6518
+                           .group:00000000 wm4.XMC1000_RomFunctionTable.h.31.6d9a94465618f31b040dc9cea9a47ad7
+                           .group:00000000 wm4.XMC1100.h.114.be3711f71ee045884346be801053f4c0
+                           .group:00000000 wm4.stddef.h.40.50cf36416e06376af8a9dca28536f2e4
+                           .group:00000000 wm4.types.h.60.e75c47576398c648cdcf9000ace5e3d8
+                           .group:00000000 wm4.MULTIPLEXER.h.46.383e3edbb9cbf6e538f7c1532ef623c1
+                           .group:00000000 wm4.uc_id.h.35.eaf9b374d895319eacbb56387e04af18
+                           .group:00000000 wm4.Usic.h.90.22743468abc46f16747d12430b219aaf
+                           .group:00000000 wm4.UART001_Conf.h.53.aebc8f191a793f9f63edb41ad937b6a4
+                           .group:00000000 wm4.UART001.h.109.3e835815a7a59791d8bd39655f4d4cc9
+                           .group:00000000 wm4.IO004.h.53.442ea5eb47ad9eedc675253aa35f3107
+                           .group:00000000 wm4.SYSTM001.h.64.af8873ad2b760a8c44fafec70d7e8a7e
+                           .group:00000000 wm4.GPIO.h.2.93bf17ee3a853f64308a0e4d0c9f6a08
+
+UNDEFINED SYMBOLS
+DAVE_Init
+SYSTM001_CreateTimer
+SYSTM001_StartTimer
+IO004_Handle0
+IO004_Handle1
+updateWS2812LEDs

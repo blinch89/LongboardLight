@@ -1,173 +1,50 @@
-#include "stm32f4xx_gpio.h"
-#include "stm32f4xx_rcc.h"
-#include "stm32f4xx.h"
-#include "stm32f4xx_tim.h"
-#include "stm32_ub_ws2812.h"
-#include "stdio.h"
-#include "lightPattern.h"
+/*
+ * Main.c
+ *
+ *  Created on: 06.03.2015
+ *      Author: blinch89
+ */
 
+#include <DAVE3.h>			//Declarations from DAVE3 Code Generation (includes SFR declaration)
+#include "colorManagement.h"
+#include "XMC1100.h"
+#include "GPIO.h"
 
-void Delay(volatile uint32_t nCount);
-void init(void);
-void INTTIM_Config(void);
-
+void updateOnboardLEDs();
+void buttonRead(void *ptr);
 
 int main(void)
 {
-  uint8_t control = '7';
-  uint8_t changeFlag = 1;
-  uint8_t updateLEDs = 1;
-  int i = 0;
-  init();
-  WS2812_HSV_t frame[WS2812_LED_MAX_ANZ];
-  //initFrame(frame);
-  while(1)
-  {
-    if(changeFlag)
-    {
-        initFrame(frame); //this line could may be moved to somewhere else, TODO, refactor! think!
-    }
-    if (TIM_GetFlagStatus(TIM2, TIM_FLAG_Update) != RESET)
-    {
-        TIM_ClearFlag(TIM2, TIM_IT_Update);
-        switch(control)
-        {
-        case '0':
-            rainbow_spin(frame);
-            break;
-        case '1':
-        case '2':
-        case '3':
-            dots_circular(control-48, frame);
-            break;
-        if(changeFlag)
-        {
-            case '6':
-                frame_white(frame);
-                break;
-            case '7':
-                frame_one_color(frame, WS2812_HSV_COL_OFF);
-                break;
-            case '8':
-                frame_one_color(frame, WS2812_HSV_COL_BLUE);
-                break;
-            case '9':
-                frame_one_color(frame, WS2812_HSV_COL_CYAN);
-                break;
-            case 'A':
-                frame_one_color(frame, WS2812_HSV_COL_GREEN);
-                break;
-            case 'B':
-                frame_one_color(frame, WS2812_HSV_COL_MAGENTA);
-                break;
-            case 'C':
-                frame_one_color(frame, WS2812_HSV_COL_RED);
-                break;
-            case 'D':
-                frame_one_color(frame,WS2812_HSV_COL_YELLOW);
-                break;
-        }
-        default:
-            break;
-        }
-        changeFlag = 0;
-
-        if(updateLEDs)
-        {
-            for(i = 0;i<WS2812_LED_MAX_ANZ-1;i++)
-            {
-                UB_WS2812_One_Led_HSV(i,frame[i],0);
-            }
-            //last LED with refresh:
-            UB_WS2812_One_Led_HSV(WS2812_LED_MAX_ANZ-1,frame[WS2812_LED_MAX_ANZ-1],1); 
-        }
-        else if ( !(control >= '0' && control <= '3') )
-            updateLEDs = 0;
-  }
-
-  //Userbutten start *******
-  if((GPIOA->IDR & 0b1)==1)
-  {
-      Delay(10000000);
-      updateLEDs = 1;
-      changeFlag = 1;
-      switch(control)
-      {
-      case '0':
-      case '1':
-      case '2':
-      case '6':
-      case '7':
-      case '8':
-          control++;
-          break;
-      case '3':
-          control = '6';
-          break;
-      case '9':
-          control = 'A';
-          break;
-      case 'A':
-      case 'B':
-      case 'C':
-          control++;
-          break;
-      case 'D':
-          control = '0';
-          break;
-      default:
-          break;
-      }
-  }
-  //Userbutten end   *******
- }
+//	status_t status;		// Declaration of return variable for DAVE3 APIs (toggle comment if required)
+	DAVE_Init();			// Initialization of DAVE Apps
+	IO004_SetPin(IO004_Handle0);
+	P0_5_set_mode(OUTPUT_PP_GP); 	//WS2812 data pin
+	P0_6_set_mode(INPUT_PU);     	//button
+	enum colorState state = OFF;
+	handle_t timer;
+	timer=SYSTM001_CreateTimer(500,SYSTM001_PERIODIC,updateOnboardLEDs,NULL);
+	SYSTM001_StartTimer(timer);
+	timer=SYSTM001_CreateTimer(400,SYSTM001_PERIODIC,buttonRead,&state);
+	SYSTM001_StartTimer(timer);
+	while(1);
+	return 0;
 }
 
 
-
-
-
-void Delay(volatile uint32_t nCount)
+void updateOnboardLEDs()
 {
-  while(nCount--)
-  {
-  }
+	IO004_TogglePin(IO004_Handle0);
+	IO004_TogglePin(IO004_Handle1);
 }
 
 
-
-
-
-void init(void)
+void buttonRead(void *ptr)
 {
-    SystemInit();
-    UB_WS2812_Init();
-    INTTIM_Config();
-    
-    /*
-    init_USART1(9600);
-    USART_puts(USART1, "STM_Start\n");
-    */
+	if(!P0_6_read()) //button pressed?
+	{
+		enum colorState *lightState = ptr;
+		if(*lightState == CYAN) *lightState = OFF; //CYAN is last Value of enum
+		else (*lightState)++;
+		updateWS2812LEDs(*lightState);
+	}
 }
-
-
-
-
-
-void INTTIM_Config(void)
-{
-    TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
-    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-    TIM_TimeBaseStructure.TIM_Period = 600;       // 1MHz / this value = half frequency
-    TIM_TimeBaseStructure.TIM_Prescaler = 84 - 1; // Down to 1 MHz (adjust per your clock)
-    TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-    TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-    TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
-    TIM_Cmd(TIM2, ENABLE);
-}
-
-
-
-
-
-

@@ -1,0 +1,14 @@
+Main.o
+colorManagement.o
+light_ws2812_cortex.o
+Startup/startup_XMC1100.o
+Startup/system_XMC1100.o
+Lib/System_LibcStubs.o
+Dave/Generated/src/UART001/UART001.o
+Dave/Generated/src/UART001/UART001_Conf.o
+Dave/Generated/src/SYSTM001/SYSTM001.o
+Dave/Generated/src/IO004/IO004.o
+Dave/Generated/src/IO004/IO004_Conf.o
+Dave/Generated/src/DAVESupport/DAVE3.o
+Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+Dave/Generated/src/CLK002/CLK002.o

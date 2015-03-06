@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ResourceModel:Peripheral xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" name="CPU" description="Central Processing Unit" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0">
+  <provided xsi:type="ResourceModel:ResourceGroup" name="SYSTICK" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick">
+    <upWardMappingList xsi:type="ResourceModel:ProxyResource" href="../SYSTM001/1.0.18/systm001_0.app#//@consumed.1"/>
+    <resourcesList name="csr" requiredResourceUri="http://www.infineon.com/0.11.20/peripheral/cpu/0/csr" isResolved="true"/>
+    <resourcesList name="rvr" requiredResourceUri="http://www.infineon.com/0.11.20/peripheral/cpu/0/rvr" isResolved="true"/>
+    <resourcesList name="cvr" requiredResourceUri="http://www.infineon.com/0.11.20/peripheral/cpu/0/cvr" isResolved="true"/>
+    <resourcesList name="calib" requiredResourceUri="http://www.infineon.com/0.11.20/peripheral/cpu/0/calib" isResolved="true"/>
+  </provided>
+  <provided xsi:type="ResourceModel:RegisterParameter" name="CSR" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick/csr" accessPermission="rw" addressOffset="0x0010" resetValue="00000000" resetMask="0xFFFFFFFF">
+    <defaultValue xsi:type="ResourceModel:IntegerValue" value="00000000"/>
+    <upWardMappingList xsi:type="ResourceModel:ProxyResource" href="../SYSTM001/1.0.18/systm001_0.app#//@consumed.4"/>
+    <localValue xsi:type="ResourceModel:IntegerValue" value="00000000"/>
+    <globalValue xsi:type="ResourceModel:IntegerValue" value="00000000"/>
+    <toolTipHelpDescription>SysTick Control and Status Register</toolTipHelpDescription>
+    <bitFields name="ENABLE" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick/csr/enable" maxValue="1" minValue="0" startPos="0" stopPos="0" accessPermission="rw">
+      <defaultValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <toolTipHelpDescription>Counter Enable</toolTipHelpDescription>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0" description="Counter disabled."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1" description="Counter enabled."/>
+    </bitFields>
+    <bitFields name="TICKINT" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick/csr/tickint" maxValue="1" minValue="0" startPos="1" stopPos="1" accessPermission="rw">
+      <defaultValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <toolTipHelpDescription>SysTick Exception Request</toolTipHelpDescription>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0" description="Counting down to zero does not assert the SysTick exception request."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1" description="Counting down to zero to assert the SysTick exception request."/>
+    </bitFields>
+    <bitFields name="CLKSOURCE" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick/csr/clksource" maxValue="1" minValue="0" startPos="2" stopPos="2" accessPermission="rw">
+      <defaultValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <toolTipHelpDescription>Clock Source</toolTipHelpDescription>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0" description="External clock."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1" description="Processor clock."/>
+    </bitFields>
+    <bitFields name="COUNTFLAG" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick/csr/countflag" maxValue="1" minValue="0" startPos="16" stopPos="16" accessPermission="rw">
+      <defaultValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <toolTipHelpDescription>Counter Flag</toolTipHelpDescription>
+    </bitFields>
+  </provided>
+  <provided xsi:type="ResourceModel:RegisterParameter" name="RVR" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick/rvr" accessPermission="rw" addressOffset="0x0014" resetValue="00000000" resetMask="0x00000000">
+    <defaultValue xsi:type="ResourceModel:IntegerValue" value="00000000"/>
+    <upWardMappingList xsi:type="ResourceModel:ProxyResource" href="../SYSTM001/1.0.18/systm001_0.app#//@consumed.5"/>
+    <localValue xsi:type="ResourceModel:IntegerValue" value="fffffffffffffc17"/>
+    <globalValue xsi:type="ResourceModel:IntegerValue" value="fffffffffffffc17"/>
+    <toolTipHelpDescription>SysTick Reload Value Register</toolTipHelpDescription>
+    <bitFields name="RELOAD" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick/rvr/reload" maxValue="16777215" minValue="0" startPos="0" stopPos="23" accessPermission="rw">
+      <defaultValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <toolTipHelpDescription>Reload Value</toolTipHelpDescription>
+    </bitFields>
+  </provided>
+  <provided xsi:type="ResourceModel:RegisterParameter" name="CVR" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick/cvr" accessPermission="rw" addressOffset="0x0018" resetValue="00000000" resetMask="0x00000000">
+    <defaultValue xsi:type="ResourceModel:IntegerValue" value="00000000"/>
+    <upWardMappingList xsi:type="ResourceModel:ProxyResource" href="../SYSTM001/1.0.18/systm001_0.app#//@consumed.6"/>
+    <localValue xsi:type="ResourceModel:IntegerValue" value="00000000"/>
+    <globalValue xsi:type="ResourceModel:IntegerValue" value="00000000"/>
+    <toolTipHelpDescription>SysTick Current Value Register</toolTipHelpDescription>
+    <bitFields name="CURRENT" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick/cvr/current" maxValue="16777215" minValue="0" startPos="0" stopPos="23" accessPermission="rw">
+      <defaultValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <toolTipHelpDescription>SysTick Counter Current Value</toolTipHelpDescription>
+    </bitFields>
+  </provided>
+  <provided xsi:type="ResourceModel:RegisterParameter" name="CALIB" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick/calib" addressOffset="0x001C" resetValue="40000147" resetMask="0xFFFFFFFF">
+    <defaultValue xsi:type="ResourceModel:IntegerValue" value="40000147"/>
+    <upWardMappingList xsi:type="ResourceModel:ProxyResource" href="../SYSTM001/1.0.18/systm001_0.app#//@consumed.7"/>
+    <localValue xsi:type="ResourceModel:IntegerValue" value="40000147"/>
+    <globalValue xsi:type="ResourceModel:IntegerValue" value="40000147"/>
+    <toolTipHelpDescription>SysTick Calibration Value Register</toolTipHelpDescription>
+    <bitFields name="TENMS" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick/calib/tenms" maxValue="16777215" minValue="0" startPos="0" stopPos="23">
+      <defaultValue xsi:type="ResourceModel:IntegerValue" value="147"/>
+      <localValue xsi:type="ResourceModel:IntegerValue" value="147"/>
+      <globalValue xsi:type="ResourceModel:IntegerValue" value="147"/>
+      <toolTipHelpDescription>10 Milliseconds</toolTipHelpDescription>
+    </bitFields>
+    <bitFields name="SKEW" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick/calib/skew" maxValue="1" minValue="0" startPos="30" stopPos="30">
+      <defaultValue xsi:type="ResourceModel:IntegerValue" value="1"/>
+      <localValue xsi:type="ResourceModel:IntegerValue" value="1"/>
+      <globalValue xsi:type="ResourceModel:IntegerValue" value="1"/>
+      <toolTipHelpDescription>Clock Skew</toolTipHelpDescription>
+    </bitFields>
+    <bitFields name="NOREF" URI="http://www.infineon.com/0.11.20/peripheral/cpu/0/systick/calib/noref" maxValue="1" minValue="0" startPos="31" stopPos="31">
+      <defaultValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <toolTipHelpDescription>Reference Clock</toolTipHelpDescription>
+    </bitFields>
+  </provided>
+  <categoryDescription description="Central Processing Unit (CPU)" name="cpu"/>
+</ResourceModel:Peripheral>
