@@ -2,7 +2,7 @@
 // File       : lightPattern.c
 // Date       : 20th Feb 2015
 // Version    : 1.0
-// Autor      : Ulrich ter Horst
+// Author     : Ulrich ter Horst
 // EMail      : ulrich.terhorst@gmail.com
 
 // Description: This is a library of methods to create light
