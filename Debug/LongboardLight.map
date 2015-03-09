@@ -69,7 +69,10 @@ Discarded input sections
  .group         0x00000000        0x8 Main.o
  .group         0x00000000        0x8 Main.o
  .group         0x00000000        0x8 Main.o
+ .group         0x00000000        0x8 Main.o
+ .group         0x00000000        0x8 Main.o
  .comment       0x00000000       0x71 Main.o
+ .group         0x00000000        0x8 colorManagement.o
  .group         0x00000000        0x8 colorManagement.o
  .group         0x00000000        0x8 colorManagement.o
  .group         0x00000000        0x8 colorManagement.o
@@ -95,6 +98,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x242 colorManagement.o
  .debug_macro   0x00000000       0x36 colorManagement.o
  .debug_macro   0x00000000     0x4d2c colorManagement.o
+ .debug_macro   0x00000000       0x10 colorManagement.o
  .comment       0x00000000       0x71 colorManagement.o
  .group         0x00000000        0x8 light_ws2812_cortex.o
  .group         0x00000000        0x8 light_ws2812_cortex.o
@@ -543,7 +547,7 @@ LOAD c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-n
 END GROUP
                 0x00000800                stack_size = 0x800
 
-.text           0x10001000     0x3a88
+.text           0x10001000     0x3c10
                 0x10001000                sText = .
  *(.Xmc1100.reset)
  .Xmc1100.reset
@@ -565,262 +569,269 @@ END GROUP
                 0x1000110c       0x38 Main.o
  .text.P0_6_read
                 0x10001144       0x18 Main.o
- .text.main     0x1000115c       0x78 Main.o
+ .text.main     0x1000115c      0x10c Main.o
                 0x1000115c                main
+ .text.allowRedDotUpdate
+                0x10001268       0x1c Main.o
+                0x10001268                allowRedDotUpdate
  .text.updateOnboardLEDs
-                0x100011d4       0x38 Main.o
-                0x100011d4                updateOnboardLEDs
+                0x10001284       0x38 Main.o
+                0x10001284                updateOnboardLEDs
  .text.buttonRead
-                0x1000120c       0x44 Main.o
-                0x1000120c                buttonRead
- .text          0x10001250        0x0 colorManagement.o
+                0x100012bc       0x44 Main.o
+                0x100012bc                buttonRead
+ .text          0x10001300        0x0 colorManagement.o
  .text.updateWS2812LEDs
-                0x10001250      0x170 colorManagement.o
-                0x10001250                updateWS2812LEDs
- .text          0x100013c0        0x0 light_ws2812_cortex.o
+                0x10001300      0x170 colorManagement.o
+                0x10001300                updateWS2812LEDs
+ .text.redDotOnBlueLine
+                0x10001470       0xd4 colorManagement.o
+                0x10001470                redDotOnBlueLine
+ .text          0x10001544        0x0 light_ws2812_cortex.o
  .text.ws2812_sendarray
-                0x100013c0       0x6c light_ws2812_cortex.o
-                0x100013c0                ws2812_sendarray
- .text          0x1000142c       0x30 Startup/startup_XMC1100.o
-                0x1000142c                NMI_Handler
-                0x1000142e                HardFault_Handler
-                0x10001430                SVC_Handler
-                0x10001432                PendSV_Handler
-                0x10001436                SCU_0_IRQHandler
-                0x10001438                SCU_1_IRQHandler
-                0x1000143a                SCU_2_IRQHandler
-                0x1000143c                ERU0_0_IRQHandler
-                0x1000143e                ERU0_1_IRQHandler
-                0x10001440                ERU0_2_IRQHandler
-                0x10001442                ERU0_3_IRQHandler
-                0x10001444                VADC0_C0_0_IRQHandler
-                0x10001446                VADC0_C0_1_IRQHandler
-                0x10001448                CCU40_0_IRQHandler
-                0x1000144a                CCU40_1_IRQHandler
-                0x1000144c                CCU40_2_IRQHandler
-                0x1000144e                CCU40_3_IRQHandler
-                0x10001450                USIC0_0_IRQHandler
-                0x10001452                USIC0_1_IRQHandler
-                0x10001454                USIC0_2_IRQHandler
-                0x10001456                USIC0_3_IRQHandler
-                0x10001458                USIC0_4_IRQHandler
-                0x1000145a                USIC0_5_IRQHandler
- .text          0x1000145c        0x0 Startup/system_XMC1100.o
+                0x10001544       0x6c light_ws2812_cortex.o
+                0x10001544                ws2812_sendarray
+ .text          0x100015b0       0x30 Startup/startup_XMC1100.o
+                0x100015b0                NMI_Handler
+                0x100015b2                HardFault_Handler
+                0x100015b4                SVC_Handler
+                0x100015b6                PendSV_Handler
+                0x100015ba                SCU_0_IRQHandler
+                0x100015bc                SCU_1_IRQHandler
+                0x100015be                SCU_2_IRQHandler
+                0x100015c0                ERU0_0_IRQHandler
+                0x100015c2                ERU0_1_IRQHandler
+                0x100015c4                ERU0_2_IRQHandler
+                0x100015c6                ERU0_3_IRQHandler
+                0x100015c8                VADC0_C0_0_IRQHandler
+                0x100015ca                VADC0_C0_1_IRQHandler
+                0x100015cc                CCU40_0_IRQHandler
+                0x100015ce                CCU40_1_IRQHandler
+                0x100015d0                CCU40_2_IRQHandler
+                0x100015d2                CCU40_3_IRQHandler
+                0x100015d4                USIC0_0_IRQHandler
+                0x100015d6                USIC0_1_IRQHandler
+                0x100015d8                USIC0_2_IRQHandler
+                0x100015da                USIC0_3_IRQHandler
+                0x100015dc                USIC0_4_IRQHandler
+                0x100015de                USIC0_5_IRQHandler
+ .text          0x100015e0        0x0 Startup/system_XMC1100.o
  .text.SystemInit
-                0x1000145c        0xc Startup/system_XMC1100.o
-                0x1000145c                SystemInit
+                0x100015e0        0xc Startup/system_XMC1100.o
+                0x100015e0                SystemInit
  .text.SystemCoreClockUpdate
-                0x10001468       0x5c Startup/system_XMC1100.o
-                0x10001468                SystemCoreClockUpdate
- .text          0x100014c4        0x0 Lib/System_LibcStubs.o
- .text._open    0x100014c4       0x18 Lib/System_LibcStubs.o
-                0x100014c4                _open
- .text._lseek   0x100014dc       0x18 Lib/System_LibcStubs.o
-                0x100014dc                _lseek
- .text._read    0x100014f4       0x18 Lib/System_LibcStubs.o
-                0x100014f4                _read
- .text._write   0x1000150c       0x18 Lib/System_LibcStubs.o
-                0x1000150c                _write
- .text._close   0x10001524       0x10 Lib/System_LibcStubs.o
-                0x10001524                _close
- .text._fstat   0x10001534       0x24 Lib/System_LibcStubs.o
-                0x10001534                _fstat
- .text._link    0x10001558       0x24 Lib/System_LibcStubs.o
-                0x10001558                _link
- .text._unlink  0x1000157c       0x14 Lib/System_LibcStubs.o
-                0x1000157c                _unlink
- .text._sbrk    0x10001590       0x6c Lib/System_LibcStubs.o
-                0x10001590                _sbrk
- .text._times   0x100015fc       0x14 Lib/System_LibcStubs.o
-                0x100015fc                _times
- .text._wait    0x10001610       0x14 Lib/System_LibcStubs.o
-                0x10001610                _wait
- .text._kill    0x10001624       0x18 Lib/System_LibcStubs.o
-                0x10001624                _kill
- .text._fork    0x1000163c       0x10 Lib/System_LibcStubs.o
-                0x1000163c                _fork
- .text._getpid  0x1000164c       0x10 Lib/System_LibcStubs.o
-                0x1000164c                _getpid
- .text._exit    0x1000165c        0xc Lib/System_LibcStubs.o
-                0x1000165c                _exit
- .text._init    0x10001668        0x8 Lib/System_LibcStubs.o
-                0x10001668                _init
- .text._isatty  0x10001670       0x14 Lib/System_LibcStubs.o
-                0x10001670                _isatty
- .text          0x10001684        0x0 Dave/Generated/src/UART001/UART001.o
+                0x100015ec       0x5c Startup/system_XMC1100.o
+                0x100015ec                SystemCoreClockUpdate
+ .text          0x10001648        0x0 Lib/System_LibcStubs.o
+ .text._open    0x10001648       0x18 Lib/System_LibcStubs.o
+                0x10001648                _open
+ .text._lseek   0x10001660       0x18 Lib/System_LibcStubs.o
+                0x10001660                _lseek
+ .text._read    0x10001678       0x18 Lib/System_LibcStubs.o
+                0x10001678                _read
+ .text._write   0x10001690       0x18 Lib/System_LibcStubs.o
+                0x10001690                _write
+ .text._close   0x100016a8       0x10 Lib/System_LibcStubs.o
+                0x100016a8                _close
+ .text._fstat   0x100016b8       0x24 Lib/System_LibcStubs.o
+                0x100016b8                _fstat
+ .text._link    0x100016dc       0x24 Lib/System_LibcStubs.o
+                0x100016dc                _link
+ .text._unlink  0x10001700       0x14 Lib/System_LibcStubs.o
+                0x10001700                _unlink
+ .text._sbrk    0x10001714       0x6c Lib/System_LibcStubs.o
+                0x10001714                _sbrk
+ .text._times   0x10001780       0x14 Lib/System_LibcStubs.o
+                0x10001780                _times
+ .text._wait    0x10001794       0x14 Lib/System_LibcStubs.o
+                0x10001794                _wait
+ .text._kill    0x100017a8       0x18 Lib/System_LibcStubs.o
+                0x100017a8                _kill
+ .text._fork    0x100017c0       0x10 Lib/System_LibcStubs.o
+                0x100017c0                _fork
+ .text._getpid  0x100017d0       0x10 Lib/System_LibcStubs.o
+                0x100017d0                _getpid
+ .text._exit    0x100017e0        0xc Lib/System_LibcStubs.o
+                0x100017e0                _exit
+ .text._init    0x100017ec        0x8 Lib/System_LibcStubs.o
+                0x100017ec                _init
+ .text._isatty  0x100017f4       0x14 Lib/System_LibcStubs.o
+                0x100017f4                _isatty
+ .text          0x10001808        0x0 Dave/Generated/src/UART001/UART001.o
  .text.UART001_lInit
-                0x10001684      0x1b4 Dave/Generated/src/UART001/UART001.o
-                0x10001684                UART001_lInit
+                0x10001808      0x1b4 Dave/Generated/src/UART001/UART001.o
+                0x10001808                UART001_lInit
  .text.UART001_lConfigTXPin
-                0x10001838       0xe0 Dave/Generated/src/UART001/UART001.o
-                0x10001838                UART001_lConfigTXPin
+                0x100019bc       0xe0 Dave/Generated/src/UART001/UART001.o
+                0x100019bc                UART001_lConfigTXPin
  .text.UART001_labsRealType
-                0x10001918       0x30 Dave/Generated/src/UART001/UART001.o
-                0x10001918                UART001_labsRealType
+                0x10001a9c       0x30 Dave/Generated/src/UART001/UART001.o
+                0x10001a9c                UART001_labsRealType
  .text.UART001_lConfigureBaudRate
-                0x10001948      0x51c Dave/Generated/src/UART001/UART001.o
-                0x10001948                UART001_lConfigureBaudRate
+                0x10001acc      0x51c Dave/Generated/src/UART001/UART001.o
+                0x10001acc                UART001_lConfigureBaudRate
  .text.UART001_Init
-                0x10001e64       0x8c Dave/Generated/src/UART001/UART001.o
-                0x10001e64                UART001_Init
+                0x10001fe8       0x8c Dave/Generated/src/UART001/UART001.o
+                0x10001fe8                UART001_Init
  .text.UART001_DeInit
-                0x10001ef0       0x10 Dave/Generated/src/UART001/UART001.o
-                0x10001ef0                UART001_DeInit
+                0x10002074       0x10 Dave/Generated/src/UART001/UART001.o
+                0x10002074                UART001_DeInit
  .text.UART001_Configure
-                0x10001f00      0x110 Dave/Generated/src/UART001/UART001.o
-                0x10001f00                UART001_Configure
+                0x10002084      0x110 Dave/Generated/src/UART001/UART001.o
+                0x10002084                UART001_Configure
  .text.UART001_ReadDataMultiple
-                0x10002010       0x74 Dave/Generated/src/UART001/UART001.o
-                0x10002010                UART001_ReadDataMultiple
+                0x10002194       0x74 Dave/Generated/src/UART001/UART001.o
+                0x10002194                UART001_ReadDataMultiple
  .text.UART001_ReadDataBytes
-                0x10002084       0x74 Dave/Generated/src/UART001/UART001.o
-                0x10002084                UART001_ReadDataBytes
+                0x10002208       0x74 Dave/Generated/src/UART001/UART001.o
+                0x10002208                UART001_ReadDataBytes
  .text.UART001_WriteDataMultiple
-                0x100020f8       0x80 Dave/Generated/src/UART001/UART001.o
-                0x100020f8                UART001_WriteDataMultiple
+                0x1000227c       0x80 Dave/Generated/src/UART001/UART001.o
+                0x1000227c                UART001_WriteDataMultiple
  .text.UART001_WriteDataBytes
-                0x10002178       0x80 Dave/Generated/src/UART001/UART001.o
-                0x10002178                UART001_WriteDataBytes
+                0x100022fc       0x80 Dave/Generated/src/UART001/UART001.o
+                0x100022fc                UART001_WriteDataBytes
  .text.UART001_GetFlagStatus
-                0x100021f8       0x8c Dave/Generated/src/UART001/UART001.o
-                0x100021f8                UART001_GetFlagStatus
+                0x1000237c       0x8c Dave/Generated/src/UART001/UART001.o
+                0x1000237c                UART001_GetFlagStatus
  .text.UART001_ClearFlag
-                0x10002284       0x88 Dave/Generated/src/UART001/UART001.o
-                0x10002284                UART001_ClearFlag
- .text          0x1000230c        0x0 Dave/Generated/src/UART001/UART001_Conf.o
- .text          0x1000230c        0x0 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x10002408       0x88 Dave/Generated/src/UART001/UART001.o
+                0x10002408                UART001_ClearFlag
+ .text          0x10002490        0x0 Dave/Generated/src/UART001/UART001_Conf.o
+ .text          0x10002490        0x0 Dave/Generated/src/SYSTM001/SYSTM001.o
  .text.NVIC_SetPriority
-                0x1000230c       0xe0 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x10002490       0xe0 Dave/Generated/src/SYSTM001/SYSTM001.o
  .text.SysTick_Config
-                0x100023ec       0x48 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x10002570       0x48 Dave/Generated/src/SYSTM001/SYSTM001.o
  .text.SYSTM001_lInsertTimerList
-                0x10002434      0x154 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x100025b8      0x154 Dave/Generated/src/SYSTM001/SYSTM001.o
  .text.SYSTM001_lRemoveTimerList
-                0x10002588       0xb4 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x1000270c       0xb4 Dave/Generated/src/SYSTM001/SYSTM001.o
  .text.SYSTM001_lTimerHandler
-                0x1000263c       0x88 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x100027c0       0x88 Dave/Generated/src/SYSTM001/SYSTM001.o
  .text.SysTick_Handler
-                0x100026c4       0x48 Dave/Generated/src/SYSTM001/SYSTM001.o
-                0x100026c4                SysTick_Handler
+                0x10002848       0x48 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x10002848                SysTick_Handler
  .text.SYSTM001_Init
-                0x1000270c       0x44 Dave/Generated/src/SYSTM001/SYSTM001.o
-                0x1000270c                SYSTM001_Init
+                0x10002890       0x44 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x10002890                SYSTM001_Init
  .text.SYSTM001_CreateTimer
-                0x10002750      0x124 Dave/Generated/src/SYSTM001/SYSTM001.o
-                0x10002750                SYSTM001_CreateTimer
+                0x100028d4      0x124 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x100028d4                SYSTM001_CreateTimer
  .text.SYSTM001_StartTimer
-                0x10002874       0x80 Dave/Generated/src/SYSTM001/SYSTM001.o
-                0x10002874                SYSTM001_StartTimer
+                0x100029f8       0x80 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x100029f8                SYSTM001_StartTimer
  .text.SYSTM001_StopTimer
-                0x100028f4       0x6c Dave/Generated/src/SYSTM001/SYSTM001.o
-                0x100028f4                SYSTM001_StopTimer
+                0x10002a78       0x6c Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x10002a78                SYSTM001_StopTimer
  .text.SYSTM001_DeleteTimer
-                0x10002960       0x74 Dave/Generated/src/SYSTM001/SYSTM001.o
-                0x10002960                SYSTM001_DeleteTimer
+                0x10002ae4       0x74 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x10002ae4                SYSTM001_DeleteTimer
  .text.SYSTM001_GetTime
-                0x100029d4       0x14 Dave/Generated/src/SYSTM001/SYSTM001.o
-                0x100029d4                SYSTM001_GetTime
+                0x10002b58       0x14 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x10002b58                SYSTM001_GetTime
+ *fill*         0x10002b6c        0x4 00
  .text.SYSTM001_GetSysTickCount
-                0x100029e8       0x58 Dave/Generated/src/SYSTM001/SYSTM001.o
-                0x100029e8                SYSTM001_GetSysTickCount
- .text          0x10002a40        0x0 Dave/Generated/src/IO004/IO004.o
+                0x10002b70       0x58 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x10002b70                SYSTM001_GetSysTickCount
+ .text          0x10002bc8        0x0 Dave/Generated/src/IO004/IO004.o
  .text.IO004_Init
-                0x10002a40       0x38 Dave/Generated/src/IO004/IO004.o
-                0x10002a40                IO004_Init
+                0x10002bc8       0x38 Dave/Generated/src/IO004/IO004.o
+                0x10002bc8                IO004_Init
  .text.IO004_DisableOutputDriver
-                0x10002a78      0x1b4 Dave/Generated/src/IO004/IO004.o
-                0x10002a78                IO004_DisableOutputDriver
+                0x10002c00      0x1b4 Dave/Generated/src/IO004/IO004.o
+                0x10002c00                IO004_DisableOutputDriver
  .text.IO004_EnableOutputDriver
-                0x10002c2c      0x1b4 Dave/Generated/src/IO004/IO004.o
-                0x10002c2c                IO004_EnableOutputDriver
- .text          0x10002de0        0x0 Dave/Generated/src/IO004/IO004_Conf.o
- .text          0x10002de0        0x0 Dave/Generated/src/DAVESupport/DAVE3.o
+                0x10002db4      0x1b4 Dave/Generated/src/IO004/IO004.o
+                0x10002db4                IO004_EnableOutputDriver
+ .text          0x10002f68        0x0 Dave/Generated/src/IO004/IO004_Conf.o
+ .text          0x10002f68        0x0 Dave/Generated/src/DAVESupport/DAVE3.o
  .text.DAVE_Init
-                0x10002de0       0x20 Dave/Generated/src/DAVESupport/DAVE3.o
-                0x10002de0                DAVE_Init
- .text          0x10002e00        0x0 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+                0x10002f68       0x20 Dave/Generated/src/DAVESupport/DAVE3.o
+                0x10002f68                DAVE_Init
+ .text          0x10002f88        0x0 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
  .text.DAVE_MUX_Init
-                0x10002e00      0x104 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
-                0x10002e00                DAVE_MUX_Init
+                0x10002f88      0x104 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+                0x10002f88                DAVE_MUX_Init
  .text.DAVE_MUX_PreInit
-                0x10002f04       0x1c Dave/Generated/src/DAVESupport/MULTIPLEXER.o
-                0x10002f04                DAVE_MUX_PreInit
- .text          0x10002f20        0x0 Dave/Generated/src/CLK002/CLK002.o
+                0x1000308c       0x1c Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+                0x1000308c                DAVE_MUX_PreInit
+ .text          0x100030a8        0x0 Dave/Generated/src/CLK002/CLK002.o
  .text.CLK002_Init
-                0x10002f20       0x38 Dave/Generated/src/CLK002/CLK002.o
-                0x10002f20                CLK002_Init
+                0x100030a8       0x38 Dave/Generated/src/CLK002/CLK002.o
+                0x100030a8                CLK002_Init
  .text.AllowClkInitByStartup
-                0x10002f58        0xc Dave/Generated/src/CLK002/CLK002.o
-                0x10002f58                AllowClkInitByStartup
+                0x100030e0        0xc Dave/Generated/src/CLK002/CLK002.o
+                0x100030e0                AllowClkInitByStartup
  .text.CLK002_lDivUpdate
-                0x10002f64       0x78 Dave/Generated/src/CLK002/CLK002.o
+                0x100030ec       0x78 Dave/Generated/src/CLK002/CLK002.o
  .text.CLK002_lFrequencyUpScaling
-                0x10002fdc       0xbc Dave/Generated/src/CLK002/CLK002.o
+                0x10003164       0xbc Dave/Generated/src/CLK002/CLK002.o
  .text.CLK002_lFrequencyDownScaling
-                0x10003098       0xb0 Dave/Generated/src/CLK002/CLK002.o
- .text          0x10003148       0x9c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
-                0x10003148                __aeabi_uidiv
-                0x10003148                __udivsi3
-                0x100031d0                __aeabi_uidivmod
- .text          0x100031e4        0x4 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
-                0x100031e4                __aeabi_idiv0
-                0x100031e4                __aeabi_ldiv0
- .text          0x100031e8       0x74 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_arm_cmpsf2.o)
-                0x100031e8                __aeabi_cfrcmple
-                0x100031f0                __aeabi_cfcmpeq
-                0x100031f0                __aeabi_cfcmple
-                0x10003200                __aeabi_fcmpeq
-                0x1000320c                __aeabi_fcmplt
-                0x10003220                __aeabi_fcmple
-                0x10003234                __aeabi_fcmpgt
-                0x10003248                __aeabi_fcmpge
- *fill*         0x1000325c        0x4 00
- .text          0x10003260       0x40 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_fixunsdfsi.o)
-                0x10003260                __aeabi_d2uiz
-                0x10003260                __fixunsdfsi
- .text          0x100032a0      0x274 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(divsf3.o)
-                0x100032a0                __aeabi_fdiv
- .text          0x10003514       0x50 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(eqsf2.o)
-                0x10003514                __eqsf2
-                0x10003514                __nesf2
- .text          0x10003564       0x90 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(gesf2.o)
-                0x10003564                __gesf2
-                0x10003564                __gtsf2
- .text          0x100035f4       0x90 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(lesf2.o)
-                0x100035f4                __ltsf2
-                0x100035f4                __lesf2
- .text          0x10003684      0x3b4 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(subsf3.o)
-                0x10003684                __aeabi_fsub
- .text          0x10003a38       0xa8 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(floatunsisf.o)
-                0x10003a38                __aeabi_ui2f
- .text          0x10003ae0      0x4e4 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(muldf3.o)
-                0x10003ae0                __aeabi_dmul
- .text          0x10003fc4      0x704 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(subdf3.o)
-                0x10003fc4                __aeabi_dsub
- .text          0x100046c8       0x68 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(fixdfsi.o)
-                0x100046c8                __aeabi_d2iz
- .text          0x10004730       0x64 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(floatunsidf.o)
-                0x10004730                __aeabi_ui2d
- .text          0x10004794       0x7c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_arm_cmpdf2.o)
-                0x10004794                __aeabi_cdrcmple
-                0x100047a4                __aeabi_cdcmple
-                0x100047a4                __aeabi_cdcmpeq
-                0x100047b4                __aeabi_dcmpeq
-                0x100047c0                __aeabi_dcmplt
-                0x100047d4                __aeabi_dcmple
-                0x100047e8                __aeabi_dcmpgt
-                0x100047fc                __aeabi_dcmpge
- .text          0x10004810       0x3c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_clzsi2.o)
-                0x10004810                __clzsi2
- .text          0x1000484c       0x7c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(eqdf2.o)
-                0x1000484c                __nedf2
-                0x1000484c                __eqdf2
- .text          0x100048c8       0xe8 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(gedf2.o)
-                0x100048c8                __gedf2
-                0x100048c8                __gtdf2
- .text          0x100049b0       0xd8 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(ledf2.o)
-                0x100049b0                __ledf2
-                0x100049b0                __ltdf2
+                0x10003220       0xb0 Dave/Generated/src/CLK002/CLK002.o
+ .text          0x100032d0       0x9c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
+                0x100032d0                __aeabi_uidiv
+                0x100032d0                __udivsi3
+                0x10003358                __aeabi_uidivmod
+ .text          0x1000336c        0x4 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x1000336c                __aeabi_idiv0
+                0x1000336c                __aeabi_ldiv0
+ .text          0x10003370       0x74 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_arm_cmpsf2.o)
+                0x10003370                __aeabi_cfrcmple
+                0x10003378                __aeabi_cfcmpeq
+                0x10003378                __aeabi_cfcmple
+                0x10003388                __aeabi_fcmpeq
+                0x10003394                __aeabi_fcmplt
+                0x100033a8                __aeabi_fcmple
+                0x100033bc                __aeabi_fcmpgt
+                0x100033d0                __aeabi_fcmpge
+ *fill*         0x100033e4        0x4 00
+ .text          0x100033e8       0x40 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_fixunsdfsi.o)
+                0x100033e8                __aeabi_d2uiz
+                0x100033e8                __fixunsdfsi
+ .text          0x10003428      0x274 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(divsf3.o)
+                0x10003428                __aeabi_fdiv
+ .text          0x1000369c       0x50 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(eqsf2.o)
+                0x1000369c                __eqsf2
+                0x1000369c                __nesf2
+ .text          0x100036ec       0x90 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(gesf2.o)
+                0x100036ec                __gesf2
+                0x100036ec                __gtsf2
+ .text          0x1000377c       0x90 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(lesf2.o)
+                0x1000377c                __ltsf2
+                0x1000377c                __lesf2
+ .text          0x1000380c      0x3b4 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(subsf3.o)
+                0x1000380c                __aeabi_fsub
+ .text          0x10003bc0       0xa8 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(floatunsisf.o)
+                0x10003bc0                __aeabi_ui2f
+ .text          0x10003c68      0x4e4 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(muldf3.o)
+                0x10003c68                __aeabi_dmul
+ .text          0x1000414c      0x704 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(subdf3.o)
+                0x1000414c                __aeabi_dsub
+ .text          0x10004850       0x68 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(fixdfsi.o)
+                0x10004850                __aeabi_d2iz
+ .text          0x100048b8       0x64 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(floatunsidf.o)
+                0x100048b8                __aeabi_ui2d
+ .text          0x1000491c       0x7c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_arm_cmpdf2.o)
+                0x1000491c                __aeabi_cdrcmple
+                0x1000492c                __aeabi_cdcmple
+                0x1000492c                __aeabi_cdcmpeq
+                0x1000493c                __aeabi_dcmpeq
+                0x10004948                __aeabi_dcmplt
+                0x1000495c                __aeabi_dcmple
+                0x10004970                __aeabi_dcmpgt
+                0x10004984                __aeabi_dcmpge
+ .text          0x10004998       0x3c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_clzsi2.o)
+                0x10004998                __clzsi2
+ .text          0x100049d4       0x7c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(eqdf2.o)
+                0x100049d4                __nedf2
+                0x100049d4                __eqdf2
+ .text          0x10004a50       0xe8 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(gedf2.o)
+                0x10004a50                __gedf2
+                0x10004a50                __gtdf2
+ .text          0x10004b38       0xd8 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(ledf2.o)
+                0x10004b38                __ledf2
+                0x10004b38                __ltdf2
  *(.glue*)
  .glue_7        0x00000000        0x0 linker stubs
  .glue_7t       0x00000000        0x0 linker stubs
@@ -829,73 +840,73 @@ END GROUP
  *(.vfp11_veneer)
  .vfp11_veneer  0x00000000        0x0 linker stubs
  *(.init)
-                0x10004a88                __preinit_array_start = .
+                0x10004c10                __preinit_array_start = .
  *(.preinit_array)
-                0x10004a88                __preinit_array_end = .
-                0x10004a88                __init_array_start = .
+                0x10004c10                __preinit_array_end = .
+                0x10004c10                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
-                0x10004a88                __init_array_end = .
+                0x10004c10                __init_array_end = .
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
  *(.fini)
-                0x10004a88                __fini_array_start = .
+                0x10004c10                __fini_array_start = .
  *(.fini_array)
  *(SORT(.fini_array.*))
-                0x10004a88                __fini_array_end = .
+                0x10004c10                __fini_array_end = .
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x10004a88                __extab_start = .
+                0x10004c10                __extab_start = .
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  .ARM.extab.Xmc1100.reset
-                0x10004a88        0x0 Startup/startup_XMC1100.o
+                0x10004c10        0x0 Startup/startup_XMC1100.o
  .ARM.extab.Xmc1100.postreset
-                0x10004a88        0x0 Startup/startup_XMC1100.o
-                0x10004a88                . = ALIGN (0x4)
-                0x10004a88                __extab_end = ABSOLUTE (.)
+                0x10004c10        0x0 Startup/startup_XMC1100.o
+                0x10004c10                . = ALIGN (0x4)
+                0x10004c10                __extab_end = ABSOLUTE (.)
 
-.iplt           0x10004a88        0x0
+.iplt           0x10004c10        0x0
  .iplt          0x00000000        0x0 Main.o
 
-.ARM.exidx      0x10004a88       0x10
-                0x10004a88                __exidx_start = .
+.ARM.exidx      0x10004c10       0x10
+                0x10004c10                __exidx_start = .
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
  .ARM.exidx.Xmc1100.reset
-                0x10004a88        0x8 Startup/startup_XMC1100.o
+                0x10004c10        0x8 Startup/startup_XMC1100.o
  .ARM.exidx.Xmc1100.postreset
-                0x10004a90        0x8 Startup/startup_XMC1100.o
-                0x10004a98                . = ALIGN (0x4)
-                0x10004a98                __exidx_end = ABSOLUTE (.)
+                0x10004c18        0x8 Startup/startup_XMC1100.o
+                0x10004c20                . = ALIGN (0x4)
+                0x10004c20                __exidx_end = ABSOLUTE (.)
 
-.rodata         0x10004a98      0x328
+.rodata         0x10004c20      0x328
  *(.rodata .rodata.*)
- .rodata        0x10004a98      0x264 colorManagement.o
-                0x10004a98                rgb
-                0x10004ad8                red
-                0x10004b18                green
-                0x10004b58                blue
-                0x10004b98                white
-                0x10004bd8                off
-                0x10004c18                purpl
-                0x10004c58                cyan
-                0x10004c98                yello
- .rodata        0x10004cfc       0x34 Dave/Generated/src/UART001/UART001_Conf.o
-                0x10004cfc                UART001_Handle0
- .rodata        0x10004d30       0x10 Dave/Generated/src/IO004/IO004_Conf.o
-                0x10004d30                IO004_Handle0
-                0x10004d38                IO004_Handle1
- .rodata        0x10004d40       0x40 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(divsf3.o)
- .rodata        0x10004d80       0x40 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(muldf3.o)
+ .rodata        0x10004c20      0x264 colorManagement.o
+                0x10004c20                rgb
+                0x10004c60                red
+                0x10004ca0                green
+                0x10004ce0                blue
+                0x10004d20                white
+                0x10004d60                off
+                0x10004da0                purpl
+                0x10004de0                cyan
+                0x10004e20                yello
+ .rodata        0x10004e84       0x34 Dave/Generated/src/UART001/UART001_Conf.o
+                0x10004e84                UART001_Handle0
+ .rodata        0x10004eb8       0x10 Dave/Generated/src/IO004/IO004_Conf.o
+                0x10004eb8                IO004_Handle0
+                0x10004ec0                IO004_Handle1
+ .rodata        0x10004ec8       0x40 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(divsf3.o)
+ .rodata        0x10004f08       0x40 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(muldf3.o)
  *(.gnu.linkonce.r*)
-                0x10004dc0                . = ALIGN (0x10)
-                0x10004dc0                eROData = .
-                0x10004dc0                VeneerLoadAddr = ABSOLUTE (eROData)
+                0x10004f50                . = ALIGN (0x10)
+                0x10004f50                eROData = .
+                0x10004f50                VeneerLoadAddr = ABSOLUTE (eROData)
 
-.VENEER_Code    0x2000000c      0x110 load address 0x10004dc0
+.VENEER_Code    0x2000000c      0x110 load address 0x10004f50
                 0x2000000c                VeneerStart = .
  *(.XmcVeneerCode)
  .XmcVeneerCode
@@ -927,7 +938,7 @@ END GROUP
                 0x2000011c                VeneerEnd = .
                 0x00000110                VeneerSize = (ABSOLUTE (VeneerEnd) - ABSOLUTE (VeneerStart))
 
-.rel.dyn        0x2000011c        0x0 load address 0x10004ed0
+.rel.dyn        0x2000011c        0x0 load address 0x10005060
  .rel.iplt      0x00000000        0x0 Main.o
 
 .GUARD_Band     0x2000011c        0x4 load address 0x00000000
@@ -942,58 +953,59 @@ Stack           0x20000120      0x800 load address 0x00000000
  *fill*         0x20000120      0x800 00
                 0x20000920                __Xmc1100_stack = .
 
-.bss            0x20000920      0x15c
+.bss            0x20000920      0x160
                 0x20000920                __Xmc1100_sBSS = .
  *(.bss)
  .bss           0x20000920        0x0 Main.o
- .bss           0x20000920        0x0 colorManagement.o
- .bss           0x20000920        0x0 light_ws2812_cortex.o
- .bss           0x20000920        0x0 Startup/startup_XMC1100.o
- .bss           0x20000920        0x0 Startup/system_XMC1100.o
- .bss           0x20000920        0xc Lib/System_LibcStubs.o
-                0x20000920                __dso_handle
- .bss           0x2000092c        0x0 Dave/Generated/src/UART001/UART001.o
- .bss           0x2000092c        0x0 Dave/Generated/src/UART001/UART001_Conf.o
- .bss           0x2000092c        0xc Dave/Generated/src/SYSTM001/SYSTM001.o
-                0x2000092c                TimerList
-                0x20000930                TimerTracker
-                0x20000934                SysTickCount
- .bss           0x20000938        0x0 Dave/Generated/src/IO004/IO004.o
- .bss           0x20000938        0x0 Dave/Generated/src/IO004/IO004_Conf.o
- .bss           0x20000938        0x0 Dave/Generated/src/DAVESupport/DAVE3.o
- .bss           0x20000938        0x0 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
- .bss           0x20000938        0x0 Dave/Generated/src/CLK002/CLK002.o
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_arm_cmpsf2.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_fixunsdfsi.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(divsf3.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(eqsf2.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(gesf2.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(lesf2.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(subsf3.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(floatunsisf.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(muldf3.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(subdf3.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(fixdfsi.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(floatunsidf.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_arm_cmpdf2.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_clzsi2.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(eqdf2.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(gedf2.o)
- .bss           0x20000938        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(ledf2.o)
+ .bss           0x20000920        0x1 colorManagement.o
+ .bss           0x20000921        0x0 light_ws2812_cortex.o
+ .bss           0x20000921        0x0 Startup/startup_XMC1100.o
+ .bss           0x20000921        0x0 Startup/system_XMC1100.o
+ *fill*         0x20000921        0x3 00
+ .bss           0x20000924        0xc Lib/System_LibcStubs.o
+                0x20000924                __dso_handle
+ .bss           0x20000930        0x0 Dave/Generated/src/UART001/UART001.o
+ .bss           0x20000930        0x0 Dave/Generated/src/UART001/UART001_Conf.o
+ .bss           0x20000930        0xc Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x20000930                TimerList
+                0x20000934                TimerTracker
+                0x20000938                SysTickCount
+ .bss           0x2000093c        0x0 Dave/Generated/src/IO004/IO004.o
+ .bss           0x2000093c        0x0 Dave/Generated/src/IO004/IO004_Conf.o
+ .bss           0x2000093c        0x0 Dave/Generated/src/DAVESupport/DAVE3.o
+ .bss           0x2000093c        0x0 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+ .bss           0x2000093c        0x0 Dave/Generated/src/CLK002/CLK002.o
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_arm_cmpsf2.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_fixunsdfsi.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(divsf3.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(eqsf2.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(gesf2.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(lesf2.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(subsf3.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(floatunsisf.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(muldf3.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(subdf3.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(fixdfsi.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(floatunsidf.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_arm_cmpdf2.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_clzsi2.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(eqdf2.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(gedf2.o)
+ .bss           0x2000093c        0x0 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(ledf2.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x20000938        0x4 Startup/system_XMC1100.o
-                0x20000938                SystemCoreClock
- COMMON         0x2000093c      0x140 Dave/Generated/src/SYSTM001/SYSTM001.o
-                0x2000093c                TimerTbl
+ COMMON         0x2000093c        0x4 Startup/system_XMC1100.o
+                0x2000093c                SystemCoreClock
+ COMMON         0x20000940      0x140 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x20000940                TimerTbl
  *(.gnu.linkonce.b*)
-                0x20000a7c                __Xmc1100_eBSS = ALIGN (0x4)
-                0x0000015c                __Xmc1100_BSS_Size = (__Xmc1100_eBSS - __Xmc1100_sBSS)
-                0x10004ed0                DataLoadAddr = (eROData + VeneerSize)
+                0x20000a80                __Xmc1100_eBSS = ALIGN (0x4)
+                0x00000160                __Xmc1100_BSS_Size = (__Xmc1100_eBSS - __Xmc1100_sBSS)
+                0x10005060                DataLoadAddr = (eROData + VeneerSize)
 
-.data           0x20000a80        0x4 load address 0x10004ed0
+.data           0x20000a80        0x4 load address 0x10005060
                 0x20000a80                __Xmc1100_sData = .
  *(.data)
  .data          0x20000a80        0x0 Main.o
@@ -1036,14 +1048,14 @@ Stack           0x20000120      0x800 load address 0x00000000
                 0x20000a84                __Xmc1100_eData = ALIGN (0x4)
                 0x00000004                __Xmc1100_Data_Size = (__Xmc1100_eData - __Xmc1100_sData)
 
-.igot.plt       0x20000a84        0x0 load address 0x10004ed4
+.igot.plt       0x20000a84        0x0 load address 0x10005064
  .igot.plt      0x00000000        0x0 Main.o
 
-.ram_code       0x20000a84        0x0 load address 0x10004ed4
+.ram_code       0x20000a84        0x0 load address 0x10005064
                 0x20000a84                __ram_code_start = .
  *(.ram_code)
                 0x20000a84                __ram_code_end = .
-                0x10004ed4                __ram_code_load = LOADADDR (.ram_code)
+                0x10005064                __ram_code_load = LOADADDR (.ram_code)
                 0x00000000                __ram_code_size = (__ram_code_end - __ram_code_start)
                 0x20000a88                __Xmc1100_heap_start = ALIGN (0x8)
                 0x20004000                __Xmc1100_heap_end = (ORIGIN (SRAM) + 0x4000)
@@ -1071,36 +1083,36 @@ Stack           0x20000120      0x800 load address 0x00000000
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x378
+.debug_aranges  0x00000000      0x388
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x48 Main.o
+                0x00000000       0x50 Main.o
  .debug_aranges
-                0x00000048       0x20 colorManagement.o
+                0x00000050       0x28 colorManagement.o
  .debug_aranges
-                0x00000068       0x20 light_ws2812_cortex.o
+                0x00000078       0x20 light_ws2812_cortex.o
  .debug_aranges
-                0x00000088       0x40 Startup/startup_XMC1100.o
+                0x00000098       0x40 Startup/startup_XMC1100.o
  .debug_aranges
-                0x000000c8       0x28 Startup/system_XMC1100.o
+                0x000000d8       0x28 Startup/system_XMC1100.o
  .debug_aranges
-                0x000000f0       0xa0 Lib/System_LibcStubs.o
+                0x00000100       0xa0 Lib/System_LibcStubs.o
  .debug_aranges
-                0x00000190       0x80 Dave/Generated/src/UART001/UART001.o
+                0x000001a0       0x80 Dave/Generated/src/UART001/UART001.o
  .debug_aranges
-                0x00000210       0x18 Dave/Generated/src/UART001/UART001_Conf.o
+                0x00000220       0x18 Dave/Generated/src/UART001/UART001_Conf.o
  .debug_aranges
-                0x00000228       0x80 Dave/Generated/src/SYSTM001/SYSTM001.o
+                0x00000238       0x80 Dave/Generated/src/SYSTM001/SYSTM001.o
  .debug_aranges
-                0x000002a8       0x30 Dave/Generated/src/IO004/IO004.o
+                0x000002b8       0x30 Dave/Generated/src/IO004/IO004.o
  .debug_aranges
-                0x000002d8       0x18 Dave/Generated/src/IO004/IO004_Conf.o
+                0x000002e8       0x18 Dave/Generated/src/IO004/IO004_Conf.o
  .debug_aranges
-                0x000002f0       0x20 Dave/Generated/src/DAVESupport/DAVE3.o
+                0x00000300       0x20 Dave/Generated/src/DAVESupport/DAVE3.o
  .debug_aranges
-                0x00000310       0x28 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+                0x00000320       0x28 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
  .debug_aranges
-                0x00000338       0x40 Dave/Generated/src/CLK002/CLK002.o
+                0x00000348       0x40 Dave/Generated/src/CLK002/CLK002.o
 
 .debug_pubnames
  *(.debug_pubnames)
@@ -1108,146 +1120,146 @@ Stack           0x20000120      0x800 load address 0x00000000
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_info     0x00000000     0x40ce
+.debug_info     0x00000000     0x4188
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x51d Main.o
- .debug_info    0x0000051d      0x1d1 colorManagement.o
- .debug_info    0x000006ee      0x12b light_ws2812_cortex.o
- .debug_info    0x00000819       0x72 Startup/startup_XMC1100.o
- .debug_info    0x0000088b      0x15f Startup/system_XMC1100.o
- .debug_info    0x000009ea      0x65f Lib/System_LibcStubs.o
- .debug_info    0x00001049     0x1032 Dave/Generated/src/UART001/UART001.o
- .debug_info    0x0000207b      0x7e7 Dave/Generated/src/UART001/UART001_Conf.o
- .debug_info    0x00002862      0x806 Dave/Generated/src/SYSTM001/SYSTM001.o
- .debug_info    0x00003068      0x387 Dave/Generated/src/IO004/IO004.o
- .debug_info    0x000033ef      0x273 Dave/Generated/src/IO004/IO004_Conf.o
- .debug_info    0x00003662       0x91 Dave/Generated/src/DAVESupport/DAVE3.o
- .debug_info    0x000036f3      0x6a5 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
- .debug_info    0x00003d98      0x336 Dave/Generated/src/CLK002/CLK002.o
+ .debug_info    0x00000000      0x591 Main.o
+ .debug_info    0x00000591      0x217 colorManagement.o
+ .debug_info    0x000007a8      0x12b light_ws2812_cortex.o
+ .debug_info    0x000008d3       0x72 Startup/startup_XMC1100.o
+ .debug_info    0x00000945      0x15f Startup/system_XMC1100.o
+ .debug_info    0x00000aa4      0x65f Lib/System_LibcStubs.o
+ .debug_info    0x00001103     0x1032 Dave/Generated/src/UART001/UART001.o
+ .debug_info    0x00002135      0x7e7 Dave/Generated/src/UART001/UART001_Conf.o
+ .debug_info    0x0000291c      0x806 Dave/Generated/src/SYSTM001/SYSTM001.o
+ .debug_info    0x00003122      0x387 Dave/Generated/src/IO004/IO004.o
+ .debug_info    0x000034a9      0x273 Dave/Generated/src/IO004/IO004_Conf.o
+ .debug_info    0x0000371c       0x91 Dave/Generated/src/DAVESupport/DAVE3.o
+ .debug_info    0x000037ad      0x6a5 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+ .debug_info    0x00003e52      0x336 Dave/Generated/src/CLK002/CLK002.o
 
-.debug_abbrev   0x00000000      0xece
+.debug_abbrev   0x00000000      0xf0f
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x1e9 Main.o
- .debug_abbrev  0x000001e9       0xc1 colorManagement.o
- .debug_abbrev  0x000002aa       0x93 light_ws2812_cortex.o
- .debug_abbrev  0x0000033d       0x12 Startup/startup_XMC1100.o
- .debug_abbrev  0x0000034f       0xc5 Startup/system_XMC1100.o
- .debug_abbrev  0x00000414      0x149 Lib/System_LibcStubs.o
- .debug_abbrev  0x0000055d      0x1f2 Dave/Generated/src/UART001/UART001.o
- .debug_abbrev  0x0000074f      0x11b Dave/Generated/src/UART001/UART001_Conf.o
- .debug_abbrev  0x0000086a      0x21f Dave/Generated/src/SYSTM001/SYSTM001.o
- .debug_abbrev  0x00000a89      0x118 Dave/Generated/src/IO004/IO004.o
- .debug_abbrev  0x00000ba1       0xaa Dave/Generated/src/IO004/IO004_Conf.o
- .debug_abbrev  0x00000c4b       0x47 Dave/Generated/src/DAVESupport/DAVE3.o
- .debug_abbrev  0x00000c92      0x112 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
- .debug_abbrev  0x00000da4      0x12a Dave/Generated/src/CLK002/CLK002.o
+ .debug_abbrev  0x00000000      0x212 Main.o
+ .debug_abbrev  0x00000212       0xd9 colorManagement.o
+ .debug_abbrev  0x000002eb       0x93 light_ws2812_cortex.o
+ .debug_abbrev  0x0000037e       0x12 Startup/startup_XMC1100.o
+ .debug_abbrev  0x00000390       0xc5 Startup/system_XMC1100.o
+ .debug_abbrev  0x00000455      0x149 Lib/System_LibcStubs.o
+ .debug_abbrev  0x0000059e      0x1f2 Dave/Generated/src/UART001/UART001.o
+ .debug_abbrev  0x00000790      0x11b Dave/Generated/src/UART001/UART001_Conf.o
+ .debug_abbrev  0x000008ab      0x21f Dave/Generated/src/SYSTM001/SYSTM001.o
+ .debug_abbrev  0x00000aca      0x118 Dave/Generated/src/IO004/IO004.o
+ .debug_abbrev  0x00000be2       0xaa Dave/Generated/src/IO004/IO004_Conf.o
+ .debug_abbrev  0x00000c8c       0x47 Dave/Generated/src/DAVESupport/DAVE3.o
+ .debug_abbrev  0x00000cd3      0x112 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+ .debug_abbrev  0x00000de5      0x12a Dave/Generated/src/CLK002/CLK002.o
 
-.debug_line     0x00000000     0x4cb3
+.debug_line     0x00000000     0x4d31
  *(.debug_line)
- .debug_line    0x00000000      0x714 Main.o
- .debug_line    0x00000714      0x331 colorManagement.o
- .debug_line    0x00000a45      0x306 light_ws2812_cortex.o
- .debug_line    0x00000d4b      0x13d Startup/startup_XMC1100.o
- .debug_line    0x00000e88      0x2f6 Startup/system_XMC1100.o
- .debug_line    0x0000117e      0x3c1 Lib/System_LibcStubs.o
- .debug_line    0x0000153f      0x969 Dave/Generated/src/UART001/UART001.o
- .debug_line    0x00001ea8      0x3e2 Dave/Generated/src/UART001/UART001_Conf.o
- .debug_line    0x0000228a      0x84e Dave/Generated/src/SYSTM001/SYSTM001.o
- .debug_line    0x00002ad8      0x711 Dave/Generated/src/IO004/IO004.o
- .debug_line    0x000031e9      0x685 Dave/Generated/src/IO004/IO004_Conf.o
- .debug_line    0x0000386e      0x674 Dave/Generated/src/DAVESupport/DAVE3.o
- .debug_line    0x00003ee2      0x699 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
- .debug_line    0x0000457b      0x738 Dave/Generated/src/CLK002/CLK002.o
+ .debug_line    0x00000000      0x774 Main.o
+ .debug_line    0x00000774      0x34f colorManagement.o
+ .debug_line    0x00000ac3      0x306 light_ws2812_cortex.o
+ .debug_line    0x00000dc9      0x13d Startup/startup_XMC1100.o
+ .debug_line    0x00000f06      0x2f6 Startup/system_XMC1100.o
+ .debug_line    0x000011fc      0x3c1 Lib/System_LibcStubs.o
+ .debug_line    0x000015bd      0x969 Dave/Generated/src/UART001/UART001.o
+ .debug_line    0x00001f26      0x3e2 Dave/Generated/src/UART001/UART001_Conf.o
+ .debug_line    0x00002308      0x84e Dave/Generated/src/SYSTM001/SYSTM001.o
+ .debug_line    0x00002b56      0x711 Dave/Generated/src/IO004/IO004.o
+ .debug_line    0x00003267      0x685 Dave/Generated/src/IO004/IO004_Conf.o
+ .debug_line    0x000038ec      0x674 Dave/Generated/src/DAVESupport/DAVE3.o
+ .debug_line    0x00003f60      0x699 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+ .debug_line    0x000045f9      0x738 Dave/Generated/src/CLK002/CLK002.o
 
-.debug_frame    0x00000000      0xb80
+.debug_frame    0x00000000      0xbc0
  *(.debug_frame)
- .debug_frame   0x00000000       0xc8 Main.o
- .debug_frame   0x000000c8       0x30 colorManagement.o
- .debug_frame   0x000000f8       0x38 light_ws2812_cortex.o
- .debug_frame   0x00000130       0x4c Startup/system_XMC1100.o
- .debug_frame   0x0000017c      0x220 Lib/System_LibcStubs.o
- .debug_frame   0x0000039c      0x1bc Dave/Generated/src/UART001/UART001.o
- .debug_frame   0x00000558      0x1b8 Dave/Generated/src/SYSTM001/SYSTM001.o
- .debug_frame   0x00000710       0x74 Dave/Generated/src/IO004/IO004.o
- .debug_frame   0x00000784       0x2c Dave/Generated/src/DAVESupport/DAVE3.o
- .debug_frame   0x000007b0       0x4c Dave/Generated/src/DAVESupport/MULTIPLEXER.o
- .debug_frame   0x000007fc       0xa8 Dave/Generated/src/CLK002/CLK002.o
- .debug_frame   0x000008a4       0x20 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
- .debug_frame   0x000008c4       0x2c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_fixunsdfsi.o)
- .debug_frame   0x000008f0       0x3c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(divsf3.o)
- .debug_frame   0x0000092c       0x2c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(eqsf2.o)
- .debug_frame   0x00000958       0x30 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(gesf2.o)
- .debug_frame   0x00000988       0x30 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(lesf2.o)
- .debug_frame   0x000009b8       0x30 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(subsf3.o)
- .debug_frame   0x000009e8       0x28 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(floatunsisf.o)
- .debug_frame   0x00000a10       0x3c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(muldf3.o)
- .debug_frame   0x00000a4c       0x38 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(subdf3.o)
- .debug_frame   0x00000a84       0x2c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(fixdfsi.o)
- .debug_frame   0x00000ab0       0x2c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(floatunsidf.o)
- .debug_frame   0x00000adc       0x34 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(eqdf2.o)
- .debug_frame   0x00000b10       0x38 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(gedf2.o)
- .debug_frame   0x00000b48       0x38 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(ledf2.o)
+ .debug_frame   0x00000000       0xe8 Main.o
+ .debug_frame   0x000000e8       0x50 colorManagement.o
+ .debug_frame   0x00000138       0x38 light_ws2812_cortex.o
+ .debug_frame   0x00000170       0x4c Startup/system_XMC1100.o
+ .debug_frame   0x000001bc      0x220 Lib/System_LibcStubs.o
+ .debug_frame   0x000003dc      0x1bc Dave/Generated/src/UART001/UART001.o
+ .debug_frame   0x00000598      0x1b8 Dave/Generated/src/SYSTM001/SYSTM001.o
+ .debug_frame   0x00000750       0x74 Dave/Generated/src/IO004/IO004.o
+ .debug_frame   0x000007c4       0x2c Dave/Generated/src/DAVESupport/DAVE3.o
+ .debug_frame   0x000007f0       0x4c Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+ .debug_frame   0x0000083c       0xa8 Dave/Generated/src/CLK002/CLK002.o
+ .debug_frame   0x000008e4       0x20 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
+ .debug_frame   0x00000904       0x2c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_fixunsdfsi.o)
+ .debug_frame   0x00000930       0x3c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(divsf3.o)
+ .debug_frame   0x0000096c       0x2c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(eqsf2.o)
+ .debug_frame   0x00000998       0x30 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(gesf2.o)
+ .debug_frame   0x000009c8       0x30 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(lesf2.o)
+ .debug_frame   0x000009f8       0x30 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(subsf3.o)
+ .debug_frame   0x00000a28       0x28 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(floatunsisf.o)
+ .debug_frame   0x00000a50       0x3c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(muldf3.o)
+ .debug_frame   0x00000a8c       0x38 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(subdf3.o)
+ .debug_frame   0x00000ac4       0x2c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(fixdfsi.o)
+ .debug_frame   0x00000af0       0x2c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(floatunsidf.o)
+ .debug_frame   0x00000b1c       0x34 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(eqdf2.o)
+ .debug_frame   0x00000b50       0x38 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(gedf2.o)
+ .debug_frame   0x00000b88       0x38 c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(ledf2.o)
 
-.debug_str      0x00000000    0x269f4
+.debug_str      0x00000000    0x26a59
  *(.debug_str)
- .debug_str     0x00000000    0x2234c Main.o
-                              0x22520 (size before relaxing)
- .debug_str     0x0002234c       0xf9 colorManagement.o
-                              0x2082d (size before relaxing)
- .debug_str     0x00022445      0x1cd light_ws2812_cortex.o
+ .debug_str     0x00000000    0x22440 Main.o
+                              0x22614 (size before relaxing)
+ .debug_str     0x00022440       0x6a colorManagement.o
+                              0x20869 (size before relaxing)
+ .debug_str     0x000224aa      0x1cd light_ws2812_cortex.o
                               0x20972 (size before relaxing)
- .debug_str     0x00022612       0xba Startup/system_XMC1100.o
+ .debug_str     0x00022677       0xba Startup/system_XMC1100.o
                               0x207ac (size before relaxing)
- .debug_str     0x000226cc     0x2e23 Lib/System_LibcStubs.o
+ .debug_str     0x00022731     0x2e23 Lib/System_LibcStubs.o
                                0x57da (size before relaxing)
- .debug_str     0x000254ef      0x9e7 Dave/Generated/src/UART001/UART001.o
+ .debug_str     0x00025554      0x9e7 Dave/Generated/src/UART001/UART001.o
                               0x22c27 (size before relaxing)
- .debug_str     0x00025ed6       0x3d Dave/Generated/src/UART001/UART001_Conf.o
+ .debug_str     0x00025f3b       0x3d Dave/Generated/src/UART001/UART001_Conf.o
                               0x2171f (size before relaxing)
- .debug_str     0x00025f13      0x772 Dave/Generated/src/SYSTM001/SYSTM001.o
+ .debug_str     0x00025f78      0x772 Dave/Generated/src/SYSTM001/SYSTM001.o
                               0x229d8 (size before relaxing)
- .debug_str     0x00026685      0x156 Dave/Generated/src/IO004/IO004.o
+ .debug_str     0x000266ea      0x156 Dave/Generated/src/IO004/IO004.o
                               0x2237f (size before relaxing)
- .debug_str     0x000267db       0x29 Dave/Generated/src/IO004/IO004_Conf.o
+ .debug_str     0x00026840       0x29 Dave/Generated/src/IO004/IO004_Conf.o
                               0x22246 (size before relaxing)
- .debug_str     0x00026804       0x34 Dave/Generated/src/DAVESupport/DAVE3.o
+ .debug_str     0x00026869       0x34 Dave/Generated/src/DAVESupport/DAVE3.o
                               0x22186 (size before relaxing)
- .debug_str     0x00026838       0x71 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+ .debug_str     0x0002689d       0x71 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
                               0x2233d (size before relaxing)
- .debug_str     0x000268a9      0x14b Dave/Generated/src/CLK002/CLK002.o
+ .debug_str     0x0002690e      0x14b Dave/Generated/src/CLK002/CLK002.o
                               0x22364 (size before relaxing)
 
-.debug_loc      0x00000000      0xd66
+.debug_loc      0x00000000      0xdd8
  *(.debug_loc)
- .debug_loc     0x00000000      0x138 Main.o
- .debug_loc     0x00000138       0x38 colorManagement.o
- .debug_loc     0x00000170       0x38 light_ws2812_cortex.o
- .debug_loc     0x000001a8       0x64 Startup/system_XMC1100.o
- .debug_loc     0x0000020c      0x388 Lib/System_LibcStubs.o
- .debug_loc     0x00000594      0x2da Dave/Generated/src/UART001/UART001.o
- .debug_loc     0x0000086e      0x2cc Dave/Generated/src/SYSTM001/SYSTM001.o
- .debug_loc     0x00000b3a       0x9c Dave/Generated/src/IO004/IO004.o
- .debug_loc     0x00000bd6       0x2c Dave/Generated/src/DAVESupport/DAVE3.o
- .debug_loc     0x00000c02       0x64 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
- .debug_loc     0x00000c66      0x100 Dave/Generated/src/CLK002/CLK002.o
+ .debug_loc     0x00000000      0x172 Main.o
+ .debug_loc     0x00000172       0x70 colorManagement.o
+ .debug_loc     0x000001e2       0x38 light_ws2812_cortex.o
+ .debug_loc     0x0000021a       0x64 Startup/system_XMC1100.o
+ .debug_loc     0x0000027e      0x388 Lib/System_LibcStubs.o
+ .debug_loc     0x00000606      0x2da Dave/Generated/src/UART001/UART001.o
+ .debug_loc     0x000008e0      0x2cc Dave/Generated/src/SYSTM001/SYSTM001.o
+ .debug_loc     0x00000bac       0x9c Dave/Generated/src/IO004/IO004.o
+ .debug_loc     0x00000c48       0x2c Dave/Generated/src/DAVESupport/DAVE3.o
+ .debug_loc     0x00000c74       0x64 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+ .debug_loc     0x00000cd8      0x100 Dave/Generated/src/CLK002/CLK002.o
 
 .debug_macinfo
  *(.debug_macinfo)
 
-.debug_ranges   0x00000000      0x290
+.debug_ranges   0x00000000      0x2a0
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x38 Main.o
- .debug_ranges  0x00000038       0x10 colorManagement.o
- .debug_ranges  0x00000048       0x10 light_ws2812_cortex.o
- .debug_ranges  0x00000058       0x38 Startup/startup_XMC1100.o
- .debug_ranges  0x00000090       0x18 Startup/system_XMC1100.o
- .debug_ranges  0x000000a8       0x90 Lib/System_LibcStubs.o
- .debug_ranges  0x00000138       0x70 Dave/Generated/src/UART001/UART001.o
- .debug_ranges  0x000001a8       0x70 Dave/Generated/src/SYSTM001/SYSTM001.o
- .debug_ranges  0x00000218       0x20 Dave/Generated/src/IO004/IO004.o
- .debug_ranges  0x00000238       0x10 Dave/Generated/src/DAVESupport/DAVE3.o
- .debug_ranges  0x00000248       0x18 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
- .debug_ranges  0x00000260       0x30 Dave/Generated/src/CLK002/CLK002.o
+ .debug_ranges  0x00000000       0x40 Main.o
+ .debug_ranges  0x00000040       0x18 colorManagement.o
+ .debug_ranges  0x00000058       0x10 light_ws2812_cortex.o
+ .debug_ranges  0x00000068       0x38 Startup/startup_XMC1100.o
+ .debug_ranges  0x000000a0       0x18 Startup/system_XMC1100.o
+ .debug_ranges  0x000000b8       0x90 Lib/System_LibcStubs.o
+ .debug_ranges  0x00000148       0x70 Dave/Generated/src/UART001/UART001.o
+ .debug_ranges  0x000001b8       0x70 Dave/Generated/src/SYSTM001/SYSTM001.o
+ .debug_ranges  0x00000228       0x20 Dave/Generated/src/IO004/IO004.o
+ .debug_ranges  0x00000248       0x10 Dave/Generated/src/DAVESupport/DAVE3.o
+ .debug_ranges  0x00000258       0x18 Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+ .debug_ranges  0x00000270       0x30 Dave/Generated/src/CLK002/CLK002.o
 
 .debug_weaknames
  *(.debug_weaknames)
@@ -1332,57 +1344,59 @@ Stack           0x20000120      0x800 load address 0x00000000
                 0x00000570       0x2c c:/dave-3.1.10/arm-gcc/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(ledf2.o)
 OUTPUT(LongboardLight.elf elf32-littlearm)
 
-.debug_macro    0x00000000     0x7e33
- .debug_macro   0x00000000      0x15f Main.o
- .debug_macro   0x0000015f      0x7f0 Main.o
- .debug_macro   0x0000094f       0x22 Main.o
- .debug_macro   0x00000971       0x3a Main.o
- .debug_macro   0x000009ab       0x3a Main.o
- .debug_macro   0x000009e5       0x10 Main.o
- .debug_macro   0x000009f5       0x2e Main.o
- .debug_macro   0x00000a23       0xa3 Main.o
- .debug_macro   0x00000ac6      0x20e Main.o
- .debug_macro   0x00000cd4       0x1f Main.o
- .debug_macro   0x00000cf3      0x242 Main.o
- .debug_macro   0x00000f35       0x36 Main.o
- .debug_macro   0x00000f6b     0x4d2c Main.o
- .debug_macro   0x00005c97      0x16c Main.o
- .debug_macro   0x00005e03       0x22 Main.o
- .debug_macro   0x00005e25      0x311 Main.o
- .debug_macro   0x00006136      0x130 Main.o
- .debug_macro   0x00006266       0xb0 Main.o
- .debug_macro   0x00006316       0x34 Main.o
- .debug_macro   0x0000634a       0x11 Main.o
- .debug_macro   0x0000635b       0x2d Main.o
- .debug_macro   0x00006388       0x28 Main.o
- .debug_macro   0x000063b0       0xac Main.o
- .debug_macro   0x0000645c       0xc0 colorManagement.o
- .debug_macro   0x0000651c       0x22 colorManagement.o
- .debug_macro   0x0000653e       0xf8 light_ws2812_cortex.o
- .debug_macro   0x00006636       0xb7 Startup/system_XMC1100.o
- .debug_macro   0x000066ed      0x119 Lib/System_LibcStubs.o
- .debug_macro   0x00006806       0x3a Lib/System_LibcStubs.o
- .debug_macro   0x00006840       0x52 Lib/System_LibcStubs.o
- .debug_macro   0x00006892       0x19 Lib/System_LibcStubs.o
- .debug_macro   0x000068ab      0x16d Lib/System_LibcStubs.o
- .debug_macro   0x00006a18       0x10 Lib/System_LibcStubs.o
- .debug_macro   0x00006a28       0x16 Lib/System_LibcStubs.o
- .debug_macro   0x00006a3e       0x89 Lib/System_LibcStubs.o
- .debug_macro   0x00006ac7       0x10 Lib/System_LibcStubs.o
- .debug_macro   0x00006ad7       0xf5 Lib/System_LibcStubs.o
- .debug_macro   0x00006bcc       0x22 Lib/System_LibcStubs.o
- .debug_macro   0x00006bee       0x91 Lib/System_LibcStubs.o
- .debug_macro   0x00006c7f       0x34 Lib/System_LibcStubs.o
- .debug_macro   0x00006cb3      0x120 Lib/System_LibcStubs.o
- .debug_macro   0x00006dd3       0x16 Lib/System_LibcStubs.o
- .debug_macro   0x00006de9       0x35 Lib/System_LibcStubs.o
- .debug_macro   0x00006e1e      0x495 Lib/System_LibcStubs.o
- .debug_macro   0x000072b3      0x1bd Dave/Generated/src/UART001/UART001.o
- .debug_macro   0x00007470       0x27 Dave/Generated/src/UART001/UART001.o
- .debug_macro   0x00007497       0xfa Dave/Generated/src/UART001/UART001_Conf.o
- .debug_macro   0x00007591      0x208 Dave/Generated/src/SYSTM001/SYSTM001.o
- .debug_macro   0x00007799      0x14c Dave/Generated/src/IO004/IO004.o
- .debug_macro   0x000078e5      0x14c Dave/Generated/src/IO004/IO004_Conf.o
- .debug_macro   0x00007a31      0x14c Dave/Generated/src/DAVESupport/DAVE3.o
- .debug_macro   0x00007b7d      0x14c Dave/Generated/src/DAVESupport/MULTIPLEXER.o
- .debug_macro   0x00007cc9      0x16a Dave/Generated/src/CLK002/CLK002.o
+.debug_macro    0x00000000     0x7e72
+ .debug_macro   0x00000000      0x167 Main.o
+ .debug_macro   0x00000167      0x7f0 Main.o
+ .debug_macro   0x00000957       0x22 Main.o
+ .debug_macro   0x00000979       0x3a Main.o
+ .debug_macro   0x000009b3       0x3a Main.o
+ .debug_macro   0x000009ed       0x10 Main.o
+ .debug_macro   0x000009fd       0x2e Main.o
+ .debug_macro   0x00000a2b       0xa3 Main.o
+ .debug_macro   0x00000ace      0x20e Main.o
+ .debug_macro   0x00000cdc       0x1f Main.o
+ .debug_macro   0x00000cfb      0x242 Main.o
+ .debug_macro   0x00000f3d       0x36 Main.o
+ .debug_macro   0x00000f73     0x4d2c Main.o
+ .debug_macro   0x00005c9f      0x16c Main.o
+ .debug_macro   0x00005e0b       0x22 Main.o
+ .debug_macro   0x00005e2d      0x311 Main.o
+ .debug_macro   0x0000613e      0x130 Main.o
+ .debug_macro   0x0000626e       0xb0 Main.o
+ .debug_macro   0x0000631e       0x34 Main.o
+ .debug_macro   0x00006352       0x11 Main.o
+ .debug_macro   0x00006363       0x2d Main.o
+ .debug_macro   0x00006390       0x28 Main.o
+ .debug_macro   0x000063b8       0x10 Main.o
+ .debug_macro   0x000063c8       0xac Main.o
+ .debug_macro   0x00006474       0x28 Main.o
+ .debug_macro   0x0000649c       0xbf colorManagement.o
+ .debug_macro   0x0000655b       0x22 colorManagement.o
+ .debug_macro   0x0000657d       0xf8 light_ws2812_cortex.o
+ .debug_macro   0x00006675       0xb7 Startup/system_XMC1100.o
+ .debug_macro   0x0000672c      0x119 Lib/System_LibcStubs.o
+ .debug_macro   0x00006845       0x3a Lib/System_LibcStubs.o
+ .debug_macro   0x0000687f       0x52 Lib/System_LibcStubs.o
+ .debug_macro   0x000068d1       0x19 Lib/System_LibcStubs.o
+ .debug_macro   0x000068ea      0x16d Lib/System_LibcStubs.o
+ .debug_macro   0x00006a57       0x10 Lib/System_LibcStubs.o
+ .debug_macro   0x00006a67       0x16 Lib/System_LibcStubs.o
+ .debug_macro   0x00006a7d       0x89 Lib/System_LibcStubs.o
+ .debug_macro   0x00006b06       0x10 Lib/System_LibcStubs.o
+ .debug_macro   0x00006b16       0xf5 Lib/System_LibcStubs.o
+ .debug_macro   0x00006c0b       0x22 Lib/System_LibcStubs.o
+ .debug_macro   0x00006c2d       0x91 Lib/System_LibcStubs.o
+ .debug_macro   0x00006cbe       0x34 Lib/System_LibcStubs.o
+ .debug_macro   0x00006cf2      0x120 Lib/System_LibcStubs.o
+ .debug_macro   0x00006e12       0x16 Lib/System_LibcStubs.o
+ .debug_macro   0x00006e28       0x35 Lib/System_LibcStubs.o
+ .debug_macro   0x00006e5d      0x495 Lib/System_LibcStubs.o
+ .debug_macro   0x000072f2      0x1bd Dave/Generated/src/UART001/UART001.o
+ .debug_macro   0x000074af       0x27 Dave/Generated/src/UART001/UART001.o
+ .debug_macro   0x000074d6       0xfa Dave/Generated/src/UART001/UART001_Conf.o
+ .debug_macro   0x000075d0      0x208 Dave/Generated/src/SYSTM001/SYSTM001.o
+ .debug_macro   0x000077d8      0x14c Dave/Generated/src/IO004/IO004.o
+ .debug_macro   0x00007924      0x14c Dave/Generated/src/IO004/IO004_Conf.o
+ .debug_macro   0x00007a70      0x14c Dave/Generated/src/DAVESupport/DAVE3.o
+ .debug_macro   0x00007bbc      0x14c Dave/Generated/src/DAVESupport/MULTIPLEXER.o
+ .debug_macro   0x00007d08      0x16a Dave/Generated/src/CLK002/CLK002.o

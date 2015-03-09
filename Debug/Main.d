@@ -19,7 +19,7 @@ Main.d Main.o: ../Main.c \
  C:\DAVE3_workspace\ws3.1.10\LongboardLight\Dave\Generated\inc\DAVESupport/../../inc/IO004/IO004.h \
  C:\DAVE3_workspace\ws3.1.10\LongboardLight\Dave\Generated\inc\DAVESupport/../../inc/IO004/IO004_Conf.h \
  C:\DAVE3_workspace\ws3.1.10\LongboardLight\Dave\Generated\inc\DAVESupport/../../inc/SYSTM001/SYSTM001.h \
- ../colorManagement.h ../GPIO.h
+ ../colorManagement.h ../GPIO.h ../light_ws2812_cortex.h
 
 C:\DAVE3_workspace\ws3.1.10\LongboardLight\Dave\Generated\inc\DAVESupport/DAVE3.h:
 
@@ -64,3 +64,5 @@ C:\DAVE3_workspace\ws3.1.10\LongboardLight\Dave\Generated\inc\DAVESupport/../../
 ../colorManagement.h:
 
 ../GPIO.h:
+
+../light_ws2812_cortex.h:

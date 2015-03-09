@@ -75,8 +75,6 @@ const uint8_t yello[] = {0xFF,0xFF,0x00,0xFF,0xFF,0x00,0xFF,0xFF,0x00,0xFF,0xFF,
 
 void updateWS2812LEDs(enum colorState state)
 {
-
-
 	switch(state)
 	{
 	case RGB:
@@ -127,4 +125,32 @@ void updateWS2812LEDs(enum colorState state)
 	default:
 		break;
 	}
+}
+
+
+
+
+void redDotOnBlueLine(uint8_t *leds)
+{
+	static uint8_t redPosition = 0;
+
+	//delete actual red dot, turn him blue
+	leds[3*redPosition  ] = 0x00;
+	leds[3*redPosition+1] = 0x00;
+	leds[3*redPosition+2] = 0xFF;
+
+	redPosition++;
+	if(redPosition == WS2812_QUANTITY)
+		redPosition = 0;
+
+	//make new red dot
+	leds[3*redPosition  ] = 0x00;
+	leds[3*redPosition+1] = 0xFF;
+	leds[3*redPosition+2] = 0x00;
+
+	//write new colors to to LEDS:
+	ws2812_sendarray(leds, WS2812_QUANTITY*3);
+	ws2812_sendarray(leds, WS2812_QUANTITY*3);
+	ws2812_sendarray(leds, WS2812_QUANTITY*3);
+	ws2812_sendarray(leds, WS2812_QUANTITY*3);
 }

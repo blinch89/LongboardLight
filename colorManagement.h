@@ -8,6 +8,8 @@
 #ifndef COLORMANAGEMENT_H_
 #define COLORMANAGEMENT_H_
 
+#define WS2812_QUANTITY 21
+
 enum colorState
 {
 	OFF,
@@ -18,9 +20,11 @@ enum colorState
 	BLUE,
 	PURPLE,
 	YELLOW,
-	CYAN
+	CYAN,
+	REDDOT,
 };
 
 void updateWS2812LEDs(enum colorState state);
+void redDotOnBlueLine(uint8_t *leds);
 
 #endif /* COLORMANAGEMENT_H_ */
