@@ -32,26 +32,44 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h3>
-<a id="top-line-1" class="anchor" href="#top-line-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>top line 1.</h3>
+<a id="hardware" class="anchor" href="#hardware" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hardware</h3>
 
-<p>some text.</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>another text</p>
+<ul>
+<li>LEDs: a strip of WS2812 or WS2811, 30LEDs/meter</li>
+<li>microcontroller: XMC2GO (ARM Cortex M0)</li>
+<li>power supply: 2,2Ah USB power bank, max. current 1A<br>
+(not enough, when all 21 LEDs are white at full brightness, Voltage drops to 3.4V but everything is working fine)</li>
+</ul>
 
 <h3>
-<a id="top-line-2" class="anchor" href="#top-line-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>top line 2</h3>
+<a id="firmware" class="anchor" href="#firmware" aria-hidden="true"><span class="octicon octicon-link"></span></a>Firmware</h3>
 
-<p>bla</p>
+<ul>
+<li>WS2812 driver library from CPLDCPU, <a href="https://github.com/cpldcpu/light_ws2812">https://github.com/cpldcpu/light_ws2812</a>
+</li>
+<li>switching between different modes or color patterns via button</li>
+</ul>
 
 <h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a id="todos" class="anchor" href="#todos" aria-hidden="true"><span class="octicon octicon-link"></span></a>TODOs</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="https://help.github.com/pages">https://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<ul>
+<li>a more secure USB power bank mounting</li>
+<li>attach an inductive sensor to the truck and insert a piece of metal into one wheel to detect the longboards actual speed</li>
+<li>implement some light animations controlled by the longboards actual speed</li>
+<li>build a boost converter, because 24V is needed for an industrial inductive sensor</li>
+</ul>
+
+<h3>
+<a id="what-it-looks-like" class="anchor" href="#what-it-looks-like" aria-hidden="true"><span class="octicon octicon-link"></span></a>What it looks like</h3>
+
+<p>Some more and better pictures will follow soon...</p>
+
+<hr>
+
+<p>THANKS to CPLDCPU for his awesome WS2812 driver</p>
+
+<p><a href="https://github.com/cpldcpu/light_ws2812">https://github.com/cpldcpu/light_ws2812</a></p>
       </section>
     </div>
 
