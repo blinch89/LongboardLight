@@ -9,6 +9,7 @@
 #define COLORMANAGEMENT_H_
 
 #define WS2812_QUANTITY 21
+#define BRIGHTNESS		0xFF
 
 enum colorState
 {
@@ -25,6 +26,6 @@ enum colorState
 };
 
 void updateWS2812LEDs(enum colorState state);
-void redDotOnBlueLine(uint8_t *leds);
+void redDotOnBlueLine(void *leds);
 
 #endif /* COLORMANAGEMENT_H_ */

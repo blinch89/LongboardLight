@@ -30,7 +30,6 @@
 
 void ws2812_sendarray(uint8_t *data,int datlen)
 {
-	//__disable_irq();
 	uint32_t maskhi = ws2812_mask_set;
 	uint32_t masklo = ws2812_mask_clr;
 	volatile uint32_t *set = ws2812_port_set;
@@ -105,6 +104,5 @@ void ws2812_sendarray(uint8_t *data,int datlen)
 			:	[dat] "r" (curbyte), [set] "r" (set), [clr] "r" (clr), [masklo] "r" (masklo), [maskhi] "r" (maskhi)
 			);
 	}
-	//__enable_irq();
 }
 
