@@ -91,12 +91,6 @@ void DAVE_Init(void)
 	//  Initialization of app 'CLK002'		     
 	CLK002_Init();
 	 
-	//  Initialization of app 'UART001'		     
-	UART001_Init();
-	 
-	//  Initialization of app 'IO004'		     
-	IO004_Init();
-	 
 	//  Initialization of app 'SYSTM001'		     
 	SYSTM001_Init();
 	

@@ -10,7 +10,7 @@
   10              		.eabi_attribute 34, 0
   11              		.eabi_attribute 18, 4
   12              		.code	16
-  13              		.file	"Main.c"
+  13              		.file	"main.c"
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
@@ -476,28 +476,28 @@
  161              		.thumb_func
  163              	main:
  164              	.LFB397:
- 165              		.file 2 "../Main.c"
-   1:../Main.c     **** /*
-   2:../Main.c     ****  * Main.c
-   3:../Main.c     ****  *
-   4:../Main.c     ****  *  Created on: 06.03.2015
-   5:../Main.c     ****  *      Author: blinch89
-   6:../Main.c     ****  */
-   7:../Main.c     **** 
-   8:../Main.c     **** #include <DAVE3.h>			//Declarations from DAVE3 Code Generation (includes SFR declaration)
-   9:../Main.c     **** #include "colorManagement.h"
-  10:../Main.c     **** #include "XMC1100.h"
-  11:../Main.c     **** #include "GPIO.h"
-  12:../Main.c     **** #include "light_ws2812_cortex.h"
-  13:../Main.c     **** #include "core_cmFunc.h"
-  14:../Main.c     **** 
-  15:../Main.c     **** void updateOnboardLEDs();
-  16:../Main.c     **** void buttonRead(void *ptr);
-  17:../Main.c     **** 
-  18:../Main.c     **** handle_t animationTimer;
-  19:../Main.c     **** 
-  20:../Main.c     **** int main(void)
-  21:../Main.c     **** {
+ 165              		.file 2 "../main.c"
+   1:../main.c     **** /*
+   2:../main.c     ****  * Main.c
+   3:../main.c     ****  *
+   4:../main.c     ****  *  Created on: 06.03.2015
+   5:../main.c     ****  *      Author: blinch89
+   6:../main.c     ****  */
+   7:../main.c     **** 
+   8:../main.c     **** #include <DAVE3.h>			//Declarations from DAVE3 Code Generation (includes SFR declaration)
+   9:../main.c     **** #include "colorManagement.h"
+  10:../main.c     **** #include "XMC1100.h"
+  11:../main.c     **** #include "GPIO.h"
+  12:../main.c     **** #include "light_ws2812_cortex.h"
+  13:../main.c     **** #include "core_cmFunc.h"
+  14:../main.c     **** 
+  15:../main.c     **** void updateOnboardLEDs();
+  16:../main.c     **** void buttonRead(void *ptr);
+  17:../main.c     **** 
+  18:../main.c     **** handle_t animationTimer;
+  19:../main.c     **** 
+  20:../main.c     **** int main(void)
+  21:../main.c     **** {
  166              		.loc 2 21 0
  167              		.cfi_startproc
  168 0000 80B5     		push	{r7, lr}
@@ -511,17 +511,17 @@
  176 0004 00AF     		add	r7, sp, #0
  177              	.LCFI10:
  178              		.cfi_def_cfa_register 7
-  22:../Main.c     **** 	uint8_t stripe[WS2812_QUANTITY*3];
-  23:../Main.c     **** 	enum colorState state = OFF;	//this should be volatile, I think
+  22:../main.c     **** 	uint8_t stripe[WS2812_QUANTITY*3];
+  23:../main.c     **** 	enum colorState state = OFF;	//this should be volatile, I think
  179              		.loc 2 23 0
  180 0006 FB1D     		add	r3, r7, #7
  181 0008 0022     		mov	r2, #0
  182 000a 1A70     		strb	r2, [r3]
  183              	.LBB7:
-  24:../Main.c     **** //	status_t status;		// Declaration of return variable for DAVE3 APIs (toggle comment if required)
-  25:../Main.c     **** 
-  26:../Main.c     **** 	//init stripe array for an animation to blue color, all leds
-  27:../Main.c     **** 	for(uint8_t i=0 ; i<(sizeof(stripe)/3) ; i++)
+  24:../main.c     **** //	status_t status;		// Declaration of return variable for DAVE3 APIs (toggle comment if required)
+  25:../main.c     **** 
+  26:../main.c     **** 	//init stripe array for an animation to blue color, all leds
+  27:../main.c     **** 	for(uint8_t i=0 ; i<(sizeof(stripe)/3) ; i++)
  184              		.loc 2 27 0
  185 000c 3B1C     		mov	r3, r7
  186 000e 4F33     		add	r3, r3, #79
@@ -529,8 +529,8 @@
  188 0012 1A70     		strb	r2, [r3]
  189 0014 26E0     		b	.L12
  190              	.L13:
-  28:../Main.c     **** 	{
-  29:../Main.c     **** 		stripe[3*i]   = 0x00;
+  28:../main.c     **** 	{
+  29:../main.c     **** 		stripe[3*i]   = 0x00;
  191              		.loc 2 29 0 discriminator 2
  192 0016 3B1C     		mov	r3, r7
  193 0018 4F33     		add	r3, r3, #79
@@ -542,7 +542,7 @@
  199 0024 0832     		add	r2, r2, #8
  200 0026 0021     		mov	r1, #0
  201 0028 D154     		strb	r1, [r2, r3]
-  30:../Main.c     **** 		stripe[3*i+1] = 0x00;
+  30:../main.c     **** 		stripe[3*i+1] = 0x00;
  202              		.loc 2 30 0 discriminator 2
  203 002a 3B1C     		mov	r3, r7
  204 002c 4F33     		add	r3, r3, #79
@@ -555,7 +555,7 @@
  211 003a 0832     		add	r2, r2, #8
  212 003c 0021     		mov	r1, #0
  213 003e D154     		strb	r1, [r2, r3]
-  31:../Main.c     **** 		stripe[3*i+2] = BRIGHTNESS;
+  31:../main.c     **** 		stripe[3*i+2] = BRIGHTNESS;
  214              		.loc 2 31 0 discriminator 2
  215 0040 3B1C     		mov	r3, r7
  216 0042 4F33     		add	r3, r3, #79
@@ -568,7 +568,7 @@
  223 0050 0832     		add	r2, r2, #8
  224 0052 FF21     		mov	r1, #255
  225 0054 D154     		strb	r1, [r2, r3]
-  27:../Main.c     **** 	for(uint8_t i=0 ; i<(sizeof(stripe)/3) ; i++)
+  27:../main.c     **** 	for(uint8_t i=0 ; i<(sizeof(stripe)/3) ; i++)
  226              		.loc 2 27 0 discriminator 2
  227 0056 3B1C     		mov	r3, r7
  228 0058 4F33     		add	r3, r3, #79
@@ -578,7 +578,7 @@
  232 0060 0132     		add	r2, r2, #1
  233 0062 1A70     		strb	r2, [r3]
  234              	.L12:
-  27:../Main.c     **** 	for(uint8_t i=0 ; i<(sizeof(stripe)/3) ; i++)
+  27:../main.c     **** 	for(uint8_t i=0 ; i<(sizeof(stripe)/3) ; i++)
  235              		.loc 2 27 0 is_stmt 0 discriminator 1
  236 0064 3B1C     		mov	r3, r7
  237 0066 4F33     		add	r3, r3, #79
@@ -586,24 +586,22 @@
  239 006a 142B     		cmp	r3, #20
  240 006c D3D9     		bls	.L13
  241              	.LBE7:
-  32:../Main.c     **** 	}
-  33:../Main.c     **** 
-  34:../Main.c     **** 	DAVE_Init();			// Initialization of DAVE Apps
+  32:../main.c     **** 	}
+  33:../main.c     **** 
+  34:../main.c     **** 	DAVE_Init();			// Initialization of DAVE Apps
  242              		.loc 2 34 0 is_stmt 1
  243 006e FFF7FEFF 		bl	DAVE_Init
-  35:../Main.c     **** 	handle_t timer;
-  36:../Main.c     **** 	P0_5_set_mode(OUTPUT_PP_GP); 	//WS2812 data pin
+  35:../main.c     **** 	handle_t timer;
+  36:../main.c     **** 	P0_5_set_mode(OUTPUT_PP_GP); 	//WS2812 data pin
  244              		.loc 2 36 0
  245 0072 8020     		mov	r0, #128
  246 0074 FFF7FEFF 		bl	P0_5_set_mode
-  37:../Main.c     **** 	P0_6_set_mode(INPUT_PU);     	//button
+  37:../main.c     **** 	P0_6_set_mode(INPUT_PU);     	//button;
  247              		.loc 2 37 0
  248 0078 1020     		mov	r0, #16
  249 007a FFF7FEFF 		bl	P0_6_set_mode
-  38:../Main.c     **** 	//timer=SYSTM001_CreateTimer(500,SYSTM001_PERIODIC,updateOnboardLEDs,NULL);
-  39:../Main.c     **** 	//SYSTM001_StartTimer(timer);
-  40:../Main.c     **** 	timer=SYSTM001_CreateTimer(400,SYSTM001_PERIODIC,buttonRead,&state);
- 250              		.loc 2 40 0
+  38:../main.c     **** 	timer=SYSTM001_CreateTimer(400,SYSTM001_PERIODIC,buttonRead,&state);
+ 250              		.loc 2 38 0
  251 007e C823     		mov	r3, #200
  252 0080 5900     		lsl	r1, r3, #1
  253 0082 0B4A     		ldr	r2, .L15
@@ -613,13 +611,13 @@
  257 008a FFF7FEFF 		bl	SYSTM001_CreateTimer
  258 008e 031C     		mov	r3, r0
  259 0090 BB64     		str	r3, [r7, #72]
-  41:../Main.c     **** 	SYSTM001_StartTimer(timer);
- 260              		.loc 2 41 0
+  39:../main.c     **** 	SYSTM001_StartTimer(timer);
+ 260              		.loc 2 39 0
  261 0092 BB6C     		ldr	r3, [r7, #72]
  262 0094 181C     		mov	r0, r3
  263 0096 FFF7FEFF 		bl	SYSTM001_StartTimer
-  42:../Main.c     **** 	animationTimer=SYSTM001_CreateTimer(10,SYSTM001_PERIODIC,redDotOnBlueLine,stripe);
- 264              		.loc 2 42 0
+  40:../main.c     **** 	animationTimer=SYSTM001_CreateTimer(10,SYSTM001_PERIODIC,redDotOnBlueLine,stripe);
+ 264              		.loc 2 40 0
  265 009a 064A     		ldr	r2, .L15+4
  266 009c 3B1C     		mov	r3, r7
  267 009e 0833     		add	r3, r3, #8
@@ -630,8 +628,8 @@
  272 00aa 034B     		ldr	r3, .L15+8
  273 00ac 1A60     		str	r2, [r3]
  274              	.L14:
-  43:../Main.c     **** 	while(1){}
- 275              		.loc 2 43 0 discriminator 1
+  41:../main.c     **** 	while(1){}
+ 275              		.loc 2 41 0 discriminator 1
  276 00ae FEE7     		b	.L14
  277              	.L16:
  278              		.align	2
@@ -648,21 +646,12 @@
  290              		.thumb_func
  292              	buttonRead:
  293              	.LFB398:
-  44:../Main.c     **** 	return 0;
-  45:../Main.c     **** }
-  46:../Main.c     **** 
-  47:../Main.c     **** 
-  48:../Main.c     **** /*
-  49:../Main.c     **** void updateOnboardLEDs()
-  50:../Main.c     **** {
-  51:../Main.c     **** 	IO004_TogglePin(IO004_Handle0);
-  52:../Main.c     **** 	IO004_TogglePin(IO004_Handle1);
-  53:../Main.c     **** }
-  54:../Main.c     **** */
-  55:../Main.c     **** 
-  56:../Main.c     **** void buttonRead(void *ptr)
-  57:../Main.c     **** {
- 294              		.loc 2 57 0
+  42:../main.c     **** 	return 0;
+  43:../main.c     **** }
+  44:../main.c     **** 
+  45:../main.c     **** void buttonRead(void *ptr)
+  46:../main.c     **** {
+ 294              		.loc 2 46 0
  295              		.cfi_startproc
  296 0000 80B5     		push	{r7, lr}
  297              	.LCFI11:
@@ -676,42 +665,42 @@
  305              	.LCFI13:
  306              		.cfi_def_cfa_register 7
  307 0006 7860     		str	r0, [r7, #4]
-  58:../Main.c     **** 	if(!P0_6_read()) //button pressed?
- 308              		.loc 2 58 0
+  47:../main.c     **** 	if(!P0_6_read()) //button pressed?
+ 308              		.loc 2 47 0
  309 0008 FFF7FEFF 		bl	P0_6_read
  310 000c 031C     		mov	r3, r0
  311 000e 002B     		cmp	r3, #0
  312 0010 25D1     		bne	.L17
  313              	.LBB8:
-  59:../Main.c     **** 	{
-  60:../Main.c     **** 		enum colorState *lightState = ptr;
- 314              		.loc 2 60 0
+  48:../main.c     **** 	{
+  49:../main.c     **** 		enum colorState *lightState = ptr;
+ 314              		.loc 2 49 0
  315 0012 7B68     		ldr	r3, [r7, #4]
  316 0014 FB60     		str	r3, [r7, #12]
-  61:../Main.c     **** 
-  62:../Main.c     **** 		if(*lightState == REDDOT)
- 317              		.loc 2 62 0
+  50:../main.c     **** 
+  51:../main.c     **** 		if(*lightState == REDDOT)
+ 317              		.loc 2 51 0
  318 0016 FB68     		ldr	r3, [r7, #12]
  319 0018 1B78     		ldrb	r3, [r3]
  320 001a 092B     		cmp	r3, #9
  321 001c 08D1     		bne	.L19
-  63:../Main.c     **** 		{
-  64:../Main.c     **** 			SYSTM001_StopTimer(animationTimer);
- 322              		.loc 2 64 0
+  52:../main.c     **** 		{
+  53:../main.c     **** 			SYSTM001_StopTimer(animationTimer);
+ 322              		.loc 2 53 0
  323 001e 114B     		ldr	r3, .L22
  324 0020 1B68     		ldr	r3, [r3]
  325 0022 181C     		mov	r0, r3
  326 0024 FFF7FEFF 		bl	SYSTM001_StopTimer
-  65:../Main.c     **** 			*lightState = OFF; //REDDOT is last Value of enum
- 327              		.loc 2 65 0
+  54:../main.c     **** 			*lightState = OFF; //REDDOT is last Value of enum
+ 327              		.loc 2 54 0
  328 0028 FB68     		ldr	r3, [r7, #12]
  329 002a 0022     		mov	r2, #0
  330 002c 1A70     		strb	r2, [r3]
  331 002e 05E0     		b	.L20
  332              	.L19:
-  66:../Main.c     **** 		}
-  67:../Main.c     **** 		else (*lightState)++;
- 333              		.loc 2 67 0
+  55:../main.c     **** 		}
+  56:../main.c     **** 		else (*lightState)++;
+ 333              		.loc 2 56 0
  334 0030 FB68     		ldr	r3, [r7, #12]
  335 0032 1B78     		ldrb	r3, [r3]
  336 0034 0133     		add	r3, r3, #1
@@ -719,15 +708,15 @@
  338 0038 FB68     		ldr	r3, [r7, #12]
  339 003a 1A70     		strb	r2, [r3]
  340              	.L20:
-  68:../Main.c     **** 
-  69:../Main.c     **** 		if(*lightState == REDDOT)
- 341              		.loc 2 69 0
+  57:../main.c     **** 
+  58:../main.c     **** 		if(*lightState == REDDOT)
+ 341              		.loc 2 58 0
  342 003c FB68     		ldr	r3, [r7, #12]
  343 003e 1B78     		ldrb	r3, [r3]
  344 0040 092B     		cmp	r3, #9
  345 0042 05D1     		bne	.L21
-  70:../Main.c     **** 			SYSTM001_StartTimer(animationTimer);
- 346              		.loc 2 70 0
+  59:../main.c     **** 			SYSTM001_StartTimer(animationTimer);
+ 346              		.loc 2 59 0
  347 0044 074B     		ldr	r3, .L22
  348 0046 1B68     		ldr	r3, [r3]
  349 0048 181C     		mov	r0, r3
@@ -1086,11 +1075,11 @@
  360              		.code	16
  361              	.LBE10:
  362              	.LBE9:
-  71:../Main.c     **** 		else
-  72:../Main.c     **** 		{
-  73:../Main.c     **** 			__disable_irq();
-  74:../Main.c     **** 			updateWS2812LEDs(*lightState);
- 363              		.loc 2 74 0
+  60:../main.c     **** 		else
+  61:../main.c     **** 		{
+  62:../main.c     **** 			__disable_irq();
+  63:../main.c     **** 			updateWS2812LEDs(*lightState);
+ 363              		.loc 2 63 0
  364 0052 FB68     		ldr	r3, [r7, #12]
  365 0054 1B78     		ldrb	r3, [r3]
  366 0056 181C     		mov	r0, r3
@@ -1107,11 +1096,11 @@
  376              	.LBE12:
  377              	.LBE11:
  378              	.LBE8:
-  75:../Main.c     **** 			__enable_irq();
-  76:../Main.c     **** 		}
-  77:../Main.c     **** 	}
-  78:../Main.c     **** }
- 379              		.loc 2 78 0
+  64:../main.c     **** 			__enable_irq();
+  65:../main.c     **** 		}
+  66:../main.c     **** 	}
+  67:../main.c     **** }
+ 379              		.loc 2 67 0
  380 005e BD46     		mov	sp, r7
  381 0060 04B0     		add	sp, sp, #16
  382              		@ sp needed for prologue
@@ -1130,23 +1119,23 @@
  396              		.file 7 "C:\\DAVE3_workspace\\ws3.1.10\\LongboardLight\\Dave\\Generated\\inc\\DAVESupport/../../in
  397              		.file 8 "../colorManagement.h"
 DEFINED SYMBOLS
-                            *ABS*:00000000 Main.c
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:18     .text.P0_5_set_mode:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:22     .text.P0_5_set_mode:00000000 P0_5_set_mode
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:65     .text.P0_5_set_mode:00000030 $d
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:71     .text.P0_6_set_mode:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:75     .text.P0_6_set_mode:00000000 P0_6_set_mode
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:117    .text.P0_6_set_mode:00000030 $d
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:123    .text.P0_6_read:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:127    .text.P0_6_read:00000000 P0_6_read
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:152    .text.P0_6_read:00000014 $d
+                            *ABS*:00000000 main.c
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:18     .text.P0_5_set_mode:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:22     .text.P0_5_set_mode:00000000 P0_5_set_mode
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:65     .text.P0_5_set_mode:00000030 $d
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:71     .text.P0_6_set_mode:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:75     .text.P0_6_set_mode:00000000 P0_6_set_mode
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:117    .text.P0_6_set_mode:00000030 $d
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:123    .text.P0_6_read:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:127    .text.P0_6_read:00000000 P0_6_read
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:152    .text.P0_6_read:00000014 $d
                             *COM*:00000004 animationTimer
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:158    .text.main:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:163    .text.main:00000000 main
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:280    .text.main:000000b0 $d
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:292    .text.buttonRead:00000000 buttonRead
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:287    .text.buttonRead:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:387    .text.buttonRead:00000064 $d
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:158    .text.main:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:163    .text.main:00000000 main
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:280    .text.main:000000b0 $d
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:292    .text.buttonRead:00000000 buttonRead
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:287    .text.buttonRead:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccsmA6q2.s:387    .text.buttonRead:00000064 $d
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.4f34ab06ae2725aaf04d3230f4ec23a7
                            .group:00000000 wm4.XMC1100.h.45.7a7cd799d7738130fcda8b83b0aa37d4
@@ -1163,11 +1152,6 @@ C:\Users\blinch\AppData\Local\Temp\ccuXX3W9.s:387    .text.buttonRead:00000064 $
                            .group:00000000 wm4.stddef.h.40.50cf36416e06376af8a9dca28536f2e4
                            .group:00000000 wm4.types.h.60.e75c47576398c648cdcf9000ace5e3d8
                            .group:00000000 wm4.MULTIPLEXER.h.46.383e3edbb9cbf6e538f7c1532ef623c1
-                           .group:00000000 wm4.uc_id.h.35.eaf9b374d895319eacbb56387e04af18
-                           .group:00000000 wm4.Usic.h.90.22743468abc46f16747d12430b219aaf
-                           .group:00000000 wm4.UART001_Conf.h.53.aebc8f191a793f9f63edb41ad937b6a4
-                           .group:00000000 wm4.UART001.h.109.3e835815a7a59791d8bd39655f4d4cc9
-                           .group:00000000 wm4.IO004.h.53.442ea5eb47ad9eedc675253aa35f3107
                            .group:00000000 wm4.SYSTM001.h.64.af8873ad2b760a8c44fafec70d7e8a7e
                            .group:00000000 wm4.colorManagement.h.9.aec7e36cf16c992a4558b1f1b89b527f
                            .group:00000000 wm4.GPIO.h.2.93bf17ee3a853f64308a0e4d0c9f6a08

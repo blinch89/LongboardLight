@@ -223,12 +223,12 @@
  117              		.file 2 "c:\\dave-3.1.10\\arm-gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/i
 DEFINED SYMBOLS
                             *ABS*:00000000 light_ws2812_cortex.c
-C:\Users\blinch\AppData\Local\Temp\cc2z6D7U.s:18     .text.ws2812_sendarray:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\cc2z6D7U.s:23     .text.ws2812_sendarray:00000000 ws2812_sendarray
-C:\Users\blinch\AppData\Local\Temp\cc2z6D7U.s:76     .text.ws2812_sendarray:0000003a ilop45
-C:\Users\blinch\AppData\Local\Temp\cc2z6D7U.s:82     .text.ws2812_sendarray:00000044 one45
-C:\Users\blinch\AppData\Local\Temp\cc2z6D7U.s:87     .text.ws2812_sendarray:0000004c end45
-C:\Users\blinch\AppData\Local\Temp\cc2z6D7U.s:111    .text.ws2812_sendarray:00000068 $d
+C:\Users\blinch\AppData\Local\Temp\ccqTJDLr.s:18     .text.ws2812_sendarray:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccqTJDLr.s:23     .text.ws2812_sendarray:00000000 ws2812_sendarray
+C:\Users\blinch\AppData\Local\Temp\ccqTJDLr.s:76     .text.ws2812_sendarray:0000003a ilop45
+C:\Users\blinch\AppData\Local\Temp\ccqTJDLr.s:82     .text.ws2812_sendarray:00000044 one45
+C:\Users\blinch\AppData\Local\Temp\ccqTJDLr.s:87     .text.ws2812_sendarray:0000004c end45
+C:\Users\blinch\AppData\Local\Temp\ccqTJDLr.s:111    .text.ws2812_sendarray:00000068 $d
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.4f34ab06ae2725aaf04d3230f4ec23a7
                            .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5

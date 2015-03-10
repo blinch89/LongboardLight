@@ -27,28 +27,8 @@
                 <Type>C File</Type>
             </Source_File>
             <Source_File>
-                <File_Name>IO004.c</File_Name>
-                <Path>\Dave\Generated\src\IO004\IO004.c</Path>
-                <Type>C File</Type>
-            </Source_File>
-            <Source_File>
-                <File_Name>IO004_Conf.c</File_Name>
-                <Path>\Dave\Generated\src\IO004\IO004_Conf.c</Path>
-                <Type>C File</Type>
-            </Source_File>
-            <Source_File>
                 <File_Name>SYSTM001.c</File_Name>
                 <Path>\Dave\Generated\src\SYSTM001\SYSTM001.c</Path>
-                <Type>C File</Type>
-            </Source_File>
-            <Source_File>
-                <File_Name>UART001.c</File_Name>
-                <Path>\Dave\Generated\src\UART001\UART001.c</Path>
-                <Type>C File</Type>
-            </Source_File>
-            <Source_File>
-                <File_Name>UART001_Conf.c</File_Name>
-                <Path>\Dave\Generated\src\UART001\UART001_Conf.c</Path>
                 <Type>C File</Type>
             </Source_File>
         </Source_Files>
@@ -79,16 +59,6 @@
                 <Type>H File</Type>
             </Header_File>
             <Header_File>
-                <File_Name>IO004.h</File_Name>
-                <Path>\Dave\Generated\inc\IO004\IO004.h</Path>
-                <Type>H File</Type>
-            </Header_File>
-            <Header_File>
-                <File_Name>IO004_Conf.h</File_Name>
-                <Path>\Dave\Generated\inc\IO004\IO004_Conf.h</Path>
-                <Type>H File</Type>
-            </Header_File>
-            <Header_File>
                 <File_Name>LIBS.h</File_Name>
                 <Path>\Dave\Generated\inc\LIBS\LIBS.h</Path>
                 <Type>H File</Type>
@@ -101,26 +71,6 @@
             <Header_File>
                 <File_Name>SYSTM001.h</File_Name>
                 <Path>\Dave\Generated\inc\SYSTM001\SYSTM001.h</Path>
-                <Type>H File</Type>
-            </Header_File>
-            <Header_File>
-                <File_Name>UART001.h</File_Name>
-                <Path>\Dave\Generated\inc\UART001\UART001.h</Path>
-                <Type>H File</Type>
-            </Header_File>
-            <Header_File>
-                <File_Name>UART001_Conf.h</File_Name>
-                <Path>\Dave\Generated\inc\UART001\UART001_Conf.h</Path>
-                <Type>H File</Type>
-            </Header_File>
-            <Header_File>
-                <File_Name>UART001_Extern.h</File_Name>
-                <Path>\Dave\Generated\inc\UART001\UART001_Extern.h</Path>
-                <Type>H File</Type>
-            </Header_File>
-            <Header_File>
-                <File_Name>Usic.h</File_Name>
-                <Path>\Dave\Generated\inc\UART001\Usic.h</Path>
                 <Type>H File</Type>
             </Header_File>
         </Header_Files>

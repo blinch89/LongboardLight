@@ -79,50 +79,30 @@ void updateWS2812LEDs(enum colorState state)
 	{
 	case RGB:
 		ws2812_sendarray((uint8_t*)rgb, sizeof(rgb));
-//		ws2812_sendarray((uint8_t*)rgb, sizeof(rgb));
-//		ws2812_sendarray((uint8_t*)rgb, sizeof(rgb));
-//		ws2812_sendarray((uint8_t*)rgb, sizeof(rgb));
-//		ws2812_sendarray((uint8_t*)rgb, sizeof(rgb));
 		break;
 	case RED:
 		ws2812_sendarray((uint8_t*)red, sizeof(red));
-//		ws2812_sendarray((uint8_t*)red, sizeof(red));
-//		ws2812_sendarray((uint8_t*)red, sizeof(red));
 		break;
 	case GREEN:
 		ws2812_sendarray((uint8_t*)green, sizeof(green));
-//		ws2812_sendarray((uint8_t*)green, sizeof(green));
-//		ws2812_sendarray((uint8_t*)green, sizeof(green));
 		break;
 	case BLUE:
 		ws2812_sendarray((uint8_t*)blue, sizeof(blue));
-//		ws2812_sendarray((uint8_t*)blue, sizeof(blue));
-//		ws2812_sendarray((uint8_t*)blue, sizeof(blue));
 		break;
 	case WHITE:
 		ws2812_sendarray((uint8_t*)white, sizeof(white));
-//		ws2812_sendarray((uint8_t*)white, sizeof(white));
-//		ws2812_sendarray((uint8_t*)white, sizeof(white));
 		break;
 	case YELLOW:
 		ws2812_sendarray((uint8_t*)yello, sizeof(yello));
-//		ws2812_sendarray((uint8_t*)yello, sizeof(yello));
-//		ws2812_sendarray((uint8_t*)yello, sizeof(yello));
 		break;
 	case PURPLE:
 		ws2812_sendarray((uint8_t*)purpl, sizeof(purpl));
-//		ws2812_sendarray((uint8_t*)purpl, sizeof(purpl));
-//		ws2812_sendarray((uint8_t*)purpl, sizeof(purpl));
 		break;
 	case CYAN:
-		ws2812_sendarray((uint8_t*)cyan, sizeof(cyan));
-//		ws2812_sendarray((uint8_t*)cyan, sizeof(cyan));
-//		ws2812_sendarray((uint8_t*)cyan, sizeof(cyan));
+		ws2812_sendarray((uint8_t*)cyan, sizeof(cyan));;
 		break;
 	case OFF:
 		ws2812_sendarray((uint8_t*)off, sizeof(off));
-//		ws2812_sendarray((uint8_t*)off, sizeof(off));
-//		ws2812_sendarray((uint8_t*)off, sizeof(off));
 		break;
 	default:
 		break;
@@ -154,6 +134,5 @@ void redDotOnBlueLine(void *ptr)
 
 	if(++redPosition >= WS2812_QUANTITY) redPosition = 0;
 	if(bluePosition >= WS2812_QUANTITY) bluePosition = 0;
-
 	ws2812_sendarray(leds,63); //write new colors to to LEDS:
 }

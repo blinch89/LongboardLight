@@ -71,8 +71,6 @@ void DAVE_Init(void);
 // #include APP HEADER FILES.
 	#include "../../inc/LIBS/LIBS.h" 
 	#include "../../inc/CLK002/CLK002.h" 
-	#include "../../inc/UART001/UART001.h" 
-	#include "../../inc/IO004/IO004.h" 
 	#include "../../inc/SYSTM001/SYSTM001.h" 
 
                      

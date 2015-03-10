@@ -10,9 +10,7 @@ RM := rm -rf
 -include sources.mk
 -include Startup/subdir.mk
 -include Lib/subdir.mk
--include Dave/Generated/src/UART001/subdir.mk
 -include Dave/Generated/src/SYSTM001/subdir.mk
--include Dave/Generated/src/IO004/subdir.mk
 -include Dave/Generated/src/DAVESupport/subdir.mk
 -include Dave/Generated/src/CLK002/subdir.mk
 -include subdir.mk

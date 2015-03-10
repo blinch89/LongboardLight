@@ -92,63 +92,8 @@ void DAVE_MUX_Init(void)
                                      
        /*        SCU Macro definitions     */                  
    	 
-      
-//********* MODULE USIC CONFIGURATIONS *************************	        
-        
-           
-   /* Disable mode before configuring all USIC registers to avoid unintended edges */   
-      /* Variable to store the CCR_MODE values for various USIC channels */ 
-      uint32_t UsicCcrMode[6] = {0};
-                
-    UsicCcrMode[1] |= (uint32_t) RD_REG(USIC0_CH1->CCR, USIC_CH_CCR_MODE_Msk, USIC_CH_CCR_MODE_Pos); 
-    WR_REG(USIC0_CH1->CCR, USIC_CH_CCR_MODE_Msk, USIC_CH_CCR_MODE_Pos,0);   
-                 
-      
-    						
-   /*USIC 0 Channel 0 Mux Related SFR/Bitfields Configurations*/ 									  					 				 				 		       				              				  					    					 					   				  					 				 				       				  										 									 					 					  									      					              					  						    					      
-       						
-   /*USIC 0 Channel 1 Mux Related SFR/Bitfields Configurations*/ 						         
- WR_REG(USIC0_CH1->DX0CR, USIC_CH_DX0CR_DSEL_Msk, USIC_CH_DX0CR_DSEL_Pos,6); 
-  			  					 				   
- WR_REG(USIC0_CH1->DX3CR, USIC_CH_DX3CR_DSEL_Msk, USIC_CH_DX3CR_DSEL_Pos,1);
-    				 		       				              				  					    					 					   				  					 				 				       				  										 									 					 					  									      					              					  						    					      
-                 
-   // Data Pointer & Buffer Size for Transmitter Buffer Control  
- WR_REG(USIC0_CH1->TBCTR, USIC_CH_TBCTR_DPTRSIZE_Msk, USIC_CH_TBCTR_DPTRSIZE_Pos,0x01000002);		/*    DPTR = 2,  SIZE = 1 */ 
-         
-  // Data Pointer & Buffer Size for Receiver Buffer Control  
- WR_REG(USIC0_CH1->RBCTR, USIC_CH_RBCTR_DPTRSIZE_Msk, USIC_CH_RBCTR_DPTRSIZE_Pos,0x01000000);		/*    DPTR = 0,  SIZE = 1 */ 
-   						
-   /*USIC 1 Channel 0 Mux Related SFR/Bitfields Configurations*/ 									  					 				 				 		       				              				  					    					 					   				  					 				 				       				  										 									 					 					  									      					              					  						    					      
-       						
-   /*USIC 1 Channel 1 Mux Related SFR/Bitfields Configurations*/ 									  					 				 				 		       				              				  					    					 					   				  					 				 				       				  										 									 					 					  									      					              					  						    					      
-         						
-   /*USIC 2 Channel 0 Mux Related SFR/Bitfields Configurations*/ 									  					 				 				 		       				              				  					    					 					   				  					 				 				       				  										 									 					 					  									      					              					  						    					      
-       						
-   /*USIC 2 Channel 1 Mux Related SFR/Bitfields Configurations*/ 									  					 				 				 		       				              				  					    					 					   				  					 				 				       				  										 									 					 					  									      					              					  						    					      
-         
-  
-  /* Enable mode after configuring all USIC registers to avoid unintended edges */  
-             
-   WR_REG(USIC0_CH1->CCR, USIC_CH_CCR_MODE_Msk, USIC_CH_CCR_MODE_Pos,UsicCcrMode[1]);   
-                       	         
-                                                     
-   	 
             	         
                                                      
-   	 
-            	         
-                                                 
-
-/*        PORT Macro definitions for IOCR_OE, IOCR_PCR & HWSEL_HW     */                                      
-  WR_REG(PORT1->IOCR0, PORT_IOCR_PC0_OE_Msk, PORT_IOCR_PC0_OE_Pos, PORT_IOCR_OE1);                /*    P1.0 : PORT1_IOCR0_PC0_OE */					   
-					                         
-  WR_REG(PORT1->IOCR0, PORT_IOCR_PC1_OE_Msk, PORT_IOCR_PC1_OE_Pos, PORT_IOCR_OE1);                /*    P1.1 : PORT1_IOCR0_PC1_OE */					   
-					  
-           
-  WR_REG(PORT2->PDISC, PORT2_PDISC_PDIS10_Msk, PORT2_PDISC_PDIS10_Pos, PORT_PDISC_PDIS0);            /*    P2.10 : PORT2_PDISC_PDIS10 */                       
-  WR_REG(PORT2->IOCR8, 0xb80000U, PORT_IOCR_PC2_PCR_Pos, 0x17U);                /*P2.10 : PORT2_IOCR8_PC10_PCR and PORT2_IOCR8_PC10_OE */					   
-					      
 }
 
 
@@ -168,10 +113,6 @@ void DAVE_MUX_Init(void)
 *******************************************************************************/
  
 void DAVE_MUX_PreInit(void)
-{            
-
-/*        PORT Macro definitions for IOCR_OE, IOCR_PCR & HWSEL_HW     */               
-           
-  WR_REG(PORT2->PDISC, PORT2_PDISC_PDIS9_Msk, PORT2_PDISC_PDIS9_Pos, PORT_PDISC_PDIS0);            /*    P2.9 : PORT2_PDISC_PDIS9 */    
+{        
 }
 

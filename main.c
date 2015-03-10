@@ -34,24 +34,13 @@ int main(void)
 	DAVE_Init();			// Initialization of DAVE Apps
 	handle_t timer;
 	P0_5_set_mode(OUTPUT_PP_GP); 	//WS2812 data pin
-	P0_6_set_mode(INPUT_PU);     	//button
-	//timer=SYSTM001_CreateTimer(500,SYSTM001_PERIODIC,updateOnboardLEDs,NULL);
-	//SYSTM001_StartTimer(timer);
+	P0_6_set_mode(INPUT_PU);     	//button;
 	timer=SYSTM001_CreateTimer(400,SYSTM001_PERIODIC,buttonRead,&state);
 	SYSTM001_StartTimer(timer);
 	animationTimer=SYSTM001_CreateTimer(10,SYSTM001_PERIODIC,redDotOnBlueLine,stripe);
 	while(1){}
 	return 0;
 }
-
-
-/*
-void updateOnboardLEDs()
-{
-	IO004_TogglePin(IO004_Handle0);
-	IO004_TogglePin(IO004_Handle1);
-}
-*/
 
 void buttonRead(void *ptr)
 {

@@ -685,126 +685,106 @@
  619 0020 181C     		mov	r0, r3
  620 0022 3F21     		mov	r1, #63
  621 0024 FFF7FEFF 		bl	ws2812_sendarray
-  82:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)rgb, sizeof(rgb));
-  83:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)rgb, sizeof(rgb));
-  84:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)rgb, sizeof(rgb));
-  85:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)rgb, sizeof(rgb));
-  86:../colorManagement.c **** 		break;
- 622              		.loc 1 86 0
+  82:../colorManagement.c **** 		break;
+ 622              		.loc 1 82 0
  623 0028 30E0     		b	.L1
  624              	.L6:
-  87:../colorManagement.c **** 	case RED:
-  88:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)red, sizeof(red));
- 625              		.loc 1 88 0
+  83:../colorManagement.c **** 	case RED:
+  84:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)red, sizeof(red));
+ 625              		.loc 1 84 0
  626 002a 1C4B     		ldr	r3, .L15+8
  627 002c 181C     		mov	r0, r3
  628 002e 3F21     		mov	r1, #63
  629 0030 FFF7FEFF 		bl	ws2812_sendarray
-  89:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)red, sizeof(red));
-  90:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)red, sizeof(red));
-  91:../colorManagement.c **** 		break;
- 630              		.loc 1 91 0
+  85:../colorManagement.c **** 		break;
+ 630              		.loc 1 85 0
  631 0034 2AE0     		b	.L1
  632              	.L7:
-  92:../colorManagement.c **** 	case GREEN:
-  93:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)green, sizeof(green));
- 633              		.loc 1 93 0
+  86:../colorManagement.c **** 	case GREEN:
+  87:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)green, sizeof(green));
+ 633              		.loc 1 87 0
  634 0036 1A4B     		ldr	r3, .L15+12
  635 0038 181C     		mov	r0, r3
  636 003a 3F21     		mov	r1, #63
  637 003c FFF7FEFF 		bl	ws2812_sendarray
-  94:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)green, sizeof(green));
-  95:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)green, sizeof(green));
-  96:../colorManagement.c **** 		break;
- 638              		.loc 1 96 0
+  88:../colorManagement.c **** 		break;
+ 638              		.loc 1 88 0
  639 0040 24E0     		b	.L1
  640              	.L8:
-  97:../colorManagement.c **** 	case BLUE:
-  98:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)blue, sizeof(blue));
- 641              		.loc 1 98 0
+  89:../colorManagement.c **** 	case BLUE:
+  90:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)blue, sizeof(blue));
+ 641              		.loc 1 90 0
  642 0042 184B     		ldr	r3, .L15+16
  643 0044 181C     		mov	r0, r3
  644 0046 3F21     		mov	r1, #63
  645 0048 FFF7FEFF 		bl	ws2812_sendarray
-  99:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)blue, sizeof(blue));
- 100:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)blue, sizeof(blue));
- 101:../colorManagement.c **** 		break;
- 646              		.loc 1 101 0
+  91:../colorManagement.c **** 		break;
+ 646              		.loc 1 91 0
  647 004c 1EE0     		b	.L1
  648              	.L5:
- 102:../colorManagement.c **** 	case WHITE:
- 103:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)white, sizeof(white));
- 649              		.loc 1 103 0
+  92:../colorManagement.c **** 	case WHITE:
+  93:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)white, sizeof(white));
+ 649              		.loc 1 93 0
  650 004e 164B     		ldr	r3, .L15+20
  651 0050 181C     		mov	r0, r3
  652 0052 3F21     		mov	r1, #63
  653 0054 FFF7FEFF 		bl	ws2812_sendarray
- 104:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)white, sizeof(white));
- 105:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)white, sizeof(white));
- 106:../colorManagement.c **** 		break;
- 654              		.loc 1 106 0
+  94:../colorManagement.c **** 		break;
+ 654              		.loc 1 94 0
  655 0058 18E0     		b	.L1
  656              	.L10:
- 107:../colorManagement.c **** 	case YELLOW:
- 108:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)yello, sizeof(yello));
- 657              		.loc 1 108 0
+  95:../colorManagement.c **** 	case YELLOW:
+  96:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)yello, sizeof(yello));
+ 657              		.loc 1 96 0
  658 005a 144B     		ldr	r3, .L15+24
  659 005c 181C     		mov	r0, r3
  660 005e 3F21     		mov	r1, #63
  661 0060 FFF7FEFF 		bl	ws2812_sendarray
- 109:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)yello, sizeof(yello));
- 110:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)yello, sizeof(yello));
- 111:../colorManagement.c **** 		break;
- 662              		.loc 1 111 0
+  97:../colorManagement.c **** 		break;
+ 662              		.loc 1 97 0
  663 0064 12E0     		b	.L1
  664              	.L9:
- 112:../colorManagement.c **** 	case PURPLE:
- 113:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)purpl, sizeof(purpl));
- 665              		.loc 1 113 0
+  98:../colorManagement.c **** 	case PURPLE:
+  99:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)purpl, sizeof(purpl));
+ 665              		.loc 1 99 0
  666 0066 124B     		ldr	r3, .L15+28
  667 0068 181C     		mov	r0, r3
  668 006a 3F21     		mov	r1, #63
  669 006c FFF7FEFF 		bl	ws2812_sendarray
- 114:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)purpl, sizeof(purpl));
- 115:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)purpl, sizeof(purpl));
- 116:../colorManagement.c **** 		break;
- 670              		.loc 1 116 0
+ 100:../colorManagement.c **** 		break;
+ 670              		.loc 1 100 0
  671 0070 0CE0     		b	.L1
  672              	.L11:
- 117:../colorManagement.c **** 	case CYAN:
- 118:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)cyan, sizeof(cyan));
- 673              		.loc 1 118 0
+ 101:../colorManagement.c **** 	case CYAN:
+ 102:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)cyan, sizeof(cyan));;
+ 673              		.loc 1 102 0
  674 0072 104B     		ldr	r3, .L15+32
  675 0074 181C     		mov	r0, r3
  676 0076 3F21     		mov	r1, #63
  677 0078 FFF7FEFF 		bl	ws2812_sendarray
- 119:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)cyan, sizeof(cyan));
- 120:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)cyan, sizeof(cyan));
- 121:../colorManagement.c **** 		break;
- 678              		.loc 1 121 0
+ 103:../colorManagement.c **** 		break;
+ 678              		.loc 1 103 0
  679 007c 06E0     		b	.L1
  680              	.L3:
- 122:../colorManagement.c **** 	case OFF:
- 123:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)off, sizeof(off));
- 681              		.loc 1 123 0
+ 104:../colorManagement.c **** 	case OFF:
+ 105:../colorManagement.c **** 		ws2812_sendarray((uint8_t*)off, sizeof(off));
+ 681              		.loc 1 105 0
  682 007e 0E4B     		ldr	r3, .L15+36
  683 0080 181C     		mov	r0, r3
  684 0082 3F21     		mov	r1, #63
  685 0084 FFF7FEFF 		bl	ws2812_sendarray
- 124:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)off, sizeof(off));
- 125:../colorManagement.c **** //		ws2812_sendarray((uint8_t*)off, sizeof(off));
- 126:../colorManagement.c **** 		break;
- 686              		.loc 1 126 0
+ 106:../colorManagement.c **** 		break;
+ 686              		.loc 1 106 0
  687 0088 00E0     		b	.L1
  688              	.L14:
- 127:../colorManagement.c **** 	default:
- 128:../colorManagement.c **** 		break;
- 689              		.loc 1 128 0
+ 107:../colorManagement.c **** 	default:
+ 108:../colorManagement.c **** 		break;
+ 689              		.loc 1 108 0
  690 008a C046     		mov	r8, r8
  691              	.L1:
- 129:../colorManagement.c **** 	}
- 130:../colorManagement.c **** }
- 692              		.loc 1 130 0
+ 109:../colorManagement.c **** 	}
+ 110:../colorManagement.c **** }
+ 692              		.loc 1 110 0
  693 008c BD46     		mov	sp, r7
  694 008e 02B0     		add	sp, sp, #8
  695              		@ sp needed for prologue
@@ -831,13 +811,13 @@
  717              		.thumb_func
  719              	redDotOnBlueLine:
  720              	.LFB34:
- 131:../colorManagement.c **** 
- 132:../colorManagement.c **** 
- 133:../colorManagement.c **** 
- 134:../colorManagement.c **** 
- 135:../colorManagement.c **** void redDotOnBlueLine(void *ptr)
- 136:../colorManagement.c **** {
- 721              		.loc 1 136 0
+ 111:../colorManagement.c **** 
+ 112:../colorManagement.c **** 
+ 113:../colorManagement.c **** 
+ 114:../colorManagement.c **** 
+ 115:../colorManagement.c **** void redDotOnBlueLine(void *ptr)
+ 116:../colorManagement.c **** {
+ 721              		.loc 1 116 0
  722              		.cfi_startproc
  723 0000 80B5     		push	{r7, lr}
  724              	.LCFI3:
@@ -851,20 +831,20 @@
  732              	.LCFI5:
  733              		.cfi_def_cfa_register 7
  734 0006 7860     		str	r0, [r7, #4]
- 137:../colorManagement.c **** 	uint8_t *leds = ptr;
- 735              		.loc 1 137 0
+ 117:../colorManagement.c **** 	uint8_t *leds = ptr;
+ 735              		.loc 1 117 0
  736 0008 7B68     		ldr	r3, [r7, #4]
  737 000a FB60     		str	r3, [r7, #12]
- 138:../colorManagement.c **** 	static uint8_t redPosition = 0;
- 139:../colorManagement.c **** 	static uint8_t bluePosition = 0;
- 140:../colorManagement.c **** 
- 141:../colorManagement.c **** 	if(redPosition >= 3 || redPosition < bluePosition)
- 738              		.loc 1 141 0
+ 118:../colorManagement.c **** 	static uint8_t redPosition = 0;
+ 119:../colorManagement.c **** 	static uint8_t bluePosition = 0;
+ 120:../colorManagement.c **** 
+ 121:../colorManagement.c **** 	if(redPosition >= 3 || redPosition < bluePosition)
+ 738              		.loc 1 121 0
  739 000c 354B     		ldr	r3, .L22
  740 000e 1B78     		ldrb	r3, [r3]
  741 0010 022B     		cmp	r3, #2
  742 0012 05D8     		bhi	.L18
- 743              		.loc 1 141 0 is_stmt 0 discriminator 1
+ 743              		.loc 1 121 0 is_stmt 0 discriminator 1
  744 0014 334B     		ldr	r3, .L22
  745 0016 1A78     		ldrb	r2, [r3]
  746 0018 334B     		ldr	r3, .L22+4
@@ -872,10 +852,10 @@
  748 001c 9A42     		cmp	r2, r3
  749 001e 25D2     		bcs	.L19
  750              	.L18:
- 142:../colorManagement.c **** 	{
- 143:../colorManagement.c **** 		//delete oldest red dot, turn him blue
- 144:../colorManagement.c **** 		leds[3*bluePosition  ] = 0x00;
- 751              		.loc 1 144 0 is_stmt 1
+ 122:../colorManagement.c **** 	{
+ 123:../colorManagement.c **** 		//delete oldest red dot, turn him blue
+ 124:../colorManagement.c **** 		leds[3*bluePosition  ] = 0x00;
+ 751              		.loc 1 124 0 is_stmt 1
  752 0020 314B     		ldr	r3, .L22+4
  753 0022 1B78     		ldrb	r3, [r3]
  754 0024 1A1C     		mov	r2, r3
@@ -886,8 +866,8 @@
  759 002e D318     		add	r3, r2, r3
  760 0030 0022     		mov	r2, #0
  761 0032 1A70     		strb	r2, [r3]
- 145:../colorManagement.c **** 		leds[3*bluePosition+1] = 0x00;
- 762              		.loc 1 145 0
+ 125:../colorManagement.c **** 		leds[3*bluePosition+1] = 0x00;
+ 762              		.loc 1 125 0
  763 0034 2C4B     		ldr	r3, .L22+4
  764 0036 1B78     		ldrb	r3, [r3]
  765 0038 1A1C     		mov	r2, r3
@@ -899,8 +879,8 @@
  771 0044 D318     		add	r3, r2, r3
  772 0046 0022     		mov	r2, #0
  773 0048 1A70     		strb	r2, [r3]
- 146:../colorManagement.c **** 		leds[3*bluePosition+2] = BRIGHTNESS;
- 774              		.loc 1 146 0
+ 126:../colorManagement.c **** 		leds[3*bluePosition+2] = BRIGHTNESS;
+ 774              		.loc 1 126 0
  775 004a 274B     		ldr	r3, .L22+4
  776 004c 1B78     		ldrb	r3, [r3]
  777 004e 1A1C     		mov	r2, r3
@@ -912,8 +892,8 @@
  783 005a D318     		add	r3, r2, r3
  784 005c FF22     		mov	r2, #255
  785 005e 1A70     		strb	r2, [r3]
- 147:../colorManagement.c **** 		bluePosition++;
- 786              		.loc 1 147 0
+ 127:../colorManagement.c **** 		bluePosition++;
+ 786              		.loc 1 127 0
  787 0060 214B     		ldr	r3, .L22+4
  788 0062 1B78     		ldrb	r3, [r3]
  789 0064 0133     		add	r3, r3, #1
@@ -921,11 +901,11 @@
  791 0068 1F4B     		ldr	r3, .L22+4
  792 006a 1A70     		strb	r2, [r3]
  793              	.L19:
- 148:../colorManagement.c **** 	}
- 149:../colorManagement.c **** 
- 150:../colorManagement.c **** 	//make new red dot
- 151:../colorManagement.c **** 	leds[3*redPosition  ] = 0x00;
- 794              		.loc 1 151 0
+ 128:../colorManagement.c **** 	}
+ 129:../colorManagement.c **** 
+ 130:../colorManagement.c **** 	//make new red dot
+ 131:../colorManagement.c **** 	leds[3*redPosition  ] = 0x00;
+ 794              		.loc 1 131 0
  795 006c 1D4B     		ldr	r3, .L22
  796 006e 1B78     		ldrb	r3, [r3]
  797 0070 1A1C     		mov	r2, r3
@@ -936,8 +916,8 @@
  802 007a D318     		add	r3, r2, r3
  803 007c 0022     		mov	r2, #0
  804 007e 1A70     		strb	r2, [r3]
- 152:../colorManagement.c **** 	leds[3*redPosition+1] = BRIGHTNESS;
- 805              		.loc 1 152 0
+ 132:../colorManagement.c **** 	leds[3*redPosition+1] = BRIGHTNESS;
+ 805              		.loc 1 132 0
  806 0080 184B     		ldr	r3, .L22
  807 0082 1B78     		ldrb	r3, [r3]
  808 0084 1A1C     		mov	r2, r3
@@ -949,8 +929,8 @@
  814 0090 D318     		add	r3, r2, r3
  815 0092 FF22     		mov	r2, #255
  816 0094 1A70     		strb	r2, [r3]
- 153:../colorManagement.c **** 	leds[3*redPosition+2] = 0x00;
- 817              		.loc 1 153 0
+ 133:../colorManagement.c **** 	leds[3*redPosition+2] = 0x00;
+ 817              		.loc 1 133 0
  818 0096 134B     		ldr	r3, .L22
  819 0098 1B78     		ldrb	r3, [r3]
  820 009a 1A1C     		mov	r2, r3
@@ -962,9 +942,9 @@
  826 00a6 D318     		add	r3, r2, r3
  827 00a8 0022     		mov	r2, #0
  828 00aa 1A70     		strb	r2, [r3]
- 154:../colorManagement.c **** 
- 155:../colorManagement.c **** 	if(++redPosition >= WS2812_QUANTITY) redPosition = 0;
- 829              		.loc 1 155 0
+ 134:../colorManagement.c **** 
+ 135:../colorManagement.c **** 	if(++redPosition >= WS2812_QUANTITY) redPosition = 0;
+ 829              		.loc 1 135 0
  830 00ac 0D4B     		ldr	r3, .L22
  831 00ae 1B78     		ldrb	r3, [r3]
  832 00b0 0133     		add	r3, r3, #1
@@ -975,31 +955,30 @@
  837 00ba 1B78     		ldrb	r3, [r3]
  838 00bc 142B     		cmp	r3, #20
  839 00be 02D9     		bls	.L20
- 840              		.loc 1 155 0 is_stmt 0 discriminator 1
+ 840              		.loc 1 135 0 is_stmt 0 discriminator 1
  841 00c0 084B     		ldr	r3, .L22
  842 00c2 0022     		mov	r2, #0
  843 00c4 1A70     		strb	r2, [r3]
  844              	.L20:
- 156:../colorManagement.c **** 	if(bluePosition >= WS2812_QUANTITY) bluePosition = 0;
- 845              		.loc 1 156 0 is_stmt 1
+ 136:../colorManagement.c **** 	if(bluePosition >= WS2812_QUANTITY) bluePosition = 0;
+ 845              		.loc 1 136 0 is_stmt 1
  846 00c6 084B     		ldr	r3, .L22+4
  847 00c8 1B78     		ldrb	r3, [r3]
  848 00ca 142B     		cmp	r3, #20
  849 00cc 02D9     		bls	.L21
- 850              		.loc 1 156 0 is_stmt 0 discriminator 1
+ 850              		.loc 1 136 0 is_stmt 0 discriminator 1
  851 00ce 064B     		ldr	r3, .L22+4
  852 00d0 0022     		mov	r2, #0
  853 00d2 1A70     		strb	r2, [r3]
  854              	.L21:
- 157:../colorManagement.c **** 
- 158:../colorManagement.c **** 	ws2812_sendarray(leds,63); //write new colors to to LEDS:
- 855              		.loc 1 158 0 is_stmt 1
+ 137:../colorManagement.c **** 	ws2812_sendarray(leds,63); //write new colors to to LEDS:
+ 855              		.loc 1 137 0 is_stmt 1
  856 00d4 FB68     		ldr	r3, [r7, #12]
  857 00d6 181C     		mov	r0, r3
  858 00d8 3F21     		mov	r1, #63
  859 00da FFF7FEFF 		bl	ws2812_sendarray
- 159:../colorManagement.c **** }
- 860              		.loc 1 159 0
+ 138:../colorManagement.c **** }
+ 860              		.loc 1 138 0
  861 00de BD46     		mov	sp, r7
  862 00e0 04B0     		add	sp, sp, #16
  863              		@ sp needed for prologue
@@ -1022,25 +1001,25 @@
  881              		.file 3 "../colorManagement.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 colorManagement.c
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:22     .rodata:00000000 rgb
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:19     .rodata:00000000 $d
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:90     .rodata:00000040 red
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:158    .rodata:00000080 green
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:226    .rodata:000000c0 blue
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:294    .rodata:00000100 white
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:362    .rodata:00000140 off
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:368    .rodata:00000180 purpl
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:436    .rodata:000001c0 cyan
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:504    .rodata:00000200 yello
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:569    .text.updateWS2812LEDs:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:574    .text.updateWS2812LEDs:00000000 updateWS2812LEDs
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:700    .text.updateWS2812LEDs:00000094 $d
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:714    .text.redDotOnBlueLine:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:719    .text.redDotOnBlueLine:00000000 redDotOnBlueLine
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:868    .text.redDotOnBlueLine:000000e4 $d
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:874    .bss:00000000 redPosition.4687
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:876    .bss:00000001 bluePosition.4688
-C:\Users\blinch\AppData\Local\Temp\cctEHONF.s:875    .bss:00000000 $d
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:22     .rodata:00000000 rgb
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:19     .rodata:00000000 $d
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:90     .rodata:00000040 red
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:158    .rodata:00000080 green
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:226    .rodata:000000c0 blue
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:294    .rodata:00000100 white
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:362    .rodata:00000140 off
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:368    .rodata:00000180 purpl
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:436    .rodata:000001c0 cyan
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:504    .rodata:00000200 yello
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:569    .text.updateWS2812LEDs:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:574    .text.updateWS2812LEDs:00000000 updateWS2812LEDs
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:700    .text.updateWS2812LEDs:00000094 $d
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:714    .text.redDotOnBlueLine:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:719    .text.redDotOnBlueLine:00000000 redDotOnBlueLine
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:868    .text.redDotOnBlueLine:000000e4 $d
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:874    .bss:00000000 redPosition.4687
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:876    .bss:00000001 bluePosition.4688
+C:\Users\blinch\AppData\Local\Temp\ccj00ELV.s:875    .bss:00000000 $d
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.4f34ab06ae2725aaf04d3230f4ec23a7
                            .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5

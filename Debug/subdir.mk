@@ -4,19 +4,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Main.c \
 ../colorManagement.c \
-../light_ws2812_cortex.c 
+../light_ws2812_cortex.c \
+../main.c 
 
 OBJS += \
-./Main.o \
 ./colorManagement.o \
-./light_ws2812_cortex.o 
+./light_ws2812_cortex.o \
+./main.o 
 
 C_DEPS += \
-./Main.d \
 ./colorManagement.d \
-./light_ws2812_cortex.d 
+./light_ws2812_cortex.d \
+./main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

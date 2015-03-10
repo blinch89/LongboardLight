@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ResourceModel:App xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" name="CLK002" description="App to configure System&#xA; and Peripheral Clocks for XMC 1XXX Series Devices." descriptionURL="/doc/html/group___s_c_u___module_system_clocks___c_l_k002_app.html" mode="SHARABLE" URI="http://www.infineon.com/1.0.8/app/clk002/0">
-  <upWardMappingList xsi:type="ResourceModel:ProxyResource" href="../../UART001/1.0.24/uart001_0.app#//@consumed.4"/>
   <upWardMappingList xsi:type="ResourceModel:ProxyResource" href="../../SYSTM001/1.0.18/systm001_0.app#//@consumed.3"/>
   <provided xsi:type="ResourceModel:VirtualSignal" name="DCO clock out" URI="http://www.infineon.com/1.0.8/app/clk002/0/clk002_clkout_vs" requiredSignalResource="DCO_uri/clkout">
     <localValue xsi:type="ResourceModel:StringValue" value="-1"/>
@@ -49,7 +48,6 @@ Valid clock range is 125 KHz to 32000 KHz.</toolTipHelpDescription>
   </provided>
   <provided xsi:type="ResourceModel:IntegerParameter" name="Configured MCLK" evalFunction="&#xD;&#xA;        function ForwardMapping()&#xD;&#xA;        {&#xD;&#xA;&#x9;&#x9;&#x9;var Res4 = SCM.getResource(&quot;InputFreq&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;var value3 = SCM.getDoubleValue(Res4);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;var Res3 = SCM.getResource(&quot;PCLKselBit&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;var value2 = SCM.getDoubleValue(Res3);&#xD;&#xA;&#xD;&#xA;        }&#xD;&#xA;        &#xD;&#xA;        function BackwardMapping()&#xD;&#xA;        {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;var Res5 = SCM.getResource(&quot;ActualMCLK&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;var value5 = SCM.getDoubleValue(Res5);&#xD;&#xA;&#x9;&#x9;&#x9;SCM.setDoubleValue(currentResource,value5);       &#xD;&#xA;&#x9; &#x9;}&#xD;&#xA;        " URI="http://www.infineon.com/1.0.8/app/clk002/0/clk002_irmclk" maxValue="20" minValue="00">
     <defaultValue xsi:type="ResourceModel:IntegerValue" value="20"/>
-    <upWardMappingList xsi:type="ResourceModel:ProxyResource" href="../../UART001/1.0.24/uart001_0.app#//@consumed.46"/>
     <upWardMappingList xsi:type="ResourceModel:ProxyResource" href="../../SYSTM001/1.0.18/systm001_0.app#//@consumed.10"/>
     <localValue xsi:type="ResourceModel:IntegerValue" value="8"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="8"/>
@@ -406,7 +404,9 @@ This frequency will used during BootROM Firmware Execution.</toolTipHelpDescript
     <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
     <requiredResource uriString="" uriType="LOCALTYPE"/>
   </consumed>
-  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/dco_uri" isSystemDefined="true"/>
+  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/dco_uri" isSystemDefined="true">
+    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../SCU/SCU_0.dd#//@provided.16"/>
+  </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clk_uri/clkcr/pclksel" upWardMappingList="//@provided.2 //@provided.2/@item.0 //@provided.2/@item.1" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
     <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.1"/>
