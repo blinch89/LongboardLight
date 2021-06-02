@@ -1,0 +1,4 @@
+
+*.java linguist-detectable=false
+*.c linguist-detectable=true
+*.cpp linguist-detectable=true
