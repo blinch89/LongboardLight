@@ -1,5 +1,5 @@
 # LongboardLight
-A try to create LED-powered light effects under a longboard deck.
+An attempt to create LED light effects under a longboard deck.
 
  http://blinch89.github.io/LongboardLight
 
